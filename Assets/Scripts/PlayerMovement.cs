@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float swipeThreshold = 80f;
     [SerializeField] private Position pos;
+    [SerializeField] private GameObject scenario;
     private int _currentPos = 1;
     private Vector3 _destination;
     private Vector2 _fingerDown;
@@ -11,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !LoseCondition.GameOver)
         {
             Touch touch = Input.touches[0];
             
@@ -96,6 +97,8 @@ public class PlayerMovement : MonoBehaviour
         if (_currentPos > 0)
         {
             _currentPos--;
+            scenario. transform.position =new Vector3(scenario.transform.position.x + 0.2f,
+                scenario.transform.position.y, scenario.transform.position.z);
             _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
         }
@@ -106,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
         if (_currentPos < 2)
         {
             _currentPos++;
+            scenario.transform.position = new Vector3(scenario.transform.position.x - 0.2f,
+                scenario.transform.position.y, scenario.transform.position.z);
             _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
         }

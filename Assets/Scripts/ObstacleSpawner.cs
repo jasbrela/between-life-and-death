@@ -16,8 +16,12 @@ public class ObstacleSpawner : MonoBehaviour
     {
         float minRepeat = 1.5f;
         float maxRepeat = 2f;
-        
-        Instantiate(obstaclePrefab, transform.position, transform.rotation);
+
+        if (!LoseCondition.GameOver)
+        {
+            GameObject obstacle = Instantiate(obstaclePrefab, transform.position, transform.rotation);
+            obstacle.transform.parent = transform;
+        }
 
         Invoke("SpawnObstacle", Random.Range(minRepeat, maxRepeat));
     }
