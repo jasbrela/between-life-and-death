@@ -9,9 +9,14 @@ public class LifeDeathController : MonoBehaviour
     [Header("Virou fantasma?")]
     public bool ghostPhase = false;
 
-    public GameObject scriptScoreController;
+    private GameObject scriptScoreController; // Auxiliar pra variavel de outro script
+    
+    [Header("O jogo virou txt xD")] 
+    public  GameObject txtPhase;
 
-    public GameObject txtPhase;
+    // mudar a animação tbm
+    [Header("Sprites do player (0 - humano, 1 - fantasma)")]
+    public Sprite[] playerSprite;
     
     void Awake()
     {
@@ -39,6 +44,8 @@ public class LifeDeathController : MonoBehaviour
             // muda cenario
             
             // muda player
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[1];
+            // colocar a animação tbm
         }
         else // é humano
         {
@@ -47,12 +54,14 @@ public class LifeDeathController : MonoBehaviour
             // muda cenario
             
             // muda player
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[0];
+            // colocar a animação tbm
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "obstaculo") // se colidiu com obstaculo
+        if (col.gameObject.tag == "Obstacle") // se colidiu com obstaculo
         {
             if (!ghostPhase) // se for humano
             {
