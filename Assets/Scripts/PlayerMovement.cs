@@ -5,6 +5,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float swipeThreshold = 80f;
     [SerializeField] private Position pos;
     [SerializeField] private GameObject scenario;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip swipe;
     private int _currentPos = 1;
     private Vector3 _destination;
     private Vector2 _fingerDown;
@@ -120,6 +123,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        audioSource.clip = swipe;
+        audioSource.Play();
         transform.position = new Vector3(_destination.x, transform.position.y, transform.position.z);
     }
 }
