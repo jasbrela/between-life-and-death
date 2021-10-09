@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
@@ -30,8 +31,8 @@ public class PlayerStatus : MonoBehaviour
                 bgaudioSource.Stop();
                 gameOverMessage.SetActive(true);
                 GameOver = true;
-                Time.timeScale = 0;
-                
+                //Time.timeScale = 0;
+                StartCoroutine("Delay", 2f);
             }
             else
             {
@@ -42,5 +43,11 @@ public class PlayerStatus : MonoBehaviour
                 // ativa modo ghost
             }
         }
+    }
+    
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }

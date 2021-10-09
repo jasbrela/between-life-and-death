@@ -73,7 +73,7 @@ public class LifeDeathController : MonoBehaviour
             {
                 scriptScoreController.GetComponent<ScoreController>().gameOver = true; // game over
                 DontDestroyOnLoad(scriptScoreController);
-                SceneManager.LoadScene("Game Over");
+                // SceneManager.LoadScene("Game Over");
             }
         }
     }
