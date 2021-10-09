@@ -43,8 +43,8 @@ public class PlayerStatus : MonoBehaviour
                 bgaudioSource.Stop();
                 gameOverMessage.SetActive(true);
                 GameOver = true;
-                //Time.timeScale = 0;
-                StartCoroutine("Delay", 2f);
+                StartCoroutine("Delay");
+                Time.timeScale = 0;
             }
             else
             {
@@ -60,7 +60,8 @@ public class PlayerStatus : MonoBehaviour
     
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0;
+        yield return new WaitForSeconds(3f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }
