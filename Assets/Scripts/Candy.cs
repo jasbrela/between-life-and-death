@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class Candy : MonoBehaviour
 {
-    [SerializeField] private Position _pos;
+    [SerializeField] private Position pos;
     [SerializeField] private float speed = 2;
-    private GameObject player;
-    private int index;
+    private GameObject _player;
+    private int _index;
     
     public void Init(int index)
     {
-        this.index = index;
-        player = GameObject.FindGameObjectWithTag("Player");
+        this._index = index;
+        _player = GameObject.FindGameObjectWithTag("Player");
 
-        transform.position = new Vector3(_pos.positions[index].position.x,
-            _pos.positions[index].position.y, transform.position.z);
+        transform.position = new Vector3(pos.positions[index].position.x,
+            pos.positions[index].position.y, transform.position.z);
     }
 
     private void Update()
     {
-        switch (index)
+        switch (_index)
         {
             case 0:
                 transform.Translate(Vector3.left * speed/3.5f * Time.deltaTime);
@@ -39,7 +39,7 @@ public class Candy : MonoBehaviour
                 break;
         }
 
-        if (transform.position.y < player.transform.position.y)
+        if (transform.position.y < _player.transform.position.y)
         {
             GetComponent<SpriteRenderer>().sortingLayerName = "ObstacleFront";
             GetComponent<CircleCollider2D>().enabled = false;

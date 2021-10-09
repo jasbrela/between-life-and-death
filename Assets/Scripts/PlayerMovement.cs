@@ -32,24 +32,38 @@ public class PlayerMovement : MonoBehaviour
                     _fingerDown = touch.position;
                     CheckSwipe();
                 }
-                
+
                 // TODO: MOVE ONLY ONE POSITION PER TOUCH
             }
 
             if (Input.GetKeyDown(KeyCode.A))
             {
-                OnSwipeLeft();
+                if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
+                {
+                    OnSwipeRight();
+                }
+                else
+                {
+                    OnSwipeLeft();
+                }
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                OnSwipeRight();
+                if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
+                {
+                    OnSwipeRight();
+                }
+                else
+                {
+                    OnSwipeLeft();
+                }
             }
         }
     }
 
     void CheckSwipe()
     {
-        if (VerticalMove() > swipeThreshold && VerticalMove() > HorizontalValMove())
+        /*if (VerticalMove() > swipeThreshold && VerticalMove() > HorizontalValMove())
         {
             if (_fingerDown.y - _fingerUp.y > 0)
             {
@@ -62,15 +76,30 @@ public class PlayerMovement : MonoBehaviour
 
             _fingerUp = _fingerDown;
         }
-        else if (HorizontalValMove() > swipeThreshold && HorizontalValMove() > VerticalMove())
+        else */
+        if (HorizontalValMove() > swipeThreshold && HorizontalValMove() > VerticalMove())
         {
             if (_fingerDown.x - _fingerUp.x > 0)
             {
-                OnSwipeRight();
+                if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
+                {
+                    OnSwipeRight();
+                }
+                else
+                {
+                    OnSwipeLeft();
+                }
             }
             else if (_fingerDown.x - _fingerUp.x < 0)
             {
-                OnSwipeLeft();
+                if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
+                {
+                    OnSwipeRight();
+                }
+                else
+                {
+                    OnSwipeLeft();
+                }
             }
 
             _fingerUp = _fingerDown;
@@ -86,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     {
         return Mathf.Abs(_fingerDown.x - _fingerUp.x);
     }
-
+/*
     void OnSwipeUp()
     {
         Debug.Log("Swipe UP");
@@ -96,13 +125,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Swipe Down");
     }
+    */
 
     void OnSwipeLeft()
     {
         if (_currentPos > 0)
         {
             _currentPos--;
-            scenario. transform.position =new Vector3(scenario.transform.position.x + 0.2f,
+            scenario.transform.position = new Vector3(scenario.transform.position.x + 0.2f,
                 scenario.transform.position.y, scenario.transform.position.z);
             _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
