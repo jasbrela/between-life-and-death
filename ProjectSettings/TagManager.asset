@@ -45,3 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Scenario
+    uniqueID: 1305419795
+    locked: 0
+  - name: ObstacleBack
+    uniqueID: 3733424341
+    locked: 0
+  - name: Player
+    uniqueID: 964676317
+    locked: 0
+  - name: ObstacleFront
+    uniqueID: 2714035563
+    locked: 0

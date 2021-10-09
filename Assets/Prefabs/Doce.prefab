@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9052816817632575097}
   - component: {fileID: 9052816817632575102}
-  - component: {fileID: 9052816817632575103}
+  - component: {fileID: -4466286588925280089}
+  - component: {fileID: 2146921105310506860}
   m_Layer: 0
   m_Name: Doce
   m_TagString: doce
@@ -69,11 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -561542955
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.5424528, b: 0.9052172, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 25b519a47649fdc49bd24efd6843e420, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -83,8 +84,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &9052816817632575103
-BoxCollider2D:
+--- !u!114 &-4466286588925280089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052816817632575100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42842cae1bc11c04b872ec36823d2118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pos: {fileID: 11400000, guid: 9ee008157bcefaa4a8b3e92bda1c022c, type: 2}
+  speed: 2
+--- !u!58 &2146921105310506860
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,16 +111,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.021671534, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.34382033

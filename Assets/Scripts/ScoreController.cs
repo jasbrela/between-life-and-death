@@ -1,23 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class ScoreController : MonoBehaviour
 {
     [Header("Doces coletados nessa run")] 
-    public int score = 0;
+    [SerializeField] private int score;
 
     [Header("Doces totais")] 
-    [SerializeField] private int docesTotal = 0;
+    [SerializeField] private int docesTotal;
 
     [Header("Auxiliar pra soma dos doces")] 
-    public bool gameOver = false; 
+    [SerializeField] private bool gameOver; 
     
     private TextMeshProUGUI txtScore, txtDocesTotal;
 
-    private void Awake()
+    private void Start()
     {
         txtScore = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
         txtDocesTotal = GameObject.FindWithTag("docesTotal").GetComponent<TextMeshProUGUI>();
@@ -31,7 +28,7 @@ public class ScoreController : MonoBehaviour
 
     void ScoreUpdate()
     {
-        txtScore.text = "Score: " + score.ToString(); // atualiza o score na ui
+        txtScore.text = score.ToString(); // atualiza o score na ui
     }
 
     void SomaDocesTotal()
@@ -43,6 +40,15 @@ public class ScoreController : MonoBehaviour
             gameOver = false;
         }
 
-        txtDocesTotal.text = "Doces Totais: " + docesTotal.ToString(); // atualiza o total de doces
+        txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
+    }
+
+    void OnTriggerEnter2D (Collider2D col)
+    {
+        if (col.CompareTag("doce")) // se colidiu com doce
+        {
+            score++; // incrementa o score
+            Destroy(col.gameObject); // destrói o doce
+        }
     }
 }

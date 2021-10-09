@@ -1,25 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Obstacles : MonoBehaviour
+public class Candy : MonoBehaviour
 {
     [SerializeField] private Position _pos;
-    private int startPosIndex;
-    [SerializeField] private float speed;
-    void Start()
-    {
-        startPosIndex = Random.Range(0, _pos.positions.Length);
-        
-        transform.position = new Vector3(_pos.positions[startPosIndex].position.x,
-            _pos.positions[startPosIndex].position.y, transform.position.z);
-    }
+    [SerializeField] private float speed = 2;
+    private GameObject player;
+    private int index;
     
-    void Update()
+    public void Init(int index)
     {
-        switch (startPosIndex)
+        this.index = index;
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        transform.position = new Vector3(_pos.positions[index].position.x,
+            _pos.positions[index].position.y, transform.position.z);
+    }
+
+    private void Update()
+    {
+        switch (index)
         {
             case 0:
                 transform.Translate(Vector3.left * speed/3.5f * Time.deltaTime);
@@ -36,6 +38,17 @@ public class Obstacles : MonoBehaviour
                 transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
                 break;
         }
+
+        if (transform.position.y < player.transform.position.y)
+        {
+            GetComponent<SpriteRenderer>().sortingLayerName = "ObstacleFront";
+            GetComponent<CircleCollider2D>().enabled = false;
+
+        }
+
+        if (transform.position.y < -6f)
+        {
+            Destroy(gameObject);
+        }
     }
-    
 }
