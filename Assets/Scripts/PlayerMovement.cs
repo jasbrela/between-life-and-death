@@ -3,15 +3,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float swipeThreshold = 80f;
-    [SerializeField] private Transform[] playerPos;
-    private int currentPos = 1;
+    [SerializeField] private Position pos;
+    [SerializeField] private GameObject scenario;
+    private int _currentPos = 1;
     private Vector3 _destination;
     private Vector2 _fingerDown;
     private Vector2 _fingerUp;
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !LoseCondition.GameOver)
         {
             Touch touch = Input.touches[0];
             
@@ -26,6 +27,16 @@ public class PlayerMovement : MonoBehaviour
                 _fingerDown = touch.position;
                 CheckSwipe();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A");
+            OnSwipeLeft();
+        } else if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("D");
+            OnSwipeRight();
         }
         
         // TODO: MOVE ONLY ONE POSITION PER TOUCH
@@ -83,20 +94,24 @@ public class PlayerMovement : MonoBehaviour
 
     void OnSwipeLeft()
     {
-        if (currentPos > 0)
+        if (_currentPos > 0)
         {
-            currentPos--;
-            _destination = new Vector2(playerPos[currentPos].position.x, transform.position.y);
+            _currentPos--;
+            scenario. transform.position =new Vector3(scenario.transform.position.x + 0.2f,
+                scenario.transform.position.y, scenario.transform.position.z);
+            _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
         }
     }
 
     void OnSwipeRight()
     {
-        if (currentPos < 2)
+        if (_currentPos < 2)
         {
-            currentPos++;
-            _destination = new Vector2(playerPos[currentPos].position.x, transform.position.y);
+            _currentPos++;
+            scenario.transform.position = new Vector3(scenario.transform.position.x - 0.2f,
+                scenario.transform.position.y, scenario.transform.position.z);
+            _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
         }
     }
