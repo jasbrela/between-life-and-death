@@ -15,8 +15,8 @@ public class PlayerGetCandy : MonoBehaviour
     {
         if (col.gameObject.tag == "doce") // se colidiu com doce
         {
-            scriptScoreController.score++; // incrementa o score
-            Destroy(col.gameObject); // destrói o doce
+            //scriptScoreController.score++; // incrementa o score
+            //Destroy(col.gameObject); // destrói o doce
         }
     }
 }

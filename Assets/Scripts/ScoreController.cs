@@ -4,13 +4,13 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour
 {
     [Header("Doces coletados nessa run")] 
-    [SerializeField] private int score;
+    public int score;
 
     [Header("Doces totais")] 
     [SerializeField] private int docesTotal;
 
     [Header("Auxiliar pra soma dos doces")] 
-    [SerializeField] private bool gameOver; 
+    public bool gameOver; 
     
     private TextMeshProUGUI _txtScore, _txtDocesTotal;
 
