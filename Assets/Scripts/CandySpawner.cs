@@ -25,7 +25,7 @@ public class CandySpawner : BaseSpawner
         
         if (!PlayerStatus.GameOver)
         {
-            SpawnCandies(10);
+            SpawnCandies(5);
         }
         
         Invoke(nameof(SpawnCandyBlock), Random.Range(minRepeat, maxRepeat));
@@ -47,7 +47,7 @@ public class CandySpawner : BaseSpawner
         index = Random.Range(0, 3);
         for (int c = 0; c < quantity; c++)
         {
-            Invoke(nameof(Spawn), c/2);
+            Invoke(nameof(Spawn), c);
         }
     }
 }
