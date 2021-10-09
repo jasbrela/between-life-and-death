@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - score
+  - doce
+  - docesTotal
   - Obstacle
   layers:
   - Default
@@ -39,15 +42,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: SKETCH
-    uniqueID: 2172875021
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Obstacles
-    uniqueID: 3030454409
-    locked: 0
-  - name: Player
-    uniqueID: 3003413357
     locked: 0
