@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ObstacleSpawner : BaseSpawner
+public class CloudSpawner : BaseSpawner
 {
-    private new const float Delay = 3.5f;
+    protected new const float Delay = 3f;
 
     private new void Start()
     {

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc34785f675aad844b806c21c5aedf67, type: 3}
+  m_Name: CloudPosition
+  m_EditorClassIdentifier: 
+  positions:
+  - {fileID: 6619294549626812532, guid: 5cb377de133adfd4c8da0dd8cce873f0, type: 3}
+  - {fileID: 6619294549626812532, guid: 567056b606f0caa45898145f22a0d930, type: 3}

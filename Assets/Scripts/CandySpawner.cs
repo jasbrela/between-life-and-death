@@ -1,19 +1,21 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CandySpawner : MonoBehaviour
+public class CandySpawner : BaseSpawner
 {
-    [SerializeField] private GameObject candyPrefab;
-    private const float Delay = 5f;
-    List<GameObject> _candies = new List<GameObject>();
-    private int _index;
-
+    private int index;
 
     void Start()
     {
         Invoke(nameof(SpawnCandyBlock), Delay);
+    }
+
+    private void Update()
+    {
+        if (PlayerStatus.GhostMode)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void SpawnCandyBlock()
@@ -28,20 +30,24 @@ public class CandySpawner : MonoBehaviour
         
         Invoke(nameof(SpawnCandyBlock), Random.Range(minRepeat, maxRepeat));
     }
-
-    private void SpawnCandies(int quantity)
+    
+    protected new void Spawn()
     {
-        _index = Random.Range(0, 3);
-        for (int c = 0; c < quantity; c++)
+        if (!PlayerStatus.GameOver)
         {
-            Invoke(nameof(SpawnCandy), c/2);
+            GameObject spawnable = Instantiate(prefab, transform.position, transform.rotation);
+            spawnable.transform.parent = transform;
+            
+            spawnable.GetComponent<Candy>().Init(index);
         }
     }
 
-    private void SpawnCandy()
+    private void SpawnCandies(int quantity)
     {
-        GameObject candy = Instantiate(candyPrefab, transform.position, transform.rotation);
-        candy.GetComponent<Candy>().Init(_index);
-        candy.transform.parent = transform;
+        index = Random.Range(0, 3);
+        for (int c = 0; c < quantity; c++)
+        {
+            Invoke(nameof(Spawn), c/2);
+        }
     }
 }
