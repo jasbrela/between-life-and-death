@@ -1,16 +1,17 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class ScoreController : MonoBehaviour
 {
     [Header("Doces coletados nessa run")] 
-    [SerializeField] private int score;
+    public int score;
 
     [Header("Doces totais")] 
     [SerializeField] private int docesTotal;
 
     [Header("Auxiliar pra soma dos doces")] 
-    [SerializeField] private bool gameOver; 
+    public bool gameOver; 
     
     private TextMeshProUGUI txtScore, txtDocesTotal;
 
@@ -24,11 +25,16 @@ public class ScoreController : MonoBehaviour
     {
         ScoreUpdate(); // atualiza o score
         SomaDocesTotal(); // atualiza os doces totais
+        DontDestroyOnLoad(this.gameObject);
+        gameOver = PlayerStatus.GameOver;
     }
 
     void ScoreUpdate()
     {
-        txtScore.text = score.ToString(); // atualiza o score na ui
+        if (txtScore != null)
+        {
+            txtScore.text = score.ToString(); // atualiza o score na ui
+        }
     }
 
     void SomaDocesTotal()
@@ -40,7 +46,10 @@ public class ScoreController : MonoBehaviour
             gameOver = false;
         }
 
-        txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
+        if (txtDocesTotal != null)
+        {
+            txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
+        }
     }
 
     void OnTriggerEnter2D (Collider2D col)
