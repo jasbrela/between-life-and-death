@@ -12,34 +12,38 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0 && !LoseCondition.GameOver)
+        if (!LoseCondition.GameOver)
         {
-            Touch touch = Input.touches[0];
-            
-            if (touch.phase == TouchPhase.Began)
+            if (Input.touchCount > 0)
             {
-                _fingerUp = touch.position;
-                _fingerDown = touch.position;
-            }
-            
-            if (touch.phase == TouchPhase.Moved)
-            {
-                _fingerDown = touch.position;
-                CheckSwipe();
-            }
-        }
+                Touch touch = Input.touches[0];
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("A");
-            OnSwipeLeft();
-        } else if (Input.GetKeyDown(KeyCode.D))
-        {
-            Debug.Log("D");
-            OnSwipeRight();
+                if (touch.phase == TouchPhase.Began)
+                {
+                    _fingerUp = touch.position;
+                    _fingerDown = touch.position;
+                }
+
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    _fingerDown = touch.position;
+                    CheckSwipe();
+                }
+                
+                // TODO: MOVE ONLY ONE POSITION PER TOUCH
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Debug.Log("A");
+                OnSwipeLeft();
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                Debug.Log("D");
+                OnSwipeRight();
+            }
         }
-        
-        // TODO: MOVE ONLY ONE POSITION PER TOUCH
     }
 
     void CheckSwipe()

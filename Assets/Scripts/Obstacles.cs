@@ -6,11 +6,14 @@ using UnityEngine.EventSystems;
 
 public class Obstacles : MonoBehaviour
 {
+    private GameObject player;
     [SerializeField] private Position _pos;
     private int startPosIndex;
     [SerializeField] private float speed;
+    
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         startPosIndex = Random.Range(0, _pos.positions.Length);
         
         transform.position = new Vector3(_pos.positions[startPosIndex].position.x,
@@ -35,6 +38,13 @@ public class Obstacles : MonoBehaviour
                 transform.Translate(Vector3.down * speed * Time.deltaTime);
                 transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
                 break;
+        }
+
+        if (transform.position.y < player.transform.position.y)
+        {
+            this.GetComponent<SpriteRenderer>().sortingLayerName = "ObstacleFront";
+            this.GetComponent<BoxCollider2D>().enabled = false;
+
         }
     }
     
