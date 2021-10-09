@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _destination;
     private Vector2 _fingerDown;
     private Vector2 _fingerUp;
+    private int moved = 0;
 
     void Update()
     {
@@ -40,11 +41,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
                 {
-                    OnSwipeRight();
+                    OnSwipeLeft();
                 }
                 else
                 {
-                    OnSwipeLeft();
+                    OnSwipeRight();
                 }
             }
             else if (Input.GetKeyDown(KeyCode.D))
@@ -83,11 +84,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
                 {
-                    OnSwipeRight();
+                    OnSwipeLeft();
                 }
                 else
                 {
-                    OnSwipeLeft();
+                    OnSwipeRight();
                 }
             }
             else if (_fingerDown.x - _fingerUp.x < 0)
@@ -129,23 +130,26 @@ public class PlayerMovement : MonoBehaviour
 
     void OnSwipeLeft()
     {
-        if (_currentPos > 0)
+        if (_currentPos > 0 && moved == 0)
         {
+            moved = 1;
             _currentPos--;
             scenario.transform.position = new Vector3(scenario.transform.position.x + 0.2f,
                 scenario.transform.position.y, scenario.transform.position.z);
             _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
+            
         }
     }
 
     void OnSwipeRight()
     {
-        if (_currentPos < 2)
+        if (_currentPos < 2 && moved == 0)
         {
+            moved = 1;
             _currentPos++;
             scenario.transform.position = new Vector3(scenario.transform.position.x - 0.2f,
-                scenario.transform.position.y, scenario.transform.position.z);
+            scenario.transform.position.y, scenario.transform.position.z);
             _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
         }
@@ -156,5 +160,11 @@ public class PlayerMovement : MonoBehaviour
         audioSource.clip = swipe;
         audioSource.Play();
         transform.position = new Vector3(_destination.x, transform.position.y, transform.position.z);
+        Invoke("movedStatus", 0.2f);
+    }
+
+    void movedStatus()
+    {
+        moved = 0;
     }
 }

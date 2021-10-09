@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,12 +42,12 @@ public class PlayerStatus : MonoBehaviour
                 bgaudioSource.Stop();
                 gameOverMessage.SetActive(true);
                 GameOver = true;
+                StartCoroutine("Delay");
                 Time.timeScale = 0;
-                
             }
             else
             {
-                SceneManager.LoadScene("Ghost");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Ghost");
                 playeraudioSource.clip = hit;
                 playeraudioSource.Play();
                 GetComponent<SpriteRenderer>().color = Color.blue;
@@ -54,5 +55,12 @@ public class PlayerStatus : MonoBehaviour
                 // ativa modo ghost
             }
         }
+    }
+    
+    IEnumerator Delay()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Menu");
     }
 }
