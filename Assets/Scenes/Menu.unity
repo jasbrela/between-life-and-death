@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 1366945788}
   - component: {fileID: 1366945787}
   m_Layer: 0
-  m_Name: SceneManager
+  m_Name: SceneController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9452e77b5fb41fd4ca56324a05010064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartGameSceneName: Obstacles
+  StartGameSceneName: Game
   panelCredits: {fileID: 882752985}
 --- !u!4 &1366945788
 Transform:
