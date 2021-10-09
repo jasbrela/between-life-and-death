@@ -5,7 +5,7 @@ public class CandySpawner : BaseSpawner
 {
     private int index;
 
-    void Start()
+    new void Start()
     {
         Invoke(nameof(SpawnCandyBlock), Delay);
     }
