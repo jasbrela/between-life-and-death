@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!LoseCondition.GameOver)
+        if (!PlayerStatus.GameOver)
         {
             if (Input.touchCount > 0)
             {
@@ -122,6 +122,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        transform.position = new Vector3((float) _destination.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(_destination.x, transform.position.y, transform.position.z);
     }
 }

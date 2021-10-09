@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Obstacles : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] private Position _pos;
@@ -42,9 +38,14 @@ public class Obstacles : MonoBehaviour
 
         if (transform.position.y < player.transform.position.y)
         {
-            this.GetComponent<SpriteRenderer>().sortingLayerName = "ObstacleFront";
-            this.GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().sortingLayerName = "ObstacleFront";
+            GetComponent<BoxCollider2D>().enabled = false;
 
+        }
+
+        if (transform.position.y < -6f)
+        {
+            Destroy(gameObject);
         }
     }
     
