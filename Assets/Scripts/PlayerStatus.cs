@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class PlayerStatus : MonoBehaviour
     public static bool GameOver;
     [SerializeField] private GameObject gameOverMessage;
     private float _currentTimeScale = 1;
+    [Header("Audio")]
+    [SerializeField] private AudioSource playeraudioSource;
+    [SerializeField] private AudioClip hit;
+    [SerializeField] private AudioSource bgaudioSource;
 
     private void Awake()
     {
@@ -34,12 +39,17 @@ public class PlayerStatus : MonoBehaviour
         {
             if (GhostMode)
             {
+                bgaudioSource.Stop();
                 gameOverMessage.SetActive(true);
                 GameOver = true;
                 Time.timeScale = 0;
+                
             }
             else
             {
+                SceneManager.LoadScene("Ghost");
+                playeraudioSource.clip = hit;
+                playeraudioSource.Play();
                 GetComponent<SpriteRenderer>().color = Color.blue;
                 GhostMode = true;
                 // ativa modo ghost
