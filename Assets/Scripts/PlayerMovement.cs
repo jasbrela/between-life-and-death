@@ -35,12 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("A");
                 OnSwipeLeft();
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                Debug.Log("D");
                 OnSwipeRight();
             }
         }
