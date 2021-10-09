@@ -7,17 +7,17 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour
 {
     [Header("Doces coletados nessa run")] 
-    [SerializeField] private int score = 0;
+    public int score = 0;
 
     [Header("Doces totais")] 
     [SerializeField] private int docesTotal = 0;
 
     [Header("Auxiliar pra soma dos doces")] 
-    [SerializeField] private bool gameOver = false; 
+    public bool gameOver = false; 
     
     private TextMeshProUGUI txtScore, txtDocesTotal;
 
-    private void Start()
+    private void Awake()
     {
         txtScore = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
         txtDocesTotal = GameObject.FindWithTag("docesTotal").GetComponent<TextMeshProUGUI>();
@@ -44,14 +44,5 @@ public class ScoreController : MonoBehaviour
         }
 
         txtDocesTotal.text = "Doces Totais: " + docesTotal.ToString(); // atualiza o total de doces
-    }
-
-    void OnTriggerEnter2D (Collider2D col)
-    {
-        if (col.gameObject.tag == "doce") // se colidiu com doce
-        {
-            score++; // incrementa o score
-            Destroy(col.gameObject); // destrói o doce
-        }
     }
 }
