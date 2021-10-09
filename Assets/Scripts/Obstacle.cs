@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    private GameObject player;
-    [SerializeField] private Position _pos;
-    private int startPosIndex;
+    private GameObject _player;
+    [SerializeField] private Position pos;
+    private int _startPosIndex;
     [SerializeField] private float speed;
     
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        startPosIndex = Random.Range(0, _pos.positions.Length);
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _startPosIndex = Random.Range(0, pos.positions.Length);
         
-        transform.position = new Vector3(_pos.positions[startPosIndex].position.x,
-            _pos.positions[startPosIndex].position.y, transform.position.z);
+        transform.position = new Vector3(pos.positions[_startPosIndex].position.x,
+            pos.positions[_startPosIndex].position.y, transform.position.z);
     }
     
     void Update()
     {
-        switch (startPosIndex)
+        switch (_startPosIndex)
         {
             case 0:
                 transform.Translate(Vector3.left * speed/3.5f * Time.deltaTime);
@@ -36,7 +36,7 @@ public class Obstacle : MonoBehaviour
                 break;
         }
 
-        if (transform.position.y < player.transform.position.y)
+        if (transform.position.y < _player.transform.position.y)
         {
             GetComponent<SpriteRenderer>().sortingLayerName = "ObstacleFront";
             GetComponent<BoxCollider2D>().enabled = false;

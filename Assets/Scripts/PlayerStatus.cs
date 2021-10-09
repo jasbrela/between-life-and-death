@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    public static Debuff CurrentDebuff;
     public static bool GhostMode;
     public static bool GameOver;
     [SerializeField] private GameObject gameOverMessage;
+    private float _currentTimeScale = 1;
 
     private void Awake()
     {
@@ -14,7 +16,16 @@ public class PlayerStatus : MonoBehaviour
 
     private void Update()
     {
-        Time.timeScale += Time.deltaTime / 100;
+        if (CurrentDebuff != Debuff.HigherVelocity)
+        {
+            Time.timeScale = _currentTimeScale;    // fiz essa bobeirage pq queria que voltasse
+            Time.timeScale += Time.deltaTime / 100;
+            _currentTimeScale = Time.timeScale;    // o tempo ao normal dps do debuff de higher velocity
+        }
+        else
+        {
+            Time.timeScale += Time.deltaTime / 50;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
