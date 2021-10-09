@@ -7,8 +7,8 @@ public class CandySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject candyPrefab;
     private const float Delay = 5f;
-    List<GameObject> candies = new List<GameObject>();
-    private int index;
+    List<GameObject> _candies = new List<GameObject>();
+    private int _index;
 
 
     void Start()
@@ -31,7 +31,7 @@ public class CandySpawner : MonoBehaviour
 
     private void SpawnCandies(int quantity)
     {
-        index = Random.Range(0, 3);
+        _index = Random.Range(0, 3);
         for (int c = 0; c < quantity; c++)
         {
             Invoke(nameof(SpawnCandy), c/2);
@@ -41,7 +41,7 @@ public class CandySpawner : MonoBehaviour
     private void SpawnCandy()
     {
         GameObject candy = Instantiate(candyPrefab, transform.position, transform.rotation);
-        candy.GetComponent<Candy>().Init(index);
+        candy.GetComponent<Candy>().Init(_index);
         candy.transform.parent = transform;
     }
 }

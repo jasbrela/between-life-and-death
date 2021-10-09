@@ -4,20 +4,20 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour
 {
     [Header("Doces coletados nessa run")] 
-    [SerializeField] private int score;
+    public int score;
 
     [Header("Doces totais")] 
     [SerializeField] private int docesTotal;
 
     [Header("Auxiliar pra soma dos doces")] 
-    [SerializeField] private bool gameOver; 
+    public bool gameOver; 
     
-    private TextMeshProUGUI txtScore, txtDocesTotal;
+    private TextMeshProUGUI _txtScore, _txtDocesTotal;
 
     private void Start()
     {
-        txtScore = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
-        txtDocesTotal = GameObject.FindWithTag("docesTotal").GetComponent<TextMeshProUGUI>();
+        _txtScore = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
+        _txtDocesTotal = GameObject.FindWithTag("docesTotal").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -28,7 +28,7 @@ public class ScoreController : MonoBehaviour
 
     void ScoreUpdate()
     {
-        txtScore.text = score.ToString(); // atualiza o score na ui
+        _txtScore.text = score.ToString(); // atualiza o score na ui
     }
 
     void SomaDocesTotal()
@@ -40,7 +40,7 @@ public class ScoreController : MonoBehaviour
             gameOver = false;
         }
 
-        txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
+        _txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
     }
 
     void OnTriggerEnter2D (Collider2D col)
