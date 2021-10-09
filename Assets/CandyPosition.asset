@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc34785f675aad844b806c21c5aedf67, type: 3}
+  m_Name: CandyPosition
+  m_EditorClassIdentifier: 
+  positions:
+  - {fileID: 6619294549626812532, guid: 8a364522fea7b144e99bb78a382d3a8d, type: 3}
+  - {fileID: 2358294379956105033, guid: 1bc23dabc43e156408614e7399e71792, type: 3}
+  - {fileID: 2178197884175435028, guid: 3efc5c067bf4c2c4e9354aede98817e8, type: 3}

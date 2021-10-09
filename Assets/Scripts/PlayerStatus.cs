@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
@@ -13,6 +14,11 @@ public class PlayerStatus : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 1;
+    }
+
+    private void Update()
+    {
+        Time.timeScale += Time.deltaTime / 100;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

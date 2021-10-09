@@ -28,7 +28,7 @@ public class ScoreController : MonoBehaviour
 
     void ScoreUpdate()
     {
-        txtScore.text = "Score: " + score; // atualiza o score na ui
+        txtScore.text = score.ToString(); // atualiza o score na ui
     }
 
     void SomaDocesTotal()
@@ -40,12 +40,12 @@ public class ScoreController : MonoBehaviour
             gameOver = false;
         }
 
-        txtDocesTotal.text = "Doces Totais: " + docesTotal; // atualiza o total de doces
+        txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
     }
 
     void OnTriggerEnter2D (Collider2D col)
     {
-        if (col.gameObject.tag == "doce") // se colidiu com doce
+        if (col.CompareTag("doce")) // se colidiu com doce
         {
             score++; // incrementa o score
             Destroy(col.gameObject); // destrói o doce

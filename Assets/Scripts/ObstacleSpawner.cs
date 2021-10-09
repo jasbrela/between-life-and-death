@@ -7,7 +7,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        Invoke("SpawnObstacle", Delay);
+        Invoke(nameof(SpawnObstacle), Delay);
     }
 
     private void SpawnObstacle()
@@ -21,6 +21,6 @@ public class ObstacleSpawner : MonoBehaviour
             obstacle.transform.parent = transform;
         }
 
-        Invoke("SpawnObstacle", Random.Range(minRepeat, maxRepeat));
+        Invoke(nameof(SpawnObstacle), Random.Range(minRepeat, maxRepeat));
     }
 }
