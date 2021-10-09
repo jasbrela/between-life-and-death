@@ -1,0 +1,108 @@
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] private float swipeThreshold = 80f;
+    [SerializeField] private Transform[] playerPos;
+    private int currentPos = 1;
+    private Vector3 _destination;
+    private Vector2 _fingerDown;
+    private Vector2 _fingerUp;
+
+    void Update()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.touches[0];
+            
+            if (touch.phase == TouchPhase.Began)
+            {
+                _fingerUp = touch.position;
+                _fingerDown = touch.position;
+            }
+            
+            if (touch.phase == TouchPhase.Moved)
+            {
+                _fingerDown = touch.position;
+                CheckSwipe();
+            }
+        }
+        
+        // TODO: MOVE ONLY ONE POSITION PER TOUCH
+    }
+
+    void CheckSwipe()
+    {
+        if (VerticalMove() > swipeThreshold && VerticalMove() > HorizontalValMove())
+        {
+            if (_fingerDown.y - _fingerUp.y > 0)
+            {
+                OnSwipeUp();
+            }
+            else if (_fingerDown.y - _fingerUp.y < 0)
+            {
+                OnSwipeDown();
+            }
+
+            _fingerUp = _fingerDown;
+        }
+        else if (HorizontalValMove() > swipeThreshold && HorizontalValMove() > VerticalMove())
+        {
+            if (_fingerDown.x - _fingerUp.x > 0)
+            {
+                OnSwipeRight();
+            }
+            else if (_fingerDown.x - _fingerUp.x < 0)
+            {
+                OnSwipeLeft();
+            }
+
+            _fingerUp = _fingerDown;
+        }
+    }
+
+    float VerticalMove()
+    {
+        return Mathf.Abs(_fingerDown.y - _fingerUp.y);
+    }
+
+    float HorizontalValMove()
+    {
+        return Mathf.Abs(_fingerDown.x - _fingerUp.x);
+    }
+
+    void OnSwipeUp()
+    {
+        Debug.Log("Swipe UP");
+    }
+
+    void OnSwipeDown()
+    {
+        Debug.Log("Swipe Down");
+    }
+
+    void OnSwipeLeft()
+    {
+        if (currentPos > 0)
+        {
+            currentPos--;
+            _destination = new Vector2(playerPos[currentPos].position.x, transform.position.y);
+            Move();
+        }
+    }
+
+    void OnSwipeRight()
+    {
+        if (currentPos < 2)
+        {
+            currentPos++;
+            _destination = new Vector2(playerPos[currentPos].position.x, transform.position.y);
+            Move();
+        }
+    }
+
+    void Move()
+    {
+        transform.position = new Vector3((float) _destination.x, transform.position.y, transform.position.z);
+    }
+}
