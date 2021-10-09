@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
@@ -17,7 +15,7 @@ public class ObstacleSpawner : MonoBehaviour
         float minRepeat = 1.5f;
         float maxRepeat = 2f;
 
-        if (!LoseCondition.GameOver)
+        if (!PlayerStatus.GameOver)
         {
             GameObject obstacle = Instantiate(obstaclePrefab, transform.position, transform.rotation);
             obstacle.transform.parent = transform;
