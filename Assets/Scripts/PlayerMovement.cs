@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float swipeThreshold = 80f;
-    [SerializeField] private Transform[] playerPos;
-    private int currentPos = 1;
+    [SerializeField] private Position pos;
+    private int _currentPos = 1;
     private Vector3 _destination;
     private Vector2 _fingerDown;
     private Vector2 _fingerUp;
@@ -26,6 +26,16 @@ public class PlayerMovement : MonoBehaviour
                 _fingerDown = touch.position;
                 CheckSwipe();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A");
+            OnSwipeLeft();
+        } else if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("D");
+            OnSwipeRight();
         }
         
         // TODO: MOVE ONLY ONE POSITION PER TOUCH
@@ -83,20 +93,20 @@ public class PlayerMovement : MonoBehaviour
 
     void OnSwipeLeft()
     {
-        if (currentPos > 0)
+        if (_currentPos > 0)
         {
-            currentPos--;
-            _destination = new Vector2(playerPos[currentPos].position.x, transform.position.y);
+            _currentPos--;
+            _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
         }
     }
 
     void OnSwipeRight()
     {
-        if (currentPos < 2)
+        if (_currentPos < 2)
         {
-            currentPos++;
-            _destination = new Vector2(playerPos[currentPos].position.x, transform.position.y);
+            _currentPos++;
+            _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
             Move();
         }
     }
