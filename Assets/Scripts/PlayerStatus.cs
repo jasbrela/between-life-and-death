@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class PlayerStatus : MonoBehaviour
             }
             else
             {
+                SceneManager.LoadScene("Obstacles");
                 playeraudioSource.clip = hit;
                 playeraudioSource.Play();
                 GetComponent<SpriteRenderer>().color = Color.blue;
