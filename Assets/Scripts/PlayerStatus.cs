@@ -14,7 +14,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void Update()
     {
-        Time.timeScale = 1 + Time.deltaTime * 2;
+        Time.timeScale += Time.deltaTime / 100;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
