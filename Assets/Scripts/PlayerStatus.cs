@@ -36,7 +36,7 @@ public class PlayerStatus : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("Obstacles");
+                SceneManager.LoadScene("Ghost");
                 playeraudioSource.clip = hit;
                 playeraudioSource.Play();
                 GetComponent<SpriteRenderer>().color = Color.blue;
