@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
                 // TODO: MOVE ONLY ONE POSITION PER TOUCH
             }
 
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
                 {
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
                     OnSwipeRight();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
                 {
