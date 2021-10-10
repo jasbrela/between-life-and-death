@@ -39,6 +39,8 @@ public class PlayerStatus : MonoBehaviour
         {
             if (GhostMode)
             {
+                playeraudioSource.clip = hit;
+                playeraudioSource.Play();
                 bgaudioSource.Stop();
                 if (gameOverMessage!= null) gameOverMessage.SetActive(true);
                 GameOver = true;

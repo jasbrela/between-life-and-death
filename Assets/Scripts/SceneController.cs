@@ -5,11 +5,14 @@ public class SceneController : MonoBehaviour
 {
     [Header("Nome da cena de gameplay")]
     [SerializeField] private string StartGameSceneName;
+
+    [SerializeField] private AudioSource audioSource;
     public void StartGame()
     {
         Reset();
         SceneManager.LoadScene(StartGameSceneName);
         PlayerPrefs.SetInt("score", 0);
+        audioSource.Play();
 
     }
 
@@ -25,6 +28,7 @@ public class SceneController : MonoBehaviour
     public GameObject panelCredits;
     public void CreditsPanel()
     {
+        audioSource.Play();
         credits =! credits;
         if (credits)
         {
