@@ -61,7 +61,7 @@ public class PlayerStatus : MonoBehaviour
     
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(3f);
         SceneManager.LoadScene("Menu");
     }
 }
