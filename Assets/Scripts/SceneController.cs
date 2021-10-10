@@ -92,7 +92,12 @@ public class SceneController : MonoBehaviour
 
     public void LoadSelectedScene(string sceneName)
     {
+        if(sceneName != "Ghost")
+        {
+            PlayerStatus.GhostMode = false;
+        }
         SceneManager.LoadScene(sceneName);
+        PlayerPrefs.SetInt("score", 0);
     }
 
     public void musicToggleClick(Toggle toggle)
