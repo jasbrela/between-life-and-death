@@ -28,6 +28,11 @@ public class PlayerStatus : MonoBehaviour
         {
             Time.timeScale += Time.deltaTime / 40;
         }
+
+        if (GameOver)
+        {
+            Time.timeScale = 0;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
