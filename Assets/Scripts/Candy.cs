@@ -6,8 +6,9 @@ public class Candy : BaseSpawnable
 
     private StoreManager _storeManager;
 
-    void Start()
+    new void Start()
     {
+        base.Start();
         _storeManager = GameObject.FindWithTag("storeManager").GetComponent<StoreManager>();
     }
     

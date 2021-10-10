@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class StoreManager : MonoBehaviour
 {
+    private static StoreManager _instance;
     [Header("Item q player comprou")]
     public int item = 0;
     
@@ -20,31 +21,51 @@ public class StoreManager : MonoBehaviour
 
     private TextMeshProUGUI txtDocesTotal;
 
-    private void Start()
+    private void OnEnable()
     {
-        switch (SceneManager.GetActiveScene().name)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void Awake()
+    {
+      
+        if (_instance == null) {
+            DontDestroyOnLoad(this);
+            _instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        switch (scene.name)
         {
             case "Store":
-                txtDocesTotal = GameObject.Find("AllCandies").GetComponent<TextMeshProUGUI>();
+                if (GameObject.Find("AllCandies"))
+                {
+                    txtDocesTotal = GameObject.FindWithTag("docesTotais").GetComponent<TextMeshProUGUI>();
+                }
                 break;
             case "Game":
-                player = GameObject.FindWithTag("Player");
+                if (GameObject.FindWithTag("Player"))
+                {
+                    player = GameObject.FindWithTag("Player");
+                }
                 CheckSkin();
                 break;
         }
         
         item = PlayerPrefs.GetInt("Item");
-        
-        GameObject obj = GameObject.FindWithTag("storeManager");
-        if (obj.gameObject != this.gameObject)
-        {
-            Destroy(obj.gameObject);
-        }
     }
 
     void Update()
     {
-        DontDestroyOnLoad(this.gameObject);
         allCandies = PlayerPrefs.GetInt("allCandies");
 
         switch (SceneManager.GetActiveScene().name)
