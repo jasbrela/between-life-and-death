@@ -15,6 +15,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.SetInt("score", 0);
         CurrentDebuff = Debuff.None;
         GameOver = false;
         Time.timeScale = 1;
