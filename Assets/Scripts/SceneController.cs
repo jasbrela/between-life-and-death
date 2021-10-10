@@ -7,26 +7,30 @@ using UnityEngine.Audio;
 
 public class SceneController : MonoBehaviour
 {
-    [Header("Nome da cena de gameplay")]
-    [SerializeField] private string startGameSceneName;
+    [Header("Nome da cena de gameplay")] [SerializeField]
+    private string startGameSceneName;
+
     [SerializeField] private AudioSource audioSource;
 
-    [Header("Score na scene Game Over")]
-    [SerializeField] private TMP_Text gameOverText;
+    [Header("Score na scene Game Over")] [SerializeField]
+    private TMP_Text gameOverText;
 
     private void Start()
     {
-        gameOverText.text += PlayerPrefs.GetInt("score").ToString();
+        if (gameOverText != null)
+        {
+            gameOverText.text += PlayerPrefs.GetInt("score").ToString();
+        }
     }
-    
+
     [SerializeField] private AudioMixer audioMixer;
+
     public void StartGame()
     {
         Reset();
         SceneManager.LoadScene(startGameSceneName);
         PlayerPrefs.SetInt("score", 0);
         audioSource.Play();
-
     }
 
     private void Reset()
@@ -36,18 +40,19 @@ public class SceneController : MonoBehaviour
         PlayerStatus.GameOver = false;
     }
 
-    [Header("Painel dos creditos")]
-    [SerializeField] private GameObject panelCredits;
-    
-    [Header("Painel do Menu")]
-    [SerializeField] private GameObject panelMenu;
+    [Header("Painel dos creditos")] [SerializeField]
+    private GameObject panelCredits;
+
+    [Header("Painel do Menu")] [SerializeField]
+    private GameObject panelMenu;
+
     public void ShowCreditsPanel()
     {
         audioSource.Play();
         panelMenu.SetActive(false);
         panelCredits.SetActive(true);
     }
-    
+
     public void HideCreditsPanel()
     {
         audioSource.Play();
