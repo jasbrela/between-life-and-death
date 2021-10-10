@@ -62,6 +62,6 @@ public class PlayerStatus : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSecondsRealtime(3f);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Game Over");
     }
 }
