@@ -84,22 +84,22 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
                 {
-                    OnSwipeLeft();
+                    OnSwipeRight();
                 }
                 else
                 {
-                    OnSwipeRight();
+                    OnSwipeLeft();
                 }
             }
             else if (_fingerDown.x - _fingerUp.x < 0)
             {
                 if (PlayerStatus.CurrentDebuff != Debuff.InvertedControllers)
                 {
-                    OnSwipeRight();
+                    OnSwipeLeft();
                 }
                 else
                 {
-                    OnSwipeLeft();
+                     OnSwipeRight();
                 }
             }
 
