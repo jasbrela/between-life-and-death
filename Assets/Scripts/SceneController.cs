@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
@@ -6,10 +7,18 @@ public class SceneController : MonoBehaviour
     [SerializeField] private string StartGameSceneName;
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(StartGameSceneName);
+        Reset();
+        SceneManager.LoadScene(StartGameSceneName);
     }
 
-    private bool credits = false;
+    private static void Reset()
+    {
+        PlayerStatus.CurrentDebuff = Debuff.None;
+        PlayerStatus.GhostMode = false;
+        PlayerStatus.GameOver = false;
+    }
+
+    private bool credits;
     [Header("Painel dos creditos")]
     public GameObject panelCredits;
     public void CreditsPanel()

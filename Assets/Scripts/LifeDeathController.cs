@@ -1,13 +1,10 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LifeDeathController : MonoBehaviour
 {
     [Header("Virou fantasma?")]
-    public bool ghostPhase = false;
+    public bool ghostPhase;
 
     private GameObject scriptScoreController; // Auxiliar pra variavel de outro script
     
@@ -44,7 +41,7 @@ public class LifeDeathController : MonoBehaviour
             // muda cenario
             
             // muda player
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[1];
+            gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[1];
             // colocar a animação tbm
         }
         else // é humano
@@ -54,7 +51,7 @@ public class LifeDeathController : MonoBehaviour
             // muda cenario
             
             // muda player
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[0];
+            gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[0];
             // colocar a animação tbm
         }
     }
