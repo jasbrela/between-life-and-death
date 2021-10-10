@@ -40,19 +40,18 @@ public class PlayerStatus : MonoBehaviour
             if (GhostMode)
             {
                 bgaudioSource.Stop();
-                gameOverMessage.SetActive(true);
+                if (gameOverMessage!= null) gameOverMessage.SetActive(true);
                 GameOver = true;
                 StartCoroutine("Delay");
                 Time.timeScale = 0;
             }
             else
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Ghost");
+                SceneManager.LoadScene("Ghost");
                 playeraudioSource.clip = hit;
                 playeraudioSource.Play();
-                GetComponent<SpriteRenderer>().color = Color.blue;
+                GetComponent<SpriteRenderer>().color = new Color(255, 176, 171);
                 GhostMode = true;
-                // ativa modo ghost
             }
         }
     }

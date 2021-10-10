@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _destination;
     private Vector2 _fingerDown;
     private Vector2 _fingerUp;
-    private int moved = 0;
+    private int moved;
 
     void Update()
     {
