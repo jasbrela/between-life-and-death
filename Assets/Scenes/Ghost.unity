@@ -1393,7 +1393,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1658931323}
-  - component: {fileID: 1658931325}
   - component: {fileID: 1658931324}
   m_Layer: 5
   m_Name: Notif
@@ -1434,20 +1433,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1658931322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
---- !u!114 &1658931325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658931322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3686c51a9e9d5fd4aaada80ed660bc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1480,7 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0eff4d29652a42498d87a389b0e4a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notif: {fileID: 1658931322}
+  notifBg: {fileID: 0}
   invertedNotif: {fileID: 1055076711}
   speedNotif: {fileID: 1503409339}
 --- !u!4 &1743807902

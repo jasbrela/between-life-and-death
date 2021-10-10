@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DebuffNotification : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static bool ActivateNotification;
+    private float _timer;
+
+    private void OnEnable()
     {
-        
+        ActivateNotification = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _timer += Time.deltaTime;
+
+        if (Math.Abs(_timer - 4f) < 0.25)
+        {
+            ActivateNotification = false;
+            gameObject.SetActive(false);
+        }
     }
 }
