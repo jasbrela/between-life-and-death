@@ -653,6 +653,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5727641467031991276, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
   m_PrefabInstance: {fileID: 1264913824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1264913826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1690452625195586177, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
+  m_PrefabInstance: {fileID: 1264913824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1519932320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,6 +1220,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 2871676534890187204}
+    - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: _txtScore
+      value: 
+      objectReference: {fileID: 1264913826}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
 --- !u!82 &2871676534890187204 stripped
