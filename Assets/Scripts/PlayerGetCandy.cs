@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerGetCandy : MonoBehaviour
 {
-    private ScoreController scriptScoreController;
+    private ScoreController _scriptScoreController;
     
     void Awake()
     {
-        scriptScoreController = GameObject.FindWithTag("scoreManager").GetComponent<ScoreController>();
+        _scriptScoreController = GameObject.FindWithTag("scoreManager").GetComponent<ScoreController>();
     }
     
     void OnTriggerEnter2D (Collider2D col)

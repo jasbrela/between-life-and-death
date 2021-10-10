@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {fileID: 11400000, guid: 13484115546807b47a34c1b52e6c11b2, type: 2}
-  speed: 2
-  _sprites:
+  sprites:
   - {fileID: 21300000, guid: 8b115d4d362fd594da2c79a38af5c16e, type: 3}
   - {fileID: 21300000, guid: 071d6981e99e9d349840946f19442073, type: 3}
   - {fileID: 21300000, guid: 7271540dd5cdf9b4387d7aabb5e07229, type: 3}
+  maxSpeed: 1
+  minSpeed: 2

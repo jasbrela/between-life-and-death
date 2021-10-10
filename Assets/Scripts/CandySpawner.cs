@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CandySpawner : BaseSpawner
 {
-    private int index;
+    private int _index;
 
     new void Start()
     {
@@ -37,13 +37,13 @@ public class CandySpawner : BaseSpawner
             GameObject spawnable = Instantiate(prefab, transform.position, transform.rotation);
             spawnable.transform.parent = transform;
             
-            spawnable.GetComponent<Candy>().Init(index);
+            spawnable.GetComponent<Candy>().Init(_index);
         }
     }
 
     private void SpawnCandies(int quantity)
     {
-        index = Random.Range(0, 3);
+        _index = Random.Range(0, 3);
         for (int c = 0; c < quantity; c++)
         {
             Invoke(nameof(Spawn), c);

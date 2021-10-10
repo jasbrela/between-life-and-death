@@ -1133,6 +1133,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: bgAudioSource
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: bgaudioSource
       value: 
       objectReference: {fileID: 519420030}
@@ -1140,6 +1144,10 @@ PrefabInstance:
       propertyPath: gameOverMessage
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: playerAudioSource
+      value: 
+      objectReference: {fileID: 2871676534890187204}
     - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: playeraudioSource
       value: 
@@ -1217,9 +1225,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2871676534890187204}
     - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: txtScore
+      value: 
+      objectReference: {fileID: 1264913826}
+    - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: _txtScore
       value: 
       objectReference: {fileID: 1264913826}
+    - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: collectCandy
+      value: 
+      objectReference: {fileID: 8300000, guid: da8c269e2001c2c43be9affa65356db0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
 --- !u!82 &2871676534890187204 stripped

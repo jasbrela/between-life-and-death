@@ -11,8 +11,8 @@ public class CloudSpawner : BaseSpawner
     
     private new void Spawn()
     {
-        float minRepeat = 1.5f;
-        float maxRepeat = 2f;
+        float minRepeat = 2.5f;
+        float maxRepeat = 4f;
 
         base.Spawn();
 

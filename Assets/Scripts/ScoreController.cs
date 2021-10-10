@@ -8,53 +8,47 @@ public class ScoreController : MonoBehaviour
 
     public int highScore;
 
-    [Header("Auxiliar pra soma dos doces")] 
-    public bool gameOver;
-
-    public TextMeshProUGUI _txtScore;
+    public TextMeshProUGUI txtScore;
 
     [Header("Audio")]
     [SerializeField] private AudioSource playerAudioSource;
-    [SerializeField] private AudioClip colectCandy;
+    [SerializeField] private AudioClip collectCandy;
 
-    private void Start()
-    {
-    }
 
     private void Update()
     {
-        ScoreUpdate(); // atualiza o score
-        SomaDocesTotal(); // atualiza os doces totais
+        UpdateScore();
+        UpdateTotalCandies();
     }
 
-    void ScoreUpdate()
+    void UpdateScore()
     {
         score = PlayerPrefs.GetInt("score");
-        _txtScore.text = score.ToString(); // atualiza o score na ui
+        txtScore.text = score.ToString();
     }
 
-    void SomaDocesTotal()
+    void UpdateTotalCandies()
     {
         if (PlayerStatus.GameOver)
         {
            if(score > highScore)
-            {
-                highScore = score;
-                PlayerPrefs.SetInt("highscore", highScore);
-            }
-            PlayerPrefs.SetInt("score", 0);
+           {
+               highScore = score;
+               PlayerPrefs.SetInt("highscore", highScore);
+           }
+           PlayerPrefs.SetInt("score", 0);
         }
     }
 
     void OnTriggerEnter2D (Collider2D col)
     {
-        if (col.CompareTag("doce")) // se colidiu com doce
+        if (col.CompareTag("doce"))
         {
-            playerAudioSource.clip = colectCandy;
+            playerAudioSource.clip = collectCandy;
             playerAudioSource.Play();
-            score++; // incrementa o score
+            score++;
             PlayerPrefs.SetInt("score", score);
-            Destroy(col.gameObject); // destrói o doce
+            Destroy(col.gameObject);
         }
     }
 }

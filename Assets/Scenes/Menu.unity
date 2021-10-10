@@ -976,7 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b372199f9f0804bb9b45a5d8cf2205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _txtHighScore: {fileID: 757434074}
+  txtHighScore: {fileID: 757434074}
 --- !u!1 &1317931822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9452e77b5fb41fd4ca56324a05010064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartGameSceneName: Game
+  startGameSceneName: Game
   audioSource: {fileID: 1887807957}
   panelCredits: {fileID: 882752985}
 --- !u!4 &1366945788

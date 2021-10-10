@@ -3,12 +3,12 @@ using UnityEngine;
 public abstract class BaseSpawnable : MonoBehaviour
 {
     [SerializeField] protected Position pos;
-    [SerializeField] protected float speed = 2f;
-    private GameObject Player;
+    private const float Speed = 2f;
+    private GameObject _player;
     
     protected void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
     
     protected void Move(int index)
@@ -18,17 +18,17 @@ public abstract class BaseSpawnable : MonoBehaviour
             switch (index)
             {
                 case 0:
-                    transform.Translate(Vector3.left * speed / 3.5f * Time.deltaTime);
-                    transform.Translate(Vector3.down * speed * Time.deltaTime);
+                    transform.Translate(Vector3.left * Speed / 3.5f * Time.deltaTime);
+                    transform.Translate(Vector3.down * Speed * Time.deltaTime);
                     transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
                     break;
                 case 1:
-                    transform.Translate(Vector3.down * speed * Time.deltaTime);
+                    transform.Translate(Vector3.down * Speed * Time.deltaTime);
                     transform.localScale += Vector3.one * Time.deltaTime * 0.15f;
                     break;
                 case 2:
-                    transform.Translate(Vector3.right * speed / 3.5f * Time.deltaTime);
-                    transform.Translate(Vector3.down * speed * Time.deltaTime);
+                    transform.Translate(Vector3.right * Speed / 3.5f * Time.deltaTime);
+                    transform.Translate(Vector3.down * Speed * Time.deltaTime);
                     transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
                     break;
             }
@@ -37,7 +37,7 @@ public abstract class BaseSpawnable : MonoBehaviour
     
     protected void FixCollider(bool isBox = true)
     {
-        if (transform.position.y < Player.transform.position.y)
+        if (transform.position.y < _player.transform.position.y)
         {
             GetComponent<SpriteRenderer>().sortingLayerName = "SpawnableFront";
             if (isBox)
