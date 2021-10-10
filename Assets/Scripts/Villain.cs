@@ -12,7 +12,7 @@ public enum Debuff
 
 public class Villain : MonoBehaviour
 {
-    [SerializeField] private GameObject notifBg;
+    [SerializeField] private GameObject notif;
     [SerializeField] private GameObject invertedNotif;
     [SerializeField] private GameObject speedNotif;
     private int _index;
@@ -35,23 +35,20 @@ public class Villain : MonoBehaviour
         switch (_index)
         {
             case 1:
-                // CODIGO HORROROSO TÁ ME PERDOA MAS TA FUNCIONANDO
                 PlayerStatus.CurrentDebuff = Debuff.HigherVelocity;
-                notifBg.transform.parent.gameObject.SetActive(true);
-                if (DebuffNotification.ActivateNotification)
+                if (notif != null && speedNotif != null && invertedNotif != null)
                 {
-                    notifBg.SetActive(true);
+                    notif.SetActive(true);
                     speedNotif.SetActive(true);
                     invertedNotif.SetActive(false);
                 }
+
                 break;
-            
             case 2:
                 PlayerStatus.CurrentDebuff = Debuff.InvertedControllers;
-                notifBg.transform.parent.gameObject.SetActive(true);
-                if (DebuffNotification.ActivateNotification)
+                if (notif != null && speedNotif != null && invertedNotif != null)
                 {
-                    notifBg.SetActive(true);
+                    notif.SetActive(true);
                     speedNotif.SetActive(false);
                     invertedNotif.SetActive(true);
                 }
@@ -60,7 +57,7 @@ public class Villain : MonoBehaviour
         
         if (PlayerStatus.CurrentDebuff == Debuff.None)
         {
-            notifBg.SetActive(false);
+            notif.SetActive(false);
         }
     }
 }

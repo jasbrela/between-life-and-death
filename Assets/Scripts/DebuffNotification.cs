@@ -19,8 +19,7 @@ public class DebuffNotification : MonoBehaviour
 
         if (Math.Abs(_timer - 4f) < 0.25)
         {
-            ActivateNotification = false;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

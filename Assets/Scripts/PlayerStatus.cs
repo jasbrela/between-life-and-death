@@ -29,7 +29,7 @@ public class PlayerStatus : MonoBehaviour
         }
         else
         {
-            Time.timeScale += Time.deltaTime;
+            Time.timeScale += Time.deltaTime / 40;
         }
     }
 
