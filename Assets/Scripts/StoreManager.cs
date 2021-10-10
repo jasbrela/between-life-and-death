@@ -30,7 +30,7 @@ public class StoreManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
+    
     private void Awake()
     {
       

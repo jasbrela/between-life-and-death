@@ -31,10 +31,13 @@ public class ScoreController : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    private bool oneTime = false;
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if (scene.name == "Game Over")
+        if (scene.name == "Game Over" && !oneTime)
         {
+            oneTime = true;
             allcandies += score;
             PlayerPrefs.SetInt("allCandies", allcandies);
         }
