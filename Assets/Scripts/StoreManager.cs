@@ -16,18 +16,21 @@ public class StoreManager : MonoBehaviour
 
     public RuntimeAnimatorController[] skinsAnim;
 
-    private GameObject player;
+    private GameObject player, useGo;
 
     private TextMeshProUGUI txtDocesTotal;
 
     private void Start()
     {
-        txtDocesTotal = GameObject.FindWithTag("docesTotal").GetComponent<TextMeshProUGUI>();
-        
-        if (SceneManager.GetActiveScene().name == "Game")
+        switch (SceneManager.GetActiveScene().name)
         {
-            player = GameObject.FindWithTag("Player");
-            CheckSkin();
+            case "Store":
+                txtDocesTotal = GameObject.Find("AllCandies").GetComponent<TextMeshProUGUI>();
+                break;
+            case "Game":
+                player = GameObject.FindWithTag("Player");
+                CheckSkin();
+                break;
         }
         
         item = PlayerPrefs.GetInt("Item");
@@ -43,12 +46,26 @@ public class StoreManager : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         allCandies = PlayerPrefs.GetInt("allCandies");
-        
-        txtDocesTotal.text = allCandies.ToString();
 
-        if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Ghost")
+        switch (SceneManager.GetActiveScene().name)
         {
-            StartCoroutine("Delay", 10f);
+            case "Game":
+            case "Ghost":
+                StartCoroutine("Delay", 10f);
+                /*
+                if (PlayerPrefs.GetInt("Item") != 0)
+                {
+                    GameObject.Find("Use").SetActive(true);
+                }
+                else
+                {
+                    GameObject.Find("Use").SetActive(false);
+                }
+                */
+                break;
+            case "Store":
+                txtDocesTotal.text = allCandies.ToString();
+                break;
         }
     }
 
@@ -59,7 +76,7 @@ public class StoreManager : MonoBehaviour
 
     public void MultiplieCandies()
     {
-        if (allCandies >= 10 && item == 0) // se tem doces o suficiente e se nao comprou nenhum outro
+        if (allCandies >= 10) // se tem doces o suficiente e se nao comprou nenhum outro
         {
             allCandies -= 10;
             PlayerPrefs.SetInt("allCandies", allCandies);
@@ -67,10 +84,16 @@ public class StoreManager : MonoBehaviour
             PlayerPrefs.SetInt("Item", item);
         }
     }
+    /*
+    public void UsePowerUp()
+    {
+        StartCoroutine("Delay", 10f);
+    }
+    */
     
     public void MagnetCandies()
     {
-        if (allCandies >= 10 && item == 0) // se tem doces o suficiente e se nao comprou nenhum outro
+        if (allCandies >= 10) // se tem doces o suficiente e se nao comprou nenhum outro
         {
             allCandies -= 10;
             PlayerPrefs.SetInt("allCandies", allCandies);
@@ -81,7 +104,7 @@ public class StoreManager : MonoBehaviour
 
     public void NoObstacles()
     {
-        if (allCandies >= 10 && item == 0) // se tem doces o suficiente e se nao comprou nenhum outro
+        if (allCandies >= 10) // se tem doces o suficiente e se nao comprou nenhum outro
         {
             allCandies -= 10;
             PlayerPrefs.SetInt("allCandies", allCandies);
@@ -124,6 +147,8 @@ public class StoreManager : MonoBehaviour
                     GameObject.FindWithTag("Player").transform.position * 2 * Time.deltaTime);
                 break;
             case 3:
+                item = 10;
+                PlayerPrefs.SetInt("Item", item);
                 break;
         }
         yield return new WaitForSeconds(10f); // o tempo do powerup

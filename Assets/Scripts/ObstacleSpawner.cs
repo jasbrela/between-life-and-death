@@ -17,7 +17,7 @@ public class ObstacleSpawner : BaseSpawner
         float minRepeat = 1.5f;
         float maxRepeat = 2f;
         
-        if (_storeManager.item != 3) // se nao usa o NoObstacles
+        if (_storeManager.item != 10) // se nao usa o NoObstacles
         {
             base.Spawn();
         }

@@ -8,7 +8,13 @@ public class ScoreController : MonoBehaviour
 
     public int highScore;
 
+    public static int qtd = 1;
+
+    [Header("Todos os doces coletados")]
+    public int allcandies = 0;
+    
     public TextMeshProUGUI txtScore;
+    
 
     [Header("Audio")]
     [SerializeField] private AudioSource playerAudioSource;
@@ -19,6 +25,8 @@ public class ScoreController : MonoBehaviour
     {
         UpdateScore();
         UpdateTotalCandies();
+        
+        allcandies = PlayerPrefs.GetInt("allCandies");
     }
 
     void UpdateScore()
@@ -26,7 +34,7 @@ public class ScoreController : MonoBehaviour
         score = PlayerPrefs.GetInt("score");
         txtScore.text = score.ToString();
     }
-
+    
     void UpdateTotalCandies()
     {
         if (PlayerStatus.GameOver)
@@ -36,6 +44,11 @@ public class ScoreController : MonoBehaviour
                highScore = score;
                PlayerPrefs.SetInt("highscore", highScore);
            }
+
+           allcandies += score;
+           PlayerPrefs.SetInt("allCandies", allcandies);
+           
+           PlayerPrefs.SetInt("score", 0); // resolve bug de pontos infinitos
         }
     }
 
@@ -45,7 +58,7 @@ public class ScoreController : MonoBehaviour
         {
             playerAudioSource.clip = collectCandy;
             playerAudioSource.Play();
-            score++;
+            score += qtd;
             PlayerPrefs.SetInt("score", score);
             Destroy(col.gameObject);
         }

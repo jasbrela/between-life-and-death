@@ -18,6 +18,12 @@ public class SceneController : MonoBehaviour
 
     }
 
+    public void Store()
+    {
+        SceneManager.LoadScene("Store");
+        audioSource.Play();
+    }
+
     private void Reset()
     {
         PlayerStatus.CurrentDebuff = Debuff.None;
