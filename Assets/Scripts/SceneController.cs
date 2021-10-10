@@ -73,7 +73,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            audioMixer.SetFloat("Music", -11);
+            audioMixer.SetFloat("Music", 0);
         }
     }
 
