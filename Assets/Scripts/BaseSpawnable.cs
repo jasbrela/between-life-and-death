@@ -13,22 +13,25 @@ public abstract class BaseSpawnable : MonoBehaviour
     
     protected void Move(int index)
     {
-        switch (index)
+        if (!PlayerStatus.GameOver)
         {
-            case 0:
-                transform.Translate(Vector3.left * speed / 3.5f * Time.deltaTime);
-                transform.Translate(Vector3.down * speed * Time.deltaTime);
-                transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
-                break;
-            case 1:
-                transform.Translate(Vector3.down * speed * Time.deltaTime);
-                transform.localScale += Vector3.one * Time.deltaTime * 0.15f;
-                break;
-            case 2:
-                transform.Translate(Vector3.right * speed / 3.5f * Time.deltaTime);
-                transform.Translate(Vector3.down * speed * Time.deltaTime);
-                transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
-                break;
+            switch (index)
+            {
+                case 0:
+                    transform.Translate(Vector3.left * speed / 3.5f * Time.deltaTime);
+                    transform.Translate(Vector3.down * speed * Time.deltaTime);
+                    transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
+                    break;
+                case 1:
+                    transform.Translate(Vector3.down * speed * Time.deltaTime);
+                    transform.localScale += Vector3.one * Time.deltaTime * 0.15f;
+                    break;
+                case 2:
+                    transform.Translate(Vector3.right * speed / 3.5f * Time.deltaTime);
+                    transform.Translate(Vector3.down * speed * Time.deltaTime);
+                    transform.localScale += Vector3.one * Time.deltaTime * 0.08f;
+                    break;
+            }
         }
     }
     
