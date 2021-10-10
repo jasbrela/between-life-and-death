@@ -7,6 +7,7 @@ public class PlayerStatus : MonoBehaviour
     public static Debuff CurrentDebuff;
     public static bool GhostMode;
     public static bool GameOver;
+    [SerializeField] private bool gameover;
     [SerializeField] private GameObject gameOverMessage;
     private float _currentTimeScale = 1;
     [Header("Audio")]
@@ -21,6 +22,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void Update()
     {
+        gameover = GameOver;
         if (CurrentDebuff != Debuff.HigherVelocity)
         {
             Time.timeScale = _currentTimeScale;    // fiz essa bobeirage pq queria que voltasse
@@ -45,7 +47,6 @@ public class PlayerStatus : MonoBehaviour
                 if (gameOverMessage!= null) gameOverMessage.SetActive(true);
                 GameOver = true;
                 StartCoroutine("Delay");
-                Time.timeScale = 0;
             }
             else
             {
@@ -60,7 +61,6 @@ public class PlayerStatus : MonoBehaviour
     
     IEnumerator Delay()
     {
-        Time.timeScale = 0;
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Menu");
     }
