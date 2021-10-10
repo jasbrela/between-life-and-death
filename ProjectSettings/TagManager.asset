@@ -8,6 +8,8 @@ TagManager:
   - doce
   - docesTotal
   - Obstacle
+  - scoreManager
+  - storeManager
   layers:
   - Default
   - TransparentFX

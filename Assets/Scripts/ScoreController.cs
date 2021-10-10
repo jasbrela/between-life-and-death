@@ -6,6 +6,12 @@ public class ScoreController : MonoBehaviour
     [Header("Doces coletados nessa run")] 
     public int score;
 
+    [Header("Todos os doces coletados")]
+    public int allcandies = 100;
+
+    [Header("Quantos pts o doce vale")] 
+    public static int qtd = 1;
+    
     public int highScore;
 
     [Header("Auxiliar pra soma dos doces")] 
@@ -19,12 +25,15 @@ public class ScoreController : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("allCandies", 100);
     }
 
     private void Update()
     {
         ScoreUpdate(); // atualiza o score
         SomaDocesTotal(); // atualiza os doces totais
+
+        allcandies = PlayerPrefs.GetInt("allCandies");
     }
 
     void ScoreUpdate()
@@ -37,11 +46,15 @@ public class ScoreController : MonoBehaviour
     {
         if (PlayerStatus.GameOver)
         {
-           if(score > highScore)
+            if(score > highScore)
             {
                 highScore = score;
                 PlayerPrefs.SetInt("highscore", highScore);
             }
+
+            allcandies += score;
+            PlayerPrefs.SetInt("allCandies", allcandies);
+                
             PlayerPrefs.SetInt("score", 0);
         }
     }
@@ -52,7 +65,7 @@ public class ScoreController : MonoBehaviour
         {
             playerAudioSource.clip = colectCandy;
             playerAudioSource.Play();
-            score++; // incrementa o score
+            score += qtd; // incrementa o score
             PlayerPrefs.SetInt("score", score);
             Destroy(col.gameObject); // destrói o doce
         }
