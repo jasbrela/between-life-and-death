@@ -6,13 +6,10 @@ public class ScoreController : MonoBehaviour
     [Header("Doces coletados nessa run")] 
     public int score;
 
-    [Header("Doces totais")] 
-    [SerializeField] private int docesTotal;
-
     [Header("Auxiliar pra soma dos doces")] 
-    public bool gameOver; 
-    
-    private TextMeshProUGUI _txtScore, _txtDocesTotal;
+    public bool gameOver;
+
+    public TextMeshProUGUI _txtScore;
 
     [Header("Audio")]
     [SerializeField] private AudioSource playerAudioSource;
@@ -20,8 +17,6 @@ public class ScoreController : MonoBehaviour
 
     private void Start()
     {
-        _txtScore = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
-        _txtDocesTotal = GameObject.FindWithTag("docesTotal").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -40,14 +35,10 @@ public class ScoreController : MonoBehaviour
     {
         if (gameOver)
         {
-            docesTotal += score; // soma os doces da run com o total
-            PlayerPrefs.SetInt("docesTotal", docesTotal);
             score = 0; // reseta o score da run
             PlayerPrefs.SetInt("score", 0);
             gameOver = false;
         }
-        docesTotal = PlayerPrefs.GetInt("docesTotal");
-        _txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
     }
 
     void OnTriggerEnter2D (Collider2D col)
