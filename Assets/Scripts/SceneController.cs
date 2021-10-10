@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +8,15 @@ public class SceneController : MonoBehaviour
     [Header("Nome da cena de gameplay")]
     [SerializeField] private string startGameSceneName;
     [SerializeField] private AudioSource audioSource;
+
+    [Header("Score na scene Game Over")]
+    [SerializeField] private TMP_Text gameOverText;
+
+    private void Start()
+    {
+        gameOverText.text += PlayerPrefs.GetInt("score").ToString();
+    }
+
     public void StartGame()
     {
         Reset();
