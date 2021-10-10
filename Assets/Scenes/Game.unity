@@ -763,34 +763,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1519932324}
     m_Modifications:
-    - target: {fileID: 4249766545423557098, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249766545423557098, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249766545423557098, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249766545423557098, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 89.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249766545423557098, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.00000023836945
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249766545423557098, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 25.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249766545423557098, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 5.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5727641467031991275, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
       propertyPath: m_Name
       value: Score
@@ -948,7 +920,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 720, y: 1280}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1391,6 +1363,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: bgAudioSource
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: bgaudioSource
       value: 
       objectReference: {fileID: 519420030}
@@ -1398,6 +1374,10 @@ PrefabInstance:
       propertyPath: gameOverMessage
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: playerAudioSource
+      value: 
+      objectReference: {fileID: 2871676534890187204}
     - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: playeraudioSource
       value: 
@@ -1475,9 +1455,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2871676534890187204}
     - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: txtScore
+      value: 
+      objectReference: {fileID: 1264913826}
+    - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: _txtScore
       value: 
       objectReference: {fileID: 1264913826}
+    - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: collectCandy
+      value: 
+      objectReference: {fileID: 8300000, guid: da8c269e2001c2c43be9affa65356db0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
 --- !u!82 &2871676534890187204 stripped

@@ -3,73 +3,52 @@ using UnityEngine;
 
 public class LifeDeathController : MonoBehaviour
 {
-    [Header("Virou fantasma?")]
-    public bool ghostPhase;
-
-    private GameObject scriptScoreController; // Auxiliar pra variavel de outro script
+    private GameObject _scriptScoreController;
     
     [Header("O jogo virou txt xD")] 
     public  GameObject txtPhase;
 
-    // mudar a animação tbm
     [Header("Sprites do player (0 - humano, 1 - fantasma)")]
     public Sprite[] playerSprite;
     
     void Awake()
     {
-        scriptScoreController = GameObject.FindWithTag("scoreManager");
+        _scriptScoreController = GameObject.FindWithTag("scoreManager");
     }
 
     void Update()
     {
-        PhaseManager(); // mudancas pras fases humano/fantasma
+        PhaseManager();
     }
 
     void PhaseManager()
     {
-        if (ghostPhase) // se é fantasma 
+        if (PlayerStatus.GhostMode)
         {
-            // ### aqui vao as mudancas pro mundo fantasma
-            
-            // doces vao sumir
             if (GameObject.FindWithTag("doce"))
             {
                 Destroy(GameObject.FindWithTag("doce"));
             }
-            // tbm poderia usar ghostPhase pra desabilitar doces no spawner 
-            
-            // muda cenario
-            
-            // muda player
             gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[1];
-            // colocar a animação tbm
         }
-        else // é humano
+        else
         {
-            // ### aqui vao as mudancas pro mundo humano
-            
-            // muda cenario
-            
-            // muda player
             gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite[0];
-            // colocar a animação tbm
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Obstacle") // se colidiu com obstaculo
+        if (col.gameObject.CompareTag("Obstacle"))
         {
-            if (!ghostPhase) // se for humano
+            if (!PlayerStatus.GhostMode)
             {
-                ghostPhase = true; // vira fantasma
                 txtPhase.SetActive(true);
                 StartCoroutine("DelayPhase", 2f);
             }
-            else // se for fantasma
+            else
             {
-                scriptScoreController.GetComponent<ScoreController>().gameOver = true; // game over
-                DontDestroyOnLoad(scriptScoreController);
+                DontDestroyOnLoad(_scriptScoreController);
                 // SceneManager.LoadScene("Game Over");
             }
         }

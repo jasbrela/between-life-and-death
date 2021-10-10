@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _destination;
     private Vector2 _fingerDown;
     private Vector2 _fingerUp;
-    private int moved;
+    private int _moved;
 
     void Update()
     {
@@ -130,9 +130,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnSwipeLeft()
     {
-        if (_currentPos > 0 && moved == 0)
+        if (_currentPos > 0 && _moved == 0)
         {
-            moved = 1;
+            _moved = 1;
             _currentPos--;
             scenario.transform.position = new Vector3(scenario.transform.position.x + 0.2f,
                 scenario.transform.position.y, scenario.transform.position.z);
@@ -144,9 +144,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnSwipeRight()
     {
-        if (_currentPos < 2 && moved == 0)
+        if (_currentPos < 2 && _moved == 0)
         {
-            moved = 1;
+            _moved = 1;
             _currentPos++;
             scenario.transform.position = new Vector3(scenario.transform.position.x - 0.2f,
             scenario.transform.position.y, scenario.transform.position.z);
@@ -160,11 +160,11 @@ public class PlayerMovement : MonoBehaviour
         audioSource.clip = swipe;
         audioSource.Play();
         transform.position = new Vector3(_destination.x, transform.position.y, transform.position.z);
-        Invoke("movedStatus", 0.2f);
+        Invoke("MovedStatus", 0.2f);
     }
 
-    void movedStatus()
+    void MovedStatus()
     {
-        moved = 0;
+        _moved = 0;
     }
 }

@@ -7,13 +7,11 @@ public class PlayerStatus : MonoBehaviour
     public static Debuff CurrentDebuff;
     public static bool GhostMode;
     public static bool GameOver;
-    [SerializeField] private bool gameover;
     [SerializeField] private GameObject gameOverMessage;
-    private float _currentTimeScale = 1;
     [Header("Audio")]
-    [SerializeField] private AudioSource playeraudioSource;
+    [SerializeField] private AudioSource playerAudioSource;
     [SerializeField] private AudioClip hit;
-    [SerializeField] private AudioSource bgaudioSource;
+    [SerializeField] private AudioSource bgAudioSource;
 
     private void Awake()
     {
@@ -22,16 +20,18 @@ public class PlayerStatus : MonoBehaviour
 
     private void Update()
     {
-        gameover = GameOver;
         if (CurrentDebuff != Debuff.HigherVelocity)
         {
-            Time.timeScale = _currentTimeScale;    // fiz essa bobeirage pq queria que voltasse
-            Time.timeScale += Time.deltaTime / 100;
-            _currentTimeScale = Time.timeScale;    // o tempo ao normal dps do debuff de higher velocity
+            Time.timeScale += Time.deltaTime / 80;
         }
         else
         {
             Time.timeScale += Time.deltaTime / 40;
+        }
+
+        if (GameOver)
+        {
+            Time.timeScale = 0;
         }
     }
 
@@ -41,18 +41,18 @@ public class PlayerStatus : MonoBehaviour
         {
             if (GhostMode)
             {
-                playeraudioSource.clip = hit;
-                playeraudioSource.Play();
-                bgaudioSource.Stop();
+                playerAudioSource.clip = hit;
+                playerAudioSource.Play();
+                bgAudioSource.Stop();
                 if (gameOverMessage!= null) gameOverMessage.SetActive(true);
                 GameOver = true;
-                StartCoroutine("Delay");
+                StartCoroutine(nameof(Delay));
             }
             else
             {
                 SceneManager.LoadScene("Ghost");
-                playeraudioSource.clip = hit;
-                playeraudioSource.Play();
+                playerAudioSource.clip = hit;
+                playerAudioSource.Play();
                 GetComponent<SpriteRenderer>().color = new Color(255, 176, 171);
                 GhostMode = true;
             }
@@ -61,7 +61,7 @@ public class PlayerStatus : MonoBehaviour
     
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(3f);
         SceneManager.LoadScene("Menu");
     }
 }
