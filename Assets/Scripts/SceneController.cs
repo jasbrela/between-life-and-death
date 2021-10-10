@@ -5,7 +5,6 @@ public class SceneController : MonoBehaviour
 {
     [Header("Nome da cena de gameplay")]
     [SerializeField] private string startGameSceneName;
-
     [SerializeField] private AudioSource audioSource;
     public void StartGame()
     {
@@ -23,20 +22,27 @@ public class SceneController : MonoBehaviour
         PlayerStatus.GameOver = false;
     }
 
-    private bool _credits;
     [Header("Painel dos creditos")]
-    public GameObject panelCredits;
-    public void CreditsPanel()
+    [SerializeField] private GameObject panelCredits;
+    
+    [Header("Painel do Menu")]
+    [SerializeField] private GameObject panelMenu;
+    public void ShowCreditsPanel()
     {
         audioSource.Play();
-        _credits =! _credits;
-        if (_credits)
-        {
-            panelCredits.SetActive(true);
-        }
-        else
-        {
-            panelCredits.SetActive(false);
-        }
+        panelMenu.SetActive(false);
+        panelCredits.SetActive(true);
+    }
+    
+    public void HideCreditsPanel()
+    {
+        audioSource.Play();
+        panelMenu.SetActive(true);
+        panelCredits.SetActive(false);
+    }
+
+    public void LoadSelectedScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
