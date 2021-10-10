@@ -43,6 +43,7 @@ public class PlayerStatus : MonoBehaviour
                 gameOverMessage.SetActive(true);
                 GameOver = true;
                 StartCoroutine("Delay");
+                PlayerPrefs.SetInt("score", 0);
                 Time.timeScale = 0;
             }
             else

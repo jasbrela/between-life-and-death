@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(StartGameSceneName);
+        PlayerPrefs.SetInt("score", 0);
     }
 
     private bool credits = false;
