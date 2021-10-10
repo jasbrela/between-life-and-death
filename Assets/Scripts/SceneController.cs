@@ -2,6 +2,8 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SceneController : MonoBehaviour
 {
@@ -16,7 +18,8 @@ public class SceneController : MonoBehaviour
     {
         gameOverText.text += PlayerPrefs.GetInt("score").ToString();
     }
-
+    
+    [SerializeField] private AudioMixer audioMixer;
     public void StartGame()
     {
         Reset();
@@ -55,5 +58,29 @@ public class SceneController : MonoBehaviour
     public void LoadSelectedScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void musicToggleClick(Toggle toggle)
+    {
+        if (!toggle.isOn)
+        {
+            audioMixer.SetFloat("Music", -88);
+        }
+        else
+        {
+            audioMixer.SetFloat("Music", -11);
+        }
+    }
+
+    public void sfxToggleClick(Toggle toggle)
+    {
+        if (!toggle.isOn)
+        {
+            audioMixer.SetFloat("SFX", -88);
+        }
+        else
+        {
+            audioMixer.SetFloat("SFX", 0);
+        }
     }
 }
