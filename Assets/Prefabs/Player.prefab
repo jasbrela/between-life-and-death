@@ -15,11 +15,7 @@ GameObject:
   - component: {fileID: 2871676534880197819}
   - component: {fileID: 11507064}
   - component: {fileID: 3169961317710918329}
-<<<<<<< Updated upstream
-=======
   - component: {fileID: 3480800901209544362}
-  - component: {fileID: 44357498815391522}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -258,8 +254,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
-=======
 --- !u!114 &3480800901209544362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,23 +271,3 @@ MonoBehaviour:
   gameOver: 0
   playerAudioSource: {fileID: 3169961317710918329}
   colectCandy: {fileID: 8300000, guid: da8c269e2001c2c43be9affa65356db0, type: 3}
---- !u!95 &44357498815391522
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2871676534880197812}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6074065cc535b9843a73b12c50c46c45, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
->>>>>>> Stashed changes
