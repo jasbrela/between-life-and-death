@@ -1156,6 +1156,10 @@ PrefabInstance:
       propertyPath: playeraudioSource
       value: 
       objectReference: {fileID: 2871676534890187204}
+    - target: {fileID: 44357498815391522, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4c6d7eb6b1eafee4195facf0bed8412d, type: 2}
     - target: {fileID: 2871676534880197812, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1170,7 +1174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2871676534880197817, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 2871676534880197817, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1204,6 +1208,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2871676534880197818, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6371b6bbe17ce7a4b96401ba30a615ed, type: 3}
     - target: {fileID: 2871676534880197818, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_SortingLayer
       value: 3
