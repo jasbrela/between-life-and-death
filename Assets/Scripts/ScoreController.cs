@@ -14,6 +14,10 @@ public class ScoreController : MonoBehaviour
     
     private TextMeshProUGUI _txtScore, _txtDocesTotal;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip colectCandy;
+
     private void Start()
     {
         _txtScore = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
@@ -47,6 +51,8 @@ public class ScoreController : MonoBehaviour
     {
         if (col.CompareTag("doce")) // se colidiu com doce
         {
+            playerAudioSource.clip = colectCandy;
+            playerAudioSource.Play();
             score++; // incrementa o score
             Destroy(col.gameObject); // destrói o doce
         }

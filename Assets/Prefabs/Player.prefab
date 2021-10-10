@@ -269,3 +269,5 @@ MonoBehaviour:
   score: 0
   docesTotal: 0
   gameOver: 0
+  playerAudioSource: {fileID: 3169961317710918329}
+  colectCandy: {fileID: 8300000, guid: da8c269e2001c2c43be9affa65356db0, type: 3}
