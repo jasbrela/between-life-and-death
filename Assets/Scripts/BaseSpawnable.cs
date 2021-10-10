@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class BaseSpawnable : MonoBehaviour
 {
+    [SerializeField] private Sprite[] sprites;
     [SerializeField] protected Position pos;
     private const float Speed = 2f;
     private GameObject _player;
@@ -9,6 +10,14 @@ public abstract class BaseSpawnable : MonoBehaviour
     protected void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+    }
+    
+    protected void RandomizeSprite()
+    {
+        if (sprites.Length > 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
+        }
     }
     
     protected void Move(int index)

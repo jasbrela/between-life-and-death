@@ -3,6 +3,7 @@ using UnityEngine;
 public class CandySpawner : BaseSpawner
 {
     private int _index;
+    private const int Quantity = 5;
 
     new void Start()
     {
@@ -24,7 +25,11 @@ public class CandySpawner : BaseSpawner
         
         if (!PlayerStatus.GameOver)
         {
-            SpawnCandies(5);
+            _index = Random.Range(0, 3);
+            for (int c = 0; c < Quantity; c++)
+            {
+                Invoke(nameof(Spawn), c);
+            }
         }
         
         Invoke(nameof(SpawnCandyBlock), Random.Range(minRepeat, maxRepeat));
@@ -38,15 +43,6 @@ public class CandySpawner : BaseSpawner
             spawnable.transform.parent = transform;
             
             spawnable.GetComponent<Candy>().Init(_index);
-        }
-    }
-
-    private void SpawnCandies(int quantity)
-    {
-        _index = Random.Range(0, 3);
-        for (int c = 0; c < quantity; c++)
-        {
-            Invoke(nameof(Spawn), c);
         }
     }
 }

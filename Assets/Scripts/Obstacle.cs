@@ -9,6 +9,8 @@ public class Obstacle : BaseSpawnable
         base.Start();
         _startPosIndex = Random.Range(0, pos.positions.Length);
         
+        RandomizeSprite();
+        
         transform.position = new Vector3(pos.positions[_startPosIndex].position.x,
             pos.positions[_startPosIndex].position.y, transform.position.z);
     }

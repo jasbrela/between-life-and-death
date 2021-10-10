@@ -742,7 +742,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "CONFUS\xC3O! Os controles agora est\xE3o invertidos!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c451779c36425364aa087dc00d231258, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2100000, guid: f665aa0a660886640a7f2d2ba13fc915, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -829,6 +829,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1519932324}
     m_Modifications:
+    - target: {fileID: 1690452625195586177, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ab34c7aa046e834dadf57cffd586f4f, type: 2}
+    - target: {fileID: 1690452625195586177, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d5e8ba895e4ef4740b7c610656f486fa, type: 2}
     - target: {fileID: 5727641467031991275, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
       propertyPath: m_Name
       value: Score
@@ -994,7 +1002,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Game Over
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c451779c36425364aa087dc00d231258, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 3715797984190056873, guid: c451779c36425364aa087dc00d231258, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1109,7 +1117,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "ATEN\xC7\xC3O! O jogo ficar\xE1 bem mais r\xE1pido agora!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c451779c36425364aa087dc00d231258, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2100000, guid: f665aa0a660886640a7f2d2ba13fc915, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1868,11 +1876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 592716550993018201, guid: cb8cb978f15fc2b4eaac0b2449ad8908, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 75
+      value: 72.7
       objectReference: {fileID: 0}
     - target: {fileID: 592716550993018201, guid: cb8cb978f15fc2b4eaac0b2449ad8908, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -79
+      value: -67.5
       objectReference: {fileID: 0}
     - target: {fileID: 592716550993018201, guid: cb8cb978f15fc2b4eaac0b2449ad8908, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

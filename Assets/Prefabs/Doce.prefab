@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42842cae1bc11c04b872ec36823d2118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites: []
   pos: {fileID: 11400000, guid: 9ee008157bcefaa4a8b3e92bda1c022c, type: 2}
-  speed: 2
 --- !u!58 &2146921105310506860
 CircleCollider2D:
   m_ObjectHideFlags: 0
