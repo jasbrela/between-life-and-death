@@ -2300,6 +2300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startGameSceneName: Game
   audioSource: {fileID: 1887807957}
+  music: {fileID: 1471586882}
+  sfx: {fileID: 312018545}
   gameOverText: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: b18bbf930d84e1c46aa94d23ea9ec8ea, type: 2}
   panelCredits: {fileID: 1503192061}
