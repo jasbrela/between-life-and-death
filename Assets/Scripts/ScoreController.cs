@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreController : MonoBehaviour
 {
@@ -11,16 +12,34 @@ public class ScoreController : MonoBehaviour
     public static int qtd = 1;
 
     [Header("Todos os doces coletados")]
-    public int allcandies = 0;
+    public int allcandies;
     
     public TextMeshProUGUI txtScore;
     
-
     [Header("Audio")]
     [SerializeField] private AudioSource playerAudioSource;
     [SerializeField] private AudioClip collectCandy;
 
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (scene.name == "Game Over")
+        {
+            allcandies += score;
+            PlayerPrefs.SetInt("allCandies", allcandies);
+        }
+    }
+    
     private void Update()
     {
         UpdateScore();
@@ -44,11 +63,6 @@ public class ScoreController : MonoBehaviour
                highScore = score;
                PlayerPrefs.SetInt("highscore", highScore);
            }
-
-           allcandies += score;
-           PlayerPrefs.SetInt("allCandies", allcandies);
-           
-           PlayerPrefs.SetInt("score", 0); // resolve bug de pontos infinitos
         }
     }
 
