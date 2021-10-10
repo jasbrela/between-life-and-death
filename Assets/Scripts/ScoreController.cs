@@ -36,7 +36,6 @@ public class ScoreController : MonoBehaviour
                highScore = score;
                PlayerPrefs.SetInt("highscore", highScore);
            }
-           PlayerPrefs.SetInt("score", 0);
         }
     }
 
