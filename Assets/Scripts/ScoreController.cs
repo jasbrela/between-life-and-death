@@ -6,6 +6,8 @@ public class ScoreController : MonoBehaviour
     [Header("Doces coletados nessa run")] 
     public int score;
 
+    public int highScore;
+
     [Header("Auxiliar pra soma dos doces")] 
     public bool gameOver;
 
@@ -33,11 +35,14 @@ public class ScoreController : MonoBehaviour
 
     void SomaDocesTotal()
     {
-        if (gameOver)
+        if (PlayerStatus.GameOver)
         {
-            score = 0; // reseta o score da run
+           if(score > highScore)
+            {
+                highScore = score;
+                PlayerPrefs.SetInt("highscore", highScore);
+            }
             PlayerPrefs.SetInt("score", 0);
-            gameOver = false;
         }
     }
 
