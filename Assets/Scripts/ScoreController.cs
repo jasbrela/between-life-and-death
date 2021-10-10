@@ -32,6 +32,7 @@ public class ScoreController : MonoBehaviour
 
     void ScoreUpdate()
     {
+        score = PlayerPrefs.GetInt("score");
         _txtScore.text = score.ToString(); // atualiza o score na ui
     }
 
@@ -40,10 +41,12 @@ public class ScoreController : MonoBehaviour
         if (gameOver)
         {
             docesTotal += score; // soma os doces da run com o total
+            PlayerPrefs.SetInt("docesTotal", docesTotal);
             score = 0; // reseta o score da run
+            PlayerPrefs.SetInt("score", 0);
             gameOver = false;
         }
-
+        docesTotal = PlayerPrefs.GetInt("docesTotal");
         _txtDocesTotal.text = docesTotal.ToString(); // atualiza o total de doces
     }
 
@@ -54,6 +57,7 @@ public class ScoreController : MonoBehaviour
             playerAudioSource.clip = colectCandy;
             playerAudioSource.Play();
             score++; // incrementa o score
+            PlayerPrefs.SetInt("score", score);
             Destroy(col.gameObject); // destrói o doce
         }
     }

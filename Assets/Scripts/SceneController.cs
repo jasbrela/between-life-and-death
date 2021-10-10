@@ -9,6 +9,8 @@ public class SceneController : MonoBehaviour
     {
         Reset();
         SceneManager.LoadScene(StartGameSceneName);
+        PlayerPrefs.SetInt("score", 0);
+
     }
 
     private static void Reset()
