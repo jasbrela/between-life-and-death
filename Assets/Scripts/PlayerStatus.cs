@@ -15,6 +15,8 @@ public class PlayerStatus : MonoBehaviour
 
     private void Awake()
     {
+        CurrentDebuff = Debuff.None;
+        GameOver = false;
         Time.timeScale = 1;
     }
 
@@ -61,7 +63,7 @@ public class PlayerStatus : MonoBehaviour
     
     IEnumerator Delay()
     {
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(0.5f);
         SceneManager.LoadScene("Game Over");
     }
 }

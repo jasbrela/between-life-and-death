@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7427241619055449414}
   - component: {fileID: 2596850482808446376}
   m_Layer: 0
-  m_Name: Pumpkin
+  m_Name: HumanObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,8 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd1994f7e759a4478b21becd6b72cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 233eb2b7c2cb1ef408f9d6b5cc8749a2, type: 3}
+  - {fileID: 21300000, guid: a51ed1151cfeca1418185b74ed24b69e, type: 3}
+  - {fileID: 21300000, guid: 62671edebf99ff64a96938cd3349262e, type: 3}
   pos: {fileID: 11400000, guid: 8b70738e984fac9469e6aa369b5cb65b, type: 2}
-  speed: 2
 --- !u!61 &2596850482808446376
 BoxCollider2D:
   m_ObjectHideFlags: 0

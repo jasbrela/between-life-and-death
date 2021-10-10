@@ -541,7 +541,7 @@ PrefabInstance:
     - target: {fileID: 1690452625195586177, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 8012845756671729603, guid: 8ab34c7aa046e834dadf57cffd586f4f, type: 2}
+      objectReference: {fileID: 2100000, guid: d5e8ba895e4ef4740b7c610656f486fa, type: 2}
     - target: {fileID: 5727641467031991275, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
       propertyPath: m_Name
       value: Score

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Cloud : BaseSpawnable
 {
-    [SerializeField] private Sprite[] sprites;
     private int _startPosIndex;
     private float _speed;
     [SerializeField] private float maxSpeed = 1;
@@ -12,9 +11,10 @@ public class Cloud : BaseSpawnable
     {
         base.Start();
         
-        GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
         _startPosIndex = Random.Range(0, pos.positions.Length);
         
+        RandomizeSprite();
+
         transform.position = new Vector3(pos.positions[_startPosIndex].position.x,
             RandomizeYPos(), transform.position.z);
 
