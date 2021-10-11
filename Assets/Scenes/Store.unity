@@ -451,6 +451,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75749092}
   m_CullTransparentMesh: 1
+--- !u!1001 &75891224
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1002487634229356218, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_Name
+      value: StoreManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356218, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 427.36987
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 637.91125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -69.4378
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+--- !u!114 &75891225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1002487634229356216, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+  m_PrefabInstance: {fileID: 75891224}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab79958d1a139840929248b89427a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &102841384
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,9 +682,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 75891225}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: MagnetCandies
+        m_MethodName: MultiplieCandies
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1791,7 +1863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 75891225}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
         m_MethodName: MagnetCandies
         m_Mode: 1
@@ -2228,9 +2300,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 75891225}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: MagnetCandies
+        m_MethodName: Skin2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2361,19 +2433,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 643260028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: MagnetCandies
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &643260028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3800,7 +3860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 600
+  m_text: Soon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ab34c7aa046e834dadf57cffd586f4f, type: 2}
   m_sharedMaterial: {fileID: 8012845756671729603, guid: 8ab34c7aa046e834dadf57cffd586f4f, type: 2}
@@ -4299,9 +4359,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 75891225}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: MagnetCandies
+        m_MethodName: NoObstacles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
