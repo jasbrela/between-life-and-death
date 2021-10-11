@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - scoreManager
   - storeManager
+  - soul
   layers:
   - Default
   - TransparentFX
