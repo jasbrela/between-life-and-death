@@ -107,6 +107,7 @@ public class SceneController : MonoBehaviour
     {
         if (!toggle.isOn)
         {
+            Debug.Log("clicou");
             audioMixer.SetFloat("Music", -88);
             PlayerPrefs.SetInt("musicToggle", -1);
         }
