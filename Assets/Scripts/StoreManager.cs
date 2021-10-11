@@ -33,13 +33,13 @@ public class StoreManager : MonoBehaviour
     
     private void Awake()
     {
-      
+      /*
         if (_instance == null) {
             DontDestroyOnLoad(this);
             _instance = this;
         } else {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -60,7 +60,8 @@ public class StoreManager : MonoBehaviour
                 CheckSkin();
                 break;
         }
-        
+
+        idSkin = PlayerPrefs.GetInt("idSkin");
         item = PlayerPrefs.GetInt("Item");
     }
 
@@ -92,14 +93,15 @@ public class StoreManager : MonoBehaviour
 
     private void CheckSkin()
     {
+        idSkin = PlayerPrefs.GetInt("idSkin");
         player.GetComponent<Animator>().runtimeAnimatorController = skinsAnim[idSkin];
     }
 
     public void MultiplieCandies()
     {
-        if (allCandies >= 10) // se tem doces o suficiente e se nao comprou nenhum outro
+        if (allCandies >= 20) // se tem doces o suficiente e se nao comprou nenhum outro
         {
-            allCandies -= 10;
+            allCandies -= 20;
             PlayerPrefs.SetInt("allCandies", allCandies);
             item = 1;
             PlayerPrefs.SetInt("Item", item);
@@ -114,9 +116,9 @@ public class StoreManager : MonoBehaviour
     
     public void MagnetCandies()
     {
-        if (allCandies >= 10) // se tem doces o suficiente e se nao comprou nenhum outro
+        if (allCandies >= 20) // se tem doces o suficiente e se nao comprou nenhum outro
         {
-            allCandies -= 10;
+            allCandies -= 20;
             PlayerPrefs.SetInt("allCandies", allCandies);
             item = 2;
             PlayerPrefs.SetInt("Item", item);
@@ -125,9 +127,9 @@ public class StoreManager : MonoBehaviour
 
     public void NoObstacles()
     {
-        if (allCandies >= 10) // se tem doces o suficiente e se nao comprou nenhum outro
+        if (allCandies >= 20) // se tem doces o suficiente 
         {
-            allCandies -= 10;
+            allCandies -= 20;
             PlayerPrefs.SetInt("allCandies", allCandies);
             item = 3;
             PlayerPrefs.SetInt("Item", item);
@@ -142,14 +144,24 @@ public class StoreManager : MonoBehaviour
 
     public void Skin2()
     {
-        idSkin = 1;
-        PlayerPrefs.SetInt("idSkin", idSkin);
+        if (allCandies >= 200) // se tem doces o suficiente 
+        {
+            allCandies -= 200;
+            PlayerPrefs.SetInt("allCandies", allCandies);
+            idSkin = 1;
+            PlayerPrefs.SetInt("idSkin", idSkin);
+        }
     }
     
     public void Skin3()
     {
-        idSkin = 2;
-        PlayerPrefs.SetInt("idSkin", idSkin);
+        if (allCandies >= 200) // se tem doces o suficiente 
+        {
+            allCandies -= 200;
+            PlayerPrefs.SetInt("allCandies", allCandies);
+            idSkin = 2;
+            PlayerPrefs.SetInt("idSkin", idSkin);
+        }
     }
     
     IEnumerator Delay()

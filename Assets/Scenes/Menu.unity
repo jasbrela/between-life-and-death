@@ -3321,6 +3321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoreManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1002487634229356218, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
       propertyPath: m_RootOrder
       value: 5
