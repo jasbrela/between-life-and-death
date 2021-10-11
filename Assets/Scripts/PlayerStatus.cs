@@ -59,6 +59,16 @@ public class PlayerStatus : MonoBehaviour
                 GhostMode = true;
             }
         }
+        else if (other.gameObject.CompareTag("soul"))
+        {
+            if (GhostMode)
+            {
+                SceneManager.LoadScene("Game");
+                playerAudioSource.clip = hit;
+                playerAudioSource.Play();
+                GhostMode = false;
+            }
+        }
     }
     
     IEnumerator Delay()
