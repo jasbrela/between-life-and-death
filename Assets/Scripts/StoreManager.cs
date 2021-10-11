@@ -7,13 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class StoreManager : MonoBehaviour
 {
-    private static StoreManager _instance;
     [Header("Item q player comprou")]
-    public int item = 0;
-    
-    public int idSkin = 0;
-    
-    public int allCandies = 0;
+    public int item ;
+    public int idSkin;
+    public int allCandies;
 
     public RuntimeAnimatorController[] skinsAnim;
 
@@ -29,17 +26,6 @@ public class StoreManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-    
-    private void Awake()
-    {
-      /*
-        if (_instance == null) {
-            DontDestroyOnLoad(this);
-            _instance = this;
-        } else {
-            Destroy(gameObject);
-        }*/
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
