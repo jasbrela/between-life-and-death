@@ -3313,17 +3313,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1002487634229356216, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
-      propertyPath: txtDocesTotal
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1002487634229356218, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
       propertyPath: m_Name
       value: StoreManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002487634229356218, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1002487634229356219, guid: 2b7f59874b24caa4087d978c39bd2744, type: 3}
       propertyPath: m_RootOrder
@@ -3385,6 +3377,7 @@ GameObject:
   - component: {fileID: 1887807957}
   - component: {fileID: 1887807958}
   - component: {fileID: 1887807959}
+  - component: {fileID: 1887807960}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3664,6 +3657,18 @@ AudioChorusFilter:
   m_Delay: 40
   m_Rate: 4.9
   m_Depth: 0.03
+--- !u!114 &1887807960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887807953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a69038a81bce64eb1af4cb064246de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1892051899
 GameObject:
   m_ObjectHideFlags: 0
