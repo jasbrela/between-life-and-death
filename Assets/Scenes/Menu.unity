@@ -3377,7 +3377,7 @@ GameObject:
   - component: {fileID: 1887807957}
   - component: {fileID: 1887807958}
   - component: {fileID: 1887807959}
-  - component: {fileID: 1887807960}
+  - component: {fileID: 1887807961}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3657,7 +3657,7 @@ AudioChorusFilter:
   m_Delay: 40
   m_Rate: 4.9
   m_Depth: 0.03
---- !u!114 &1887807960
+--- !u!114 &1887807961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

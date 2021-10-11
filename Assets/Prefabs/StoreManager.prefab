@@ -48,6 +48,7 @@ MonoBehaviour:
   idSkin: 0
   allCandies: 0
   skinsAnim:
+  - {fileID: 9100000, guid: 4c6d7eb6b1eafee4195facf0bed8412d, type: 2}
   - {fileID: 9100000, guid: a53d8184ccb65f9418c742998d6f6709, type: 2}
   - {fileID: 9100000, guid: 206eb5fd3293ebe459abb9778ccd2a37, type: 2}
 --- !u!1 &1517953648705031005

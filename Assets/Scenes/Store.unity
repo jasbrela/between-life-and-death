@@ -1951,7 +1951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3542271963645909444, guid: 9bd6cb465d343b04f89e4f395ef9922a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Skin2
+      value: Skin3
       objectReference: {fileID: 0}
     - target: {fileID: 3542271963645909444, guid: 9bd6cb465d343b04f89e4f395ef9922a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -2677,7 +2677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -97, y: -79.71}
+  m_AnchoredPosition: {x: -97, y: -79.70999}
   m_SizeDelta: {x: 301.9, y: 79.86}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &664297004
