@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreController : MonoBehaviour
 {
@@ -8,17 +9,46 @@ public class ScoreController : MonoBehaviour
 
     public int highScore;
 
-    public TextMeshProUGUI txtScore;
+    public static int qtd = 1;
 
+    [Header("Todos os doces coletados")]
+    public int allcandies;
+    
+    public TextMeshProUGUI txtScore;
+    
     [Header("Audio")]
     [SerializeField] private AudioSource playerAudioSource;
     [SerializeField] private AudioClip collectCandy;
 
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private bool oneTime = false;
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (scene.name == "Game Over" && !oneTime)
+        {
+            oneTime = true;
+            allcandies += score;
+            PlayerPrefs.SetInt("allCandies", allcandies);
+        }
+    }
+    
     private void Update()
     {
         UpdateScore();
-        UpdateTotalCandies();
+        UpdateHighScore();
+        
+        allcandies = PlayerPrefs.GetInt("allCandies");
     }
 
     void UpdateScore()
@@ -26,15 +56,14 @@ public class ScoreController : MonoBehaviour
         score = PlayerPrefs.GetInt("score");
         txtScore.text = score.ToString();
     }
-
-    void UpdateTotalCandies()
+    
+    void UpdateHighScore()
     {
         if (PlayerStatus.GameOver)
         {
-           if(score > highScore)
+            if (score > PlayerPrefs.GetInt("highscore"))
            {
-               highScore = score;
-               PlayerPrefs.SetInt("highscore", highScore);
+               PlayerPrefs.SetInt("highscore", score);
            }
         }
     }
@@ -45,7 +74,7 @@ public class ScoreController : MonoBehaviour
         {
             playerAudioSource.clip = collectCandy;
             playerAudioSource.Play();
-            score++;
+            score += qtd;
             PlayerPrefs.SetInt("score", score);
             Destroy(col.gameObject);
         }

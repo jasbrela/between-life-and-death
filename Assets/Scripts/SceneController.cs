@@ -11,12 +11,39 @@ public class SceneController : MonoBehaviour
     private string startGameSceneName;
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Toggle music;
+    [SerializeField] private Toggle sfx;
 
     [Header("Score na scene Game Over")] [SerializeField]
     private TMP_Text gameOverText;
 
     private void Start()
     {
+        if (music != null)
+        {
+            if (PlayerPrefs.GetInt("musicToggle") == -1)
+            {
+                music.isOn = false;
+                musicToggleClick(music);
+            }
+            else
+            {
+                music.isOn = true;
+                musicToggleClick(music);
+            }
+
+            if (PlayerPrefs.GetInt("sfxToggle") == -1)
+            {
+                sfx.isOn = false;
+                sfxToggleClick(sfx);
+            }
+            else
+            {
+                sfx.isOn = true;
+                sfxToggleClick(sfx);
+            }
+        }
+
         if (gameOverText != null)
         {
             gameOverText.text += PlayerPrefs.GetInt("score").ToString();
@@ -30,6 +57,12 @@ public class SceneController : MonoBehaviour
         Reset();
         SceneManager.LoadScene(startGameSceneName);
         PlayerPrefs.SetInt("score", 0);
+        audioSource.Play();
+    }
+
+    public void Store()
+    {
+        SceneManager.LoadScene("Store");
         audioSource.Play();
     }
 
@@ -62,7 +95,12 @@ public class SceneController : MonoBehaviour
 
     public void LoadSelectedScene(string sceneName)
     {
+        if(sceneName != "Ghost")
+        {
+            PlayerStatus.GhostMode = false;
+        }
         SceneManager.LoadScene(sceneName);
+        PlayerPrefs.SetInt("score", 0);
     }
 
     public void musicToggleClick(Toggle toggle)
@@ -70,10 +108,12 @@ public class SceneController : MonoBehaviour
         if (!toggle.isOn)
         {
             audioMixer.SetFloat("Music", -88);
+            PlayerPrefs.SetInt("musicToggle", -1);
         }
         else
         {
             audioMixer.SetFloat("Music", 0);
+            PlayerPrefs.SetInt("musicToggle", 1);
         }
     }
 
@@ -82,10 +122,12 @@ public class SceneController : MonoBehaviour
         if (!toggle.isOn)
         {
             audioMixer.SetFloat("SFX", -88);
+            PlayerPrefs.SetInt("sfxToggle", -1);
         }
         else
         {
             audioMixer.SetFloat("SFX", 0);
+            PlayerPrefs.SetInt("sfxToggle", 1);
         }
     }
 }
