@@ -19,26 +19,29 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.GetInt("musicToggle") == -1)
+        if (music != null)
         {
-            music.isOn = false;
-            musicToggleClick(music);
-        }
-        else
-        {
-            music.isOn = true;
-            musicToggleClick(music);
-        }
+            if (PlayerPrefs.GetInt("musicToggle") == -1)
+            {
+                music.isOn = false;
+                musicToggleClick(music);
+            }
+            else
+            {
+                music.isOn = true;
+                musicToggleClick(music);
+            }
 
-        if (PlayerPrefs.GetInt("sfxToggle") == -1)
-        {
-            sfx.isOn = false;
-            sfxToggleClick(sfx);
-        }
-        else
-        {
-            sfx.isOn = true;
-            sfxToggleClick(sfx);
+            if (PlayerPrefs.GetInt("sfxToggle") == -1)
+            {
+                sfx.isOn = false;
+                sfxToggleClick(sfx);
+            }
+            else
+            {
+                sfx.isOn = true;
+                sfxToggleClick(sfx);
+            }
         }
 
         if (gameOverText != null)
