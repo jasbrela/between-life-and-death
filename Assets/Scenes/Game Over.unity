@@ -391,6 +391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startGameSceneName: Game
   audioSource: {fileID: 1528023791}
+  music: {fileID: 0}
+  sfx: {fileID: 0}
   gameOverText: {fileID: 1522474256}
   audioMixer: {fileID: 0}
   panelCredits: {fileID: 0}
@@ -705,6 +707,7 @@ GameObject:
   - component: {fileID: 1528023789}
   - component: {fileID: 1528023788}
   - component: {fileID: 1528023791}
+  - component: {fileID: 1528023792}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -786,12 +789,12 @@ AudioSource:
   m_GameObject: {fileID: 1528023787}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2114266407756611593, guid: b18bbf930d84e1c46aa94d23ea9ec8ea, type: 2}
+  m_audioClip: {fileID: 8300000, guid: dd15a45e0ee207441847abf04fbde128, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -873,6 +876,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!166 &1528023792
+AudioChorusFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528023787}
+  m_Enabled: 1
+  m_DryMix: 0.13
+  m_WetMix1: 0.81
+  m_WetMix2: 0.78
+  m_WetMix3: 0.87
+  m_Delay: 39.32
+  m_Rate: 8
+  m_Depth: 0.03
 --- !u!1 &1613977531
 GameObject:
   m_ObjectHideFlags: 0
