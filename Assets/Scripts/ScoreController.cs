@@ -46,7 +46,7 @@ public class ScoreController : MonoBehaviour
     private void Update()
     {
         UpdateScore();
-        UpdateTotalCandies();
+        UpdateHighScore();
         
         allcandies = PlayerPrefs.GetInt("allCandies");
     }
@@ -57,14 +57,13 @@ public class ScoreController : MonoBehaviour
         txtScore.text = score.ToString();
     }
     
-    void UpdateTotalCandies()
+    void UpdateHighScore()
     {
         if (PlayerStatus.GameOver)
         {
-           if(score > highScore)
+            if (score > PlayerPrefs.GetInt("highscore"))
            {
-               highScore = score;
-               PlayerPrefs.SetInt("highscore", highScore);
+               PlayerPrefs.SetInt("highscore", score);
            }
         }
     }
