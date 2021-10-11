@@ -3082,7 +3082,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1366945787}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: sfxToggleClick
+        m_MethodName: musicToggleClick
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1471586882}

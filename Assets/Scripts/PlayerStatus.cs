@@ -13,6 +13,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private AudioClip hit;
     [SerializeField] private AudioSource bgAudioSource;
 
+
     private void Awake()
     {
         CurrentDebuff = Debuff.None;
@@ -50,7 +51,7 @@ public class PlayerStatus : MonoBehaviour
                 GameOver = true;
                 StartCoroutine(nameof(Delay));
             }
-            else
+            else if (!GhostMode && PlayerPrefs.GetInt("revived") != 1)
             {
                 SceneManager.LoadScene("Ghost");
                 playerAudioSource.clip = hit;
@@ -58,11 +59,22 @@ public class PlayerStatus : MonoBehaviour
                 GetComponent<SpriteRenderer>().color = new Color(255, 176, 171);
                 GhostMode = true;
             }
+            else
+            {
+                playerAudioSource.clip = hit;
+                playerAudioSource.Play();
+                bgAudioSource.Stop();
+                if (gameOverMessage != null) gameOverMessage.SetActive(true);
+                GameOver = true;
+                PlayerPrefs.SetInt("revived", 0);
+                StartCoroutine(nameof(Delay));
+            }
         }
         else if (other.gameObject.CompareTag("soul"))
         {
             if (GhostMode)
             {
+                PlayerPrefs.SetInt("revived",1);
                 SceneManager.LoadScene("Game");
                 playerAudioSource.clip = hit;
                 playerAudioSource.Play();
