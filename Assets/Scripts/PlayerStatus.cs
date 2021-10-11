@@ -16,9 +16,12 @@ public class PlayerStatus : MonoBehaviour
 
     private void Awake()
     {
-        CurrentDebuff = Debuff.None;
-        GameOver = false;
-        Time.timeScale = 1;
+        if (!GhostMode)
+        {
+            Time.timeScale = 1;
+            CurrentDebuff = Debuff.None;
+            GameOver = false;
+        }
     }
 
     private void Update()
@@ -29,7 +32,7 @@ public class PlayerStatus : MonoBehaviour
         }
         else
         {
-            Time.timeScale += Time.deltaTime / 40;
+            Time.timeScale += Time.deltaTime / 60;
         }
 
         if (GameOver)
