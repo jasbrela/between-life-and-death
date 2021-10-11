@@ -1183,7 +1183,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2677,7 +2677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -97, y: -16}
+  m_AnchoredPosition: {x: -97, y: -79.71}
   m_SizeDelta: {x: 301.9, y: 79.86}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &664297004
