@@ -155,11 +155,9 @@ public class StoreManager : MonoBehaviour
         switch (item)
         {
             case 0: // nao usou nada
-                ScoreController.qtd = 1;
                 // candieMultiplies = false;
                 break;
             case 1: // multiplicador de doce
-                ScoreController.qtd = 2;
                 break;
             case 2: // doces na direção do player
                 GameObject.FindWithTag("doce").transform.Translate(

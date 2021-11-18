@@ -1,4 +1,5 @@
 using System;
+using Store;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,15 +8,13 @@ using UnityEngine.Audio;
 
 public class SceneController : MonoBehaviour
 {
-    [Header("Nome da cena de gameplay")] [SerializeField]
-    private string startGameSceneName;
+    [SerializeField] private string startGameSceneName;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Toggle music;
     [SerializeField] private Toggle sfx;
 
-    [Header("Score na scene Game Over")] [SerializeField]
-    private TMP_Text gameOverText;
+    [SerializeField][Tooltip("Only for GAME OVER's scene")] private TMP_Text gameOverScore;
 
     private void Start()
     {
@@ -24,29 +23,29 @@ public class SceneController : MonoBehaviour
             if (PlayerPrefs.GetInt("musicToggle") == -1)
             {
                 music.isOn = false;
-                musicToggleClick(music);
+                MusicToggleClick(music);
             }
             else
             {
                 music.isOn = true;
-                musicToggleClick(music);
+                MusicToggleClick(music);
             }
 
             if (PlayerPrefs.GetInt("sfxToggle") == -1)
             {
                 sfx.isOn = false;
-                sfxToggleClick(sfx);
+                SfxToggleClick(sfx);
             }
             else
             {
                 sfx.isOn = true;
-                sfxToggleClick(sfx);
+                SfxToggleClick(sfx);
             }
         }
 
-        if (gameOverText != null)
+        if (gameOverScore != null)
         {
-            gameOverText.text += PlayerPrefs.GetInt("score").ToString();
+            gameOverScore.text += PlayerPrefs.GetInt(PlayerScore.ScoreKey).ToString();
         }
     }
 
@@ -56,7 +55,11 @@ public class SceneController : MonoBehaviour
     {
         Reset();
         SceneManager.LoadScene(startGameSceneName);
-        PlayerPrefs.SetInt("score", 0);
+        if (startGameSceneName == "Game")
+        {
+            PowerUpManager.Instance.UseAllPowerUps();
+        }
+        PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);
         audioSource.Play();
     }
 
@@ -103,7 +106,7 @@ public class SceneController : MonoBehaviour
         PlayerPrefs.SetInt("score", 0);
     }
 
-    public void musicToggleClick(Toggle toggle)
+    public void MusicToggleClick(Toggle toggle)
     {
         if (!toggle.isOn)
         {
@@ -117,7 +120,7 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public void sfxToggleClick(Toggle toggle)
+    public void SfxToggleClick(Toggle toggle)
     {
         if (!toggle.isOn)
         {

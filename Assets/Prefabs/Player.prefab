@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 2871676534880197819}
   - component: {fileID: 11507064}
   - component: {fileID: 3169961317710918329}
-  - component: {fileID: 3480800901209544362}
   - component: {fileID: 44357498815391522}
+  - component: {fileID: 8578565944053079354}
+  - component: {fileID: 4097157060679545385}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -75,10 +76,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1291553939
-  m_SortingLayer: 0
+  m_SortingLayerID: 964676317
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a7e65672b9c315841a6aad3e712329b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6371b6bbe17ce7a4b96401ba30a615ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,7 +142,7 @@ MonoBehaviour:
   swipeThreshold: 70
   pos: {fileID: 11400000, guid: 432b5aece0ae1414abf24eab64c82a6f, type: 2}
   scenario: {fileID: 0}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 3169961317710918329}
   swipe: {fileID: 8300000, guid: 3059c7198bc2a80498bbaecb7e7d9c68, type: 3}
 --- !u!114 &11507064
 MonoBehaviour:
@@ -156,9 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverMessage: {fileID: 0}
-  playeraudioSource: {fileID: 0}
+  playerAudioSource: {fileID: 3169961317710918329}
   hit: {fileID: 8300000, guid: ae1cd8385c5810a46958fd11f22835ba, type: 3}
-  bgaudioSource: {fileID: 0}
+  bgAudioSource: {fileID: 0}
 --- !u!82 &3169961317710918329
 AudioSource:
   m_ObjectHideFlags: 0
@@ -255,7 +256,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3480800901209544362
+--- !u!95 &44357498815391522
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871676534880197812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c6d7eb6b1eafee4195facf0bed8412d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8578565944053079354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871676534880197812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251f85985036e344a8e3c3e94718eb43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHumanSkin: {fileID: 11400000, guid: 036f35406bbd2984ab74b1b09dcc1858, type: 2}
+  defaultGhostSkin: {fileID: 11400000, guid: 73cf616bb493c184f8994d1a5c44195f, type: 2}
+  allSkins: {fileID: 11400000, guid: 87e02af72c105bd4bbcdc54e28b67847, type: 2}
+--- !u!114 &4097157060679545385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,26 +303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  docesTotal: 0
-  gameOver: 0
+  txtScore: {fileID: 0}
   playerAudioSource: {fileID: 3169961317710918329}
-  colectCandy: {fileID: 8300000, guid: da8c269e2001c2c43be9affa65356db0, type: 3}
---- !u!95 &44357498815391522
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2871676534880197812}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6074065cc535b9843a73b12c50c46c45, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  collectCandy: {fileID: 8300000, guid: da8c269e2001c2c43be9affa65356db0, type: 3}

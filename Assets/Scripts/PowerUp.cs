@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+[Serializable, CreateAssetMenu(fileName = "New PowerUp", menuName = "Store/Power Up")]
+public class PowerUp : ScriptableObject
 {
-    public void onClickFree()
-    {
-        throw new NotImplementedException("Não temos ADS ainda.");
-    }
+    public PowerUpType powerUpType;
+    [Tooltip("For store")] public Sprite sprite;
+    public int price;
 }

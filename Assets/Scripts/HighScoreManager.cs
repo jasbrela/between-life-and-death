@@ -7,11 +7,6 @@ public class HighScoreManager : MonoBehaviour
     
     void Start()
     {
-        txtHighScore.text = PlayerPrefs.GetInt("highscore").ToString();
-    }
-    
-    void Update()
-    {
-        txtHighScore.text = PlayerPrefs.GetInt("highscore").ToString();
+        txtHighScore.text = PlayerPrefs.GetInt(PlayerScore.HighScoreKey).ToString();
     }
 }

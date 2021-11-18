@@ -1,4 +1,5 @@
 using System.Collections;
+using Store;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,6 @@ public class PlayerStatus : MonoBehaviour
     public static Debuff CurrentDebuff;
     public static bool GhostMode;
     public static bool GameOver;
-    [SerializeField] private GameObject gameOverMessage;
     [Header("Audio")]
     [SerializeField] private AudioSource playerAudioSource;
     [SerializeField] private AudioClip hit;
@@ -40,19 +40,21 @@ public class PlayerStatus : MonoBehaviour
             Time.timeScale = 0;
         }
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
             if (GhostMode)
             {
+                Debug.Log(PlayerPrefs.GetInt(PlayerMoney.Key) + " + " + PlayerPrefs.GetInt(PlayerScore.ScoreKey));
+                PlayerPrefs.SetInt(PlayerMoney.Key, PlayerPrefs.GetInt(PlayerMoney.Key) + 
+                    PlayerPrefs.GetInt(PlayerScore.ScoreKey));
                 playerAudioSource.clip = hit;
                 playerAudioSource.Play();
                 bgAudioSource.Stop();
-                if (gameOverMessage!= null) gameOverMessage.SetActive(true);
                 GameOver = true;
-                StartCoroutine(nameof(Delay));
+                StartCoroutine(nameof(LoadGameOverScene));
             }
             else if (!GhostMode && PlayerPrefs.GetInt("revived") != 1)
             {
@@ -67,26 +69,26 @@ public class PlayerStatus : MonoBehaviour
                 playerAudioSource.clip = hit;
                 playerAudioSource.Play();
                 bgAudioSource.Stop();
-                if (gameOverMessage != null) gameOverMessage.SetActive(true);
-                GameOver = true;
                 PlayerPrefs.SetInt("revived", 0);
-                StartCoroutine(nameof(Delay));
+                GameOver = true;
+                StartCoroutine(nameof(LoadGameOverScene));
             }
         }
         else if (other.gameObject.CompareTag("soul"))
         {
             if (GhostMode)
             {
+                GhostMode = false;
+
                 PlayerPrefs.SetInt("revived",1);
                 SceneManager.LoadScene("Game");
                 playerAudioSource.clip = hit;
                 playerAudioSource.Play();
-                GhostMode = false;
             }
         }
     }
     
-    IEnumerator Delay()
+    IEnumerator LoadGameOverScene()
     {
         yield return new WaitForSecondsRealtime(0.5f);
         SceneManager.LoadScene("Game Over");

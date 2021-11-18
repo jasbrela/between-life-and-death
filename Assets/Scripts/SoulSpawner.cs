@@ -6,7 +6,6 @@ public class SoulSpawner : BaseSpawner
 
     private new void Start()
     {
-        Debug.Log("entrou");
         Invoke(nameof(Spawn), Delay);
 }
 

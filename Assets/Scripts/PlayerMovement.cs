@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private const float ScenarioMoveDistance = 0.2f;
     [SerializeField] private float swipeThreshold = 80f;
     [SerializeField] private Position pos;
     [SerializeField] private GameObject scenario;
@@ -9,10 +11,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip swipe;
     private int _currentPos = 1;
+    private Vector3 _scenarioDestination;
     private Vector3 _destination;
     private Vector2 _fingerDown;
     private Vector2 _fingerUp;
     private int _moved;
+    private float _moveSpeed = 5f;
+
+    private void Awake()
+    {
+        // reset destination
+        _destination = transform.position;
+    }
 
     void Update()
     {
@@ -33,8 +43,6 @@ public class PlayerMovement : MonoBehaviour
                     _fingerDown = touch.position;
                     CheckSwipe();
                 }
-
-                // TODO: MOVE ONLY ONE POSITION PER TOUCH
             }
 
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -59,25 +67,18 @@ public class PlayerMovement : MonoBehaviour
                     OnSwipeLeft();
                 }
             }
+            
+            transform.position = Vector3.MoveTowards(transform.position,
+                _destination,
+                _moveSpeed * Time.deltaTime);
+            
+            scenario.transform.position = Vector3.MoveTowards(scenario.transform.position, _scenarioDestination,
+                _moveSpeed * Time.deltaTime);
         }
     }
 
     void CheckSwipe()
     {
-        /*if (VerticalMove() > swipeThreshold && VerticalMove() > HorizontalValMove())
-        {
-            if (_fingerDown.y - _fingerUp.y > 0)
-            {
-                OnSwipeUp();
-            }
-            else if (_fingerDown.y - _fingerUp.y < 0)
-            {
-                OnSwipeDown();
-            }
-
-            _fingerUp = _fingerDown;
-        }
-        else */
         if (HorizontalValMove() > swipeThreshold && HorizontalValMove() > VerticalMove())
         {
             if (_fingerDown.x - _fingerUp.x > 0)
@@ -116,17 +117,6 @@ public class PlayerMovement : MonoBehaviour
     {
         return Mathf.Abs(_fingerDown.x - _fingerUp.x);
     }
-/*
-    void OnSwipeUp()
-    {
-        Debug.Log("Swipe UP");
-    }
-
-    void OnSwipeDown()
-    {
-        Debug.Log("Swipe Down");
-    }
-    */
 
     void OnSwipeLeft()
     {
@@ -134,11 +124,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _moved = 1;
             _currentPos--;
-            scenario.transform.position = new Vector3(scenario.transform.position.x + 0.2f,
-                scenario.transform.position.y, scenario.transform.position.z);
-            _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
-            Move();
             
+            MoveScenario(ScenarioMoveDistance);
+            MovePlayer();
         }
     }
 
@@ -148,19 +136,26 @@ public class PlayerMovement : MonoBehaviour
         {
             _moved = 1;
             _currentPos++;
-            scenario.transform.position = new Vector3(scenario.transform.position.x - 0.2f,
-            scenario.transform.position.y, scenario.transform.position.z);
-            _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
-            Move();
+            
+            MoveScenario(-ScenarioMoveDistance);
+            MovePlayer();
         }
     }
 
-    void Move()
+    private void MoveScenario(float distance)
     {
+        // sets scenario destination
+        _scenarioDestination = new Vector3(scenario.transform.position.x + distance,
+            scenario.transform.position.y, scenario.transform.position.z);
+    }
+
+    void MovePlayer()
+    {
+        _destination = new Vector2(pos.positions[_currentPos].position.x, transform.position.y);
+
         audioSource.clip = swipe;
         audioSource.Play();
-        transform.position = new Vector3(_destination.x, transform.position.y, transform.position.z);
-        Invoke("MovedStatus", 0.2f);
+        Invoke(nameof(MovedStatus), 0.2f);
     }
 
     void MovedStatus()

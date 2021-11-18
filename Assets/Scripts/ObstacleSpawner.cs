@@ -1,3 +1,4 @@
+using Store;
 using UnityEngine;
 
 public class ObstacleSpawner : BaseSpawner
@@ -8,7 +9,6 @@ public class ObstacleSpawner : BaseSpawner
 
     private new void Start()
     {
-        _storeManager = GameObject.FindWithTag("storeManager").GetComponent<StoreManager>();
         Invoke(nameof(Spawn), Delay);
     }
     
@@ -16,11 +16,10 @@ public class ObstacleSpawner : BaseSpawner
     {
         float minRepeat = 1.5f;
         float maxRepeat = 2f;
+
+        if (PowerUpManager.Instance.GetIsNoMoreObstaclesActive()) return;
         
-        if (_storeManager.item != 10) // se nao usa o NoObstacles
-        {
-            base.Spawn();
-        }
+        base.Spawn();
         Invoke(nameof(Spawn), Random.Range(minRepeat, maxRepeat));
     }
 }
