@@ -1,3 +1,4 @@
+using Spawners;
 using UnityEngine;
 
 public class Soul: BaseSpawnable

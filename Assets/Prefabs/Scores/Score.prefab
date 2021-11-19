@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1690452625195586177}
   m_Layer: 5
   m_Name: Score
-  m_TagString: score
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c451779c36425364aa087dc00d231258, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 7a583015aace34f49ac5ed6c9e0facef, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5727641467031991278}
   m_Layer: 5
   m_Name: Score
-  m_TagString: score
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class Cheat : MonoBehaviour
@@ -9,7 +8,7 @@ public class Cheat : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            PlayerPrefs.SetInt("allCandies", PlayerPrefs.GetInt("allCandies") + 100);
+            PlayerPrefs.SetInt(PlayerMoney.Key, PlayerPrefs.GetInt(PlayerMoney.Key) + 100);
         }
         
         if (Input.GetKeyDown(KeyCode.F2))

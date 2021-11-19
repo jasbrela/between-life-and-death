@@ -1,31 +1,20 @@
 using System;
 using ScriptableObjects;
+using Store;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Store
+namespace Player
 {
     public class PlayerMoney : MonoBehaviour
     {
         public static readonly string Key = "player_money";
         [SerializeField] TMP_Text moneyLabel;
 
-    
         private void Start()
         {
             UpdateMoneyLabel();
-        }
-
-        private void Update()
-        {
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) + 10);
-                UpdateMoneyLabel();
-            }
-#endif
         }
 
         private void UpdateMoneyLabel()

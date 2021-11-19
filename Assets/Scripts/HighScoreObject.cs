@@ -1,7 +1,8 @@
-using UnityEngine;
+using Player;
 using TMPro;
+using UnityEngine;
 
-public class HighScoreManager : MonoBehaviour
+public class HighScoreObject : MonoBehaviour
 {
     public TextMeshProUGUI txtHighScore;
     

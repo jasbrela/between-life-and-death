@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6343834581829406659}
   - component: {fileID: 4173835196525560732}
   m_Layer: 0
-  m_Name: HumanSoul
-  m_TagString: soul
+  m_Name: Soul
+  m_TagString: Soul
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

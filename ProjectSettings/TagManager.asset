@@ -4,15 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - score
-  - docesTotal
   - Obstacle
-  - scoreManager
-  - storeManager
-  - soul
-  - docesTotais
   - Skin
   - Candy
+  - Soul
   layers:
   - Default
   - TransparentFX

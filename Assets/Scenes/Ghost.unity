@@ -740,7 +740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CONFUS\xC3O! Os controles agora est\xE3o invertidos!"
+  m_text: "CONFUSION! Controls are now reversed!\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2100000, guid: f665aa0a660886640a7f2d2ba13fc915, type: 2}
@@ -837,9 +837,17 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: d5e8ba895e4ef4740b7c610656f486fa, type: 2}
+    - target: {fileID: 3585875946495482425, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5727641467031991275, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
       propertyPath: m_Name
       value: Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727641467031991275, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5727641467031991276, guid: 9c1026735d283f64b94cfa6767651af7, type: 3}
       propertyPath: m_Pivot.x
@@ -981,7 +989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "ATEN\xC7\xC3O! O jogo ficar\xE1 bem mais r\xE1pido agora!"
+  m_text: "\rATTENTION! The game gets a lot faster now!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2100000, guid: f665aa0a660886640a7f2d2ba13fc915, type: 2}
@@ -1344,7 +1352,7 @@ GameObject:
   - component: {fileID: 1743807902}
   - component: {fileID: 1743807901}
   m_Layer: 0
-  m_Name: VillainManager
+  m_Name: Debuff Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1362,9 +1370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0eff4d29652a42498d87a389b0e4a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notif: {fileID: 1658931322}
-  invertedNotif: {fileID: 1055076711}
-  speedNotif: {fileID: 1503409339}
+  notification: {fileID: 1658931322}
+  invertedNotification: {fileID: 1055076711}
+  speedNotification: {fileID: 1503409339}
 --- !u!4 &1743807902
 Transform:
   m_ObjectHideFlags: 0

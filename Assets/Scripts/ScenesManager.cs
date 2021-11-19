@@ -1,13 +1,20 @@
-using System;
+using Player;
 using Store;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 
-public class SceneController : MonoBehaviour
+public class ScenesManager : MonoBehaviour
 {
+
+    public static string MenuScene = "Menu";
+    public static string StoreScene = "Store";
+    public static string HumanGameScene = "Game";
+    public static string GhostGameScene = "Ghost";
+    public static string GameOverScene = "Game Over";
+
     [SerializeField] private string startGameSceneName;
 
     [SerializeField] private AudioSource audioSource;
@@ -55,7 +62,7 @@ public class SceneController : MonoBehaviour
     {
         Reset();
         SceneManager.LoadScene(startGameSceneName);
-        if (startGameSceneName == "Game")
+        if (startGameSceneName == HumanGameScene)
         {
             PowerUpManager.Instance.UseAllPowerUps();
         }
@@ -71,7 +78,7 @@ public class SceneController : MonoBehaviour
 
     private void Reset()
     {
-        PlayerStatus.CurrentDebuff = Debuff.None;
+        PlayerStatus.currentDebuffType = DebuffType.None;
         PlayerStatus.GhostMode = false;
         PlayerStatus.GameOver = false;
     }
@@ -98,12 +105,12 @@ public class SceneController : MonoBehaviour
 
     public void LoadSelectedScene(string sceneName)
     {
-        if(sceneName != "Ghost")
+        if(sceneName != GhostGameScene)
         {
             PlayerStatus.GhostMode = false;
         }
         SceneManager.LoadScene(sceneName);
-        PlayerPrefs.SetInt("score", 0);
+        PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);
     }
 
     public void MusicToggleClick(Toggle toggle)

@@ -1,9 +1,10 @@
+using System;
 using Enums;
 using UnityEngine;
 
 namespace ScriptableObjects
 {
-    [System.Serializable, CreateAssetMenu(fileName = "New Skin", menuName = "Store/Skin")]
+    [Serializable, CreateAssetMenu(fileName = "New Skin", menuName = "Store/Skin")]
     public class Skin : ScriptableObject
     {
         public SkinID id;
