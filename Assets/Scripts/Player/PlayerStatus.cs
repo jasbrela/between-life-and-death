@@ -30,6 +30,7 @@ namespace Player
 
         private void Update()
         {
+            Debug.Log("Já reviveu? " + revived);
             if (currentDebuffType != DebuffType.HigherVelocity)
             {
                 Time.timeScale += Time.deltaTime / 80;
@@ -72,7 +73,7 @@ namespace Player
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
-                    revived = true;
+                    revived = false;
                     GameOver = true;
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
