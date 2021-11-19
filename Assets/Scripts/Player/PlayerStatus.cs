@@ -50,7 +50,7 @@ namespace Player
         {
             if (other.gameObject.CompareTag("Obstacle"))
             {
-                if (GhostMode)
+                if (GhostMode) // (2) Fantasma
                 {
                     PlayerPrefs.SetInt(PlayerMoney.Key, PlayerPrefs.GetInt(PlayerMoney.Key) + 
                                                         PlayerPrefs.GetInt(PlayerScore.ScoreKey));
@@ -60,7 +60,7 @@ namespace Player
                     GameOver = true;
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
-                else if (!GhostMode && !revived)
+                else if (!GhostMode && !revived) // (1) Humano, mas ainda não reviveu
                 {
                     SceneManager.LoadScene(ScenesManager.GhostGameScene);
                     playerAudioSource.clip = hit;
@@ -68,7 +68,7 @@ namespace Player
                     GetComponent<SpriteRenderer>().color = new Color(255, 176, 171);
                     GhostMode = true;
                 }
-                else
+                else // (3) Humano que reviveu ou fantasma.
                 {
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
