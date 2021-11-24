@@ -56,6 +56,7 @@ namespace Player
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
                     GameOver = true;
+                    UpdateHighScore();
                     AddMoneyBasedOnScore();
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
@@ -74,6 +75,7 @@ namespace Player
                     bgAudioSource.Stop();
                     Revived = false;
                     GameOver = true;
+                    UpdateHighScore();
                     AddMoneyBasedOnScore();
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
@@ -91,6 +93,14 @@ namespace Player
             }
         }
 
+        public void UpdateHighScore()
+        {
+            if (PlayerPrefs.GetInt(PlayerScore.ScoreKey) > PlayerPrefs.GetInt(PlayerScore.HighScoreKey))
+            {
+                PlayerPrefs.SetInt(PlayerScore.HighScoreKey, PlayerPrefs.GetInt(PlayerScore.ScoreKey));
+            }
+        }
+        
         private void AddMoneyBasedOnScore()
         {
             PlayerPrefs.SetInt(PlayerMoney.Key, PlayerPrefs.GetInt(PlayerMoney.Key) + 

@@ -1,3 +1,4 @@
+using System;
 using Store;
 using TMPro;
 using UnityEngine;
@@ -32,9 +33,6 @@ namespace Player
             if (scene.name == ScenesManager.HumanGameScene && !PlayerStatus.Revived)
             {
                 PlayerPrefs.SetInt(ScoreKey, 0);
-            } else if (scene.name == ScenesManager.GameOverScene)
-            {
-                UpdateHighScore();
             }
         }
 
@@ -49,17 +47,6 @@ namespace Player
             if (scoreText != null)
             {
                 scoreText.text = _score.ToString();
-            }
-        }
-
-        void UpdateHighScore()
-        {
-            if (PlayerStatus.GameOver)
-            {
-                if (_score > PlayerPrefs.GetInt(HighScoreKey))
-                {
-                    PlayerPrefs.SetInt(HighScoreKey, _score);
-                }
             }
         }
 
