@@ -7,7 +7,7 @@ namespace Player
     public class PlayerStatus : MonoBehaviour
     {
         private const string SoulTag = "Soul";
-        private static bool revived;
+        public static bool Revived { get; private set; }
     
         public static DebuffType currentDebuffType;
         public static bool GhostMode;
@@ -30,7 +30,7 @@ namespace Player
 
         private void Update()
         {
-            Debug.Log("Já reviveu? " + revived);
+            Debug.Log("Já reviveu? " + Revived);
             if (currentDebuffType != DebuffType.HigherVelocity)
             {
                 Time.timeScale += Time.deltaTime / 80;
@@ -50,17 +50,16 @@ namespace Player
         {
             if (other.gameObject.CompareTag("Obstacle"))
             {
-                if (GhostMode) // (2) Fantasma
+                if (GhostMode) // (2) DIED in GHOST MODE -> GAME OVER
                 {
-                    PlayerPrefs.SetInt(PlayerMoney.Key, PlayerPrefs.GetInt(PlayerMoney.Key) + 
-                                                        PlayerPrefs.GetInt(PlayerScore.ScoreKey));
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
                     GameOver = true;
+                    AddMoneyBasedOnScore();
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
-                else if (!GhostMode && !revived) // (1) Humano, mas ainda não reviveu
+                else if (!GhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
                 {
                     SceneManager.LoadScene(ScenesManager.GhostGameScene);
                     playerAudioSource.clip = hit;
@@ -68,27 +67,34 @@ namespace Player
                     GetComponent<SpriteRenderer>().color = new Color(255, 176, 171);
                     GhostMode = true;
                 }
-                else // (3) Humano que reviveu ou fantasma.
+                else // DIED in HUMAN MODE, after reviving -> GAME OVER
                 {
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
-                    revived = false;
+                    Revived = false;
                     GameOver = true;
+                    AddMoneyBasedOnScore();
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
             }
-            else if (other.gameObject.CompareTag(SoulTag))
+            else if (other.gameObject.CompareTag(SoulTag)) // COLLECT SOUL -> HUMAN MODE
             {
                 if (GhostMode)
                 {
                     GhostMode = false;
-                    revived = true;
+                    Revived = true;
                     SceneManager.LoadScene(ScenesManager.HumanGameScene);
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                 }
             }
+        }
+
+        private void AddMoneyBasedOnScore()
+        {
+            PlayerPrefs.SetInt(PlayerMoney.Key, PlayerPrefs.GetInt(PlayerMoney.Key) + 
+                                                PlayerPrefs.GetInt(PlayerScore.ScoreKey));
         }
     
         IEnumerator LoadGameOverScene()

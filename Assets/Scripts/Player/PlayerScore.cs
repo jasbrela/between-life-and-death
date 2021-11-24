@@ -29,12 +29,11 @@ namespace Player
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.name == ScenesManager.HumanGameScene)
+            if (scene.name == ScenesManager.HumanGameScene && !PlayerStatus.Revived)
             {
                 PlayerPrefs.SetInt(ScoreKey, 0);
-            } else if (scene.name == ScenesManager.GhostGameScene)
+            } else if (scene.name == ScenesManager.GameOverScene)
             {
-                // while ghost don't increase score
                 UpdateHighScore();
             }
         }

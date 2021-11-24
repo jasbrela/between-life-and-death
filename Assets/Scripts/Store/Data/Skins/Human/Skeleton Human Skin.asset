@@ -16,4 +16,4 @@ MonoBehaviour:
   skinType: 0
   animator: {fileID: 9100000, guid: 206eb5fd3293ebe459abb9778ccd2a37, type: 2}
   sprite: {fileID: 21300000, guid: 78e5627bbd1a8004b8095a7346de261f, type: 3}
-  price: 250
+  price: 25
