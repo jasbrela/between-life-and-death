@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyLabel: {fileID: 664297004}
   feedbackAnim: {fileID: 2010084397}
-  candiesAnim: {fileID: 2010084397}
+  candiesAnim: {fileID: 469164483}
   feedbackSprite: {fileID: 2010084398}
 --- !u!4 &47286457
 Transform:
@@ -1570,7 +1570,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: a1a842a6f3642f94a8c0edbbe2023178, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!224 &606441785 stripped
