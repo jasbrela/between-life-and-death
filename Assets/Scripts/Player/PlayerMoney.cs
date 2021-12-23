@@ -13,10 +13,12 @@ namespace Player
         [SerializeField] TMP_Text moneyLabel;
         [SerializeField] private Animation feedbackAnim;
         [SerializeField] private Animation candiesAnim;
+        [SerializeField] private SpriteRenderer feedbackSprite;
 
         private void Start()
         {
             UpdateMoneyLabel();
+            feedbackSprite.size = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width * 1.5f, Screen.height * 1.5f));
         }
 
         private void UpdateMoneyLabel()

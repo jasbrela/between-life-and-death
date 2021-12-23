@@ -247,7 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyLabel: {fileID: 664297004}
   feedbackAnim: {fileID: 2010084397}
-  candiesAnim: {fileID: 0}
+  candiesAnim: {fileID: 2010084397}
+  feedbackSprite: {fileID: 2010084398}
 --- !u!4 &47286457
 Transform:
   m_ObjectHideFlags: 0
@@ -1491,6 +1492,7 @@ GameObject:
   - component: {fileID: 469164480}
   - component: {fileID: 469164482}
   - component: {fileID: 469164481}
+  - component: {fileID: 469164483}
   m_Layer: 5
   m_Name: Candy
   m_TagString: Untagged
@@ -1555,6 +1557,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469164479}
   m_CullTransparentMesh: 1
+--- !u!111 &469164483
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469164479}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a1a842a6f3642f94a8c0edbbe2023178, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a1a842a6f3642f94a8c0edbbe2023178, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!224 &606441785 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4424255757605587670, guid: 39421246202490645ab6af06f3938d78, type: 3}
@@ -1638,7 +1656,6 @@ GameObject:
   - component: {fileID: 664297003}
   - component: {fileID: 664297005}
   - component: {fileID: 664297004}
-  - component: {fileID: 664297006}
   m_Layer: 5
   m_Name: Value
   m_TagString: docesTotais
@@ -1762,22 +1779,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664297002}
   m_CullTransparentMesh: 1
---- !u!111 &664297006
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664297002}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 7a668e7bf47eb54479422f87c8d865ef, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 7a668e7bf47eb54479422f87c8d865ef, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1001 &681545249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2593,8 +2594,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 720, y: 1280}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_ScreenMatchMode: 2
+  m_MatchWidthOrHeight: 0.504
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2728,7 +2729,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 720, y: 1280}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -3063,26 +3064,31 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 5.6456676, y: 10.028037}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
+  m_Size: {x: 5.645, y: 10.03}
+  m_AdaptiveModeThreshold: 1
+  m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &2010084399
-Transform:
+--- !u!224 &2010084399
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010084396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11531.25}
-  m_LocalScale: {x: 128.125, y: 128.125, z: 128.125}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 128, y: 128, z: 128}
   m_Children: []
   m_Father: {fileID: 1245250099}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2106382250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3115,11 +3121,11 @@ RectTransform:
   m_Father: {fileID: 1245250099}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 435}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -120, y: 400}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &2124335530
 GameObject:
   m_ObjectHideFlags: 0
