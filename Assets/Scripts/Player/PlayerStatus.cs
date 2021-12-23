@@ -6,6 +6,8 @@ namespace Player
 {
     public class PlayerStatus : MonoBehaviour
     {
+        private const float Velocity = 0.000005f;
+        [SerializeField] [Range(1f, 5f)] private float maxVelocity;
         private const string SoulTag = "Soul";
         public static bool Revived { get; private set; }
     
@@ -30,14 +32,20 @@ namespace Player
 
         private void Update()
         {
-            Debug.Log("Já reviveu? " + Revived);
             if (currentDebuffType != DebuffType.HigherVelocity)
             {
-                Time.timeScale += Time.deltaTime / 80;
+                if (Time.timeScale < maxVelocity)
+                {
+                    Debug.Log(Time.timeScale);
+                    Time.timeScale += Velocity;
+                }
             }
             else
             {
-                Time.timeScale += Time.deltaTime / 60;
+                if (Time.timeScale < maxVelocity)
+                {
+                    Time.timeScale += Velocity * 1.2f;
+                }
             }
 
             if (GameOver)
@@ -62,6 +70,7 @@ namespace Player
                 }
                 else if (!GhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
                 {
+                    Time.timeScale = (Time.timeScale - 1)/3 + 1;
                     SceneManager.LoadScene(ScenesManager.GhostGameScene);
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();

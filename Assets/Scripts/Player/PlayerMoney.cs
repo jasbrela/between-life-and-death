@@ -11,6 +11,8 @@ namespace Player
     {
         public static readonly string Key = "player_money";
         [SerializeField] TMP_Text moneyLabel;
+        [SerializeField] private Animation feedbackAnim;
+        [SerializeField] private Animation candiesAnim;
 
         private void Start()
         {
@@ -36,6 +38,10 @@ namespace Player
 
                 button.gameObject.SetActive(false);
                 button.transform.parent.Find("btn-equip").gameObject.SetActive(true);
+            }
+            else
+            {
+                PlayNotEnoughCandiesAnimation();
             }
         }
     
@@ -65,6 +71,17 @@ namespace Player
 
                 PlayerPrefs.SetInt(powerUpData.powerUpType.ToString(), PlayerPrefs.GetInt(powerUpData.powerUpType.ToString()) + 1);
             }
+            else
+            {
+                
+                PlayNotEnoughCandiesAnimation();
+            }
+        }
+
+        private void PlayNotEnoughCandiesAnimation()
+        {
+            if (feedbackAnim != null) feedbackAnim.Play();
+            if (candiesAnim != null) candiesAnim.Play();
         }
         
         public void OnClickWatchAdPowerUp(Button button)

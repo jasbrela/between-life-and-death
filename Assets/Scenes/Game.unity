@@ -1149,6 +1149,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: _velocity
+      value: 0.000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: maxVelocity
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11507064, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: bgAudioSource
       value: 
       objectReference: {fileID: 519420030}

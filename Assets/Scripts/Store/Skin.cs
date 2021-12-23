@@ -10,7 +10,7 @@ namespace ScriptableObjects
         public SkinID id;
         public SkinType skinType;
         public RuntimeAnimatorController animator;
-        [Tooltip("For store")]public Sprite sprite;
+        [Tooltip("For store")] public Sprite sprite;
         public int price;
     }
 }
