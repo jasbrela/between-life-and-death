@@ -393,7 +393,7 @@ MonoBehaviour:
   audioSource: {fileID: 1528023791}
   music: {fileID: 0}
   sfx: {fileID: 0}
-  gameOverText: {fileID: 1522474256}
+  gameOverScore: {fileID: 1522474256}
   audioMixer: {fileID: 0}
   panelCredits: {fileID: 0}
   panelMenu: {fileID: 0}

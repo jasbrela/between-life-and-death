@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658bf08fee43ca741b04cc26caed8047, type: 3}
+  m_Name: Kigurumi Human Skin
+  m_EditorClassIdentifier: 
+  id: 2
+  skinType: 0
+  animator: {fileID: 9100000, guid: a53d8184ccb65f9418c742998d6f6709, type: 2}
+  sprite: {fileID: 21300000, guid: 9ea004cfaf9ab8b4abcbf555f65da65f, type: 3}
+  price: 25

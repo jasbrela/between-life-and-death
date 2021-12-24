@@ -1,3 +1,5 @@
+using Player;
+using Spawners;
 using UnityEngine;
 
 public class SoulSpawner : BaseSpawner
@@ -6,7 +8,6 @@ public class SoulSpawner : BaseSpawner
 
     private new void Start()
     {
-        Debug.Log("entrou");
         Invoke(nameof(Spawn), Delay);
 }
 
@@ -24,7 +25,6 @@ public class SoulSpawner : BaseSpawner
 
     private new void Spawn()
     {
-        Debug.Log("Spawn");
         float minRepeat = 10f;
         float maxRepeat = 15f;
         base.Spawn();
