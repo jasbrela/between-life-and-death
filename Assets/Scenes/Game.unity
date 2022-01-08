@@ -1544,6 +1544,10 @@ PrefabInstance:
       propertyPath: bgAudioSource
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 44357498815391522, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4c6d7eb6b1eafee4195facf0bed8412d, type: 2}
     - target: {fileID: 2871676534880197812, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_Name
       value: Player

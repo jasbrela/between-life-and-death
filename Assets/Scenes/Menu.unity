@@ -881,8 +881,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1366945787}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: sfxToggleClick
+        m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
+        m_MethodName: SfxToggleClick
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 312018545}
