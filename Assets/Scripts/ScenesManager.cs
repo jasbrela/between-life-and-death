@@ -103,6 +103,23 @@ public class ScenesManager : MonoBehaviour
         panelCredits.SetActive(false);
     }
 
+    [Header("Painel dos controles")] [SerializeField]
+    private GameObject panelControls;
+
+    public void ShowControlsPanel()
+    {
+        audioSource.Play();
+        panelMenu.SetActive(false);
+        panelControls.SetActive(true);
+    }
+
+    public void HideControlsPanel()
+    {
+        audioSource.Play();
+        panelMenu.SetActive(true);
+        panelControls.SetActive(false);
+    }
+
     public void LoadSelectedScene(string sceneName)
     {
         if(sceneName != GhostGameScene)
