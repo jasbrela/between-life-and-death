@@ -8,12 +8,8 @@ using UnityEngine.UI;
 
 public class ScenesManager : MonoBehaviour
 {
-
-    public static string MenuScene = "Menu";
-    public static string StoreScene = "Store";
     public static string HumanGameScene = "Game";
     public static string GhostGameScene = "Ghost";
-    public static string GameOverScene = "Game Over";
 
     [SerializeField] private string startGameSceneName;
 
