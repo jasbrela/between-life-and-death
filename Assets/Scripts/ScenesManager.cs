@@ -10,9 +10,7 @@ public class ScenesManager : MonoBehaviour
 {
     public static string HumanGameScene = "Game";
     public static string GhostGameScene = "Ghost";
-
-    [SerializeField] private string startGameSceneName;
-
+    
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Toggle music;
     [SerializeField] private Toggle sfx;
@@ -57,11 +55,10 @@ public class ScenesManager : MonoBehaviour
     public void StartGame()
     {
         Reset();
-        SceneManager.LoadScene(startGameSceneName);
-        if (startGameSceneName == HumanGameScene)
-        {
-            PowerUpManager.Instance.UseAllPowerUps();
-        }
+        LoadSelectedScene(HumanGameScene);
+
+        PowerUpManager.Instance.UseAllPowerUps();
+        
         PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);
         audioSource.Play();
     }
@@ -101,6 +98,8 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadSelectedScene(string sceneName)
     {
+        if (PlayerStatus.isPaused) PlayerStatus.isPaused = false;
+        
         if(sceneName != GhostGameScene)
         {
             PlayerStatus.GhostMode = false;

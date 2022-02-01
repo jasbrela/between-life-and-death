@@ -1,3 +1,4 @@
+using Player;
 using Store;
 using UnityEngine;
 
@@ -22,9 +23,16 @@ namespace Spawners
 
         private void Update()
         {
-            if (PowerUpManager.Instance.GetIsCandyMagnetActive()) return;
             Move(_index);
 
+            if (PowerUpManager.Instance.GetIsCandyMagnetActive() &&
+                Vector3.Distance(transform.position, PlayerMovement.position) < 3
+                && transform.position.y > PlayerMovement.position.y)
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                    PlayerMovement.position, 10 * Time.deltaTime);
+            }
+            
             FixCollider(false);
             DestroySpawnable();
         }

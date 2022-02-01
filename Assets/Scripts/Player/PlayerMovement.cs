@@ -19,6 +19,8 @@ namespace Player
         private int _moved;
         private float _moveSpeed = 5f;
 
+        public static Vector3 position;
+
         private void Awake()
         {
             // reset destination
@@ -76,6 +78,8 @@ namespace Player
                 scenario.transform.position = Vector3.MoveTowards(scenario.transform.position, _scenarioDestination,
                     _moveSpeed * Time.deltaTime);
             }
+            
+            position = transform.position;
         }
 
         void CheckSwipe()
