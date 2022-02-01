@@ -14,6 +14,7 @@ namespace Player
         public static DebuffType currentDebuffType;
         public static bool GhostMode;
         public static bool GameOver;
+        public static bool isPaused;
     
         [Header("Audio")]
         [SerializeField] private AudioSource playerAudioSource;
@@ -32,24 +33,27 @@ namespace Player
 
         private void Update()
         {
-            if (currentDebuffType != DebuffType.HigherVelocity)
+            if (!isPaused)
             {
-                if (Time.timeScale < maxVelocity)
+                if (currentDebuffType != DebuffType.HigherVelocity)
                 {
-                    Debug.Log(Time.timeScale);
-                    Time.timeScale += Velocity;
+                    if (Time.timeScale < maxVelocity)
+                    {
+                        Time.timeScale += Velocity;
+                    }
                 }
-            }
-            else
-            {
-                if (Time.timeScale < maxVelocity)
+                else
                 {
-                    Time.timeScale += Velocity * 1.2f;
+                    if (Time.timeScale < maxVelocity)
+                    {
+                        Time.timeScale += Velocity * 1.2f;
+                    }
                 }
             }
 
             if (GameOver)
             {
+                isPaused = false;
                 Time.timeScale = 0;
             }
         }

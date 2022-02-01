@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Player;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -7,14 +6,18 @@ using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviour
 {
-    private bool pause = false;
+    [SerializeField] private Image pauseBtn;
+    [SerializeField] private Sprite pauseSprite;
+    [SerializeField] private Sprite resumeSprite;
+    
     [SerializeField] private GameObject pauseCanvas;
 
     [SerializeField] private Toggle sfx;
     [SerializeField] private Toggle music;
 
     [SerializeField] private AudioMixer audioMixer;
-    // Start is called before the first frame update
+
+    private float _timeScale;
     private void Start()
     {
         if (music != null)
@@ -42,23 +45,23 @@ public class PauseScript : MonoBehaviour
             }
         }
     }
-    public void Pause()
+
+    public void TogglePause()
     {
-        if (!pause)
+        if (!PlayerStatus.isPaused)
         {
+            pauseBtn.sprite = resumeSprite;
+            _timeScale = Time.timeScale;
             Time.timeScale = 0;
             pauseCanvas.SetActive(true);
-            pause = true;
+            PlayerStatus.isPaused = true;
         }
-    }
-
-    public void Resume()
-    {
-        if (pause)
+        else
         {
-            Time.timeScale = 1;
+            pauseBtn.sprite = pauseSprite;
+            Time.timeScale = _timeScale;
             pauseCanvas.SetActive(false);
-            pause = false;
+            PlayerStatus.isPaused = false;
         }
     }
 
