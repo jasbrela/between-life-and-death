@@ -1,23 +1,25 @@
 using System;
 using UnityEngine;
 
-public class DebuffNotification : MonoBehaviour
+namespace Debuff
 {
-    public static bool ActivateNotification;
-    private float _timer;
-
-    private void OnEnable()
+    public class DebuffNotification : MonoBehaviour
     {
-        ActivateNotification = true;
-    }
+        private float _timer;
 
-    private void Update()
-    {
-        _timer += Time.deltaTime;
-
-        if (Math.Abs(_timer - 4f) < 0.25)
+        private void Update()
         {
-            Destroy(gameObject);
+            DestroyNotificationAfterSomeTime();
+        }
+
+        private void DestroyNotificationAfterSomeTime()
+        {
+            _timer += Time.deltaTime;
+
+            if (Math.Abs(_timer - 4f) < 0.25)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

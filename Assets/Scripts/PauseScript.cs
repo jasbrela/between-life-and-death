@@ -10,7 +10,7 @@ public class PauseScript : MonoBehaviour
     [SerializeField] private Sprite pauseSprite;
     [SerializeField] private Sprite resumeSprite;
     
-    [SerializeField] private GameObject pauseCanvas;
+    [SerializeField] private GameObject pausePanel;
 
     [SerializeField] private Toggle sfx;
     [SerializeField] private Toggle music;
@@ -53,14 +53,14 @@ public class PauseScript : MonoBehaviour
             pauseBtn.sprite = resumeSprite;
             _timeScale = Time.timeScale;
             Time.timeScale = 0;
-            pauseCanvas.SetActive(true);
+            pausePanel.SetActive(true);
             PlayerStatus.isPaused = true;
         }
         else
         {
             pauseBtn.sprite = pauseSprite;
             Time.timeScale = _timeScale;
-            pauseCanvas.SetActive(false);
+            pausePanel.SetActive(false);
             PlayerStatus.isPaused = false;
         }
     }
@@ -68,7 +68,7 @@ public class PauseScript : MonoBehaviour
     public void Menu()
     {
         Time.timeScale = 1;
-        pauseCanvas.SetActive(false);
+        pausePanel.SetActive(false);
         SceneManager.LoadScene("Menu");
     }
 
