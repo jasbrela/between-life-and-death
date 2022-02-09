@@ -83,7 +83,6 @@ namespace Store
                         PlayerPrefs.SetInt(powerUpType.ToString(), PlayerPrefs.GetInt(powerUpType.ToString()) - 1);
                         _isCandyMagnetActive = true;
                         StartCoroutine(StartPowerUpTimer(10, PowerUpType.CandyMagnet));
-
                     }
 
                     break;
@@ -101,7 +100,6 @@ namespace Store
                         PlayerPrefs.SetInt(powerUpType.ToString(), PlayerPrefs.GetInt(powerUpType.ToString()) - 1);
                         _isNoMoreObstaclesActive = true;
                         StartCoroutine(StartPowerUpTimer(10, PowerUpType.NoMoreObstacles));
-
                     }
                     break;
                 default:

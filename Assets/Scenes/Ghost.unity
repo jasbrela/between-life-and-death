@@ -1203,7 +1203,11 @@ PrefabInstance:
     - target: {fileID: 44357498815391522, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6074065cc535b9843a73b12c50c46c45, type: 2}
+      objectReference: {fileID: 9100000, guid: 47c86d0487de73d4aaee998c515aa7b4, type: 2}
+    - target: {fileID: 777001874122204165, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2871676534880197812, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1218,7 +1222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2871676534880197817, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2871676534880197817, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1268,10 +1272,6 @@ PrefabInstance:
       propertyPath: scenario
       value: 
       objectReference: {fileID: 246598328}
-    - target: {fileID: 2871676534880197819, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 255707834}
     - target: {fileID: 3480800901209544362, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
       propertyPath: txtScore
       value: 
@@ -1292,5 +1292,13 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1212732014}
+    - target: {fileID: 7757041309299053263, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 47c86d0487de73d4aaee998c515aa7b4, type: 2}
+    - target: {fileID: 8943766334192743894, guid: 8a024f1d309c46640990ce47169131ee, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80261f13112922d45b09bb6b8955ff89, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a024f1d309c46640990ce47169131ee, type: 3}

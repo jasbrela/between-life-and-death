@@ -78,7 +78,6 @@ namespace Player
                     SceneManager.LoadScene(SceneController.GhostGameScene);
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
-                    GetComponent<SpriteRenderer>().color = new Color(255, 176, 171);
                     GhostMode = true;
                 }
                 else // DIED in HUMAN MODE, after reviving -> GAME OVER
