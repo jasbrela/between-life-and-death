@@ -30,7 +30,7 @@ namespace Player
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.name == ScenesManager.HumanGameScene && !PlayerStatus.Revived)
+            if (scene.name == SceneController.HumanGameScene && !PlayerStatus.Revived)
             {
                 PlayerPrefs.SetInt(ScoreKey, 0);
             }

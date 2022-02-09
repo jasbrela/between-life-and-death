@@ -75,7 +75,7 @@ namespace Player
                 else if (!GhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
                 {
                     Time.timeScale = (Time.timeScale - 1)/3 + 1;
-                    SceneManager.LoadScene(ScenesManager.GhostGameScene);
+                    SceneManager.LoadScene(SceneController.GhostGameScene);
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     GetComponent<SpriteRenderer>().color = new Color(255, 176, 171);
@@ -99,7 +99,7 @@ namespace Player
                 {
                     GhostMode = false;
                     Revived = true;
-                    SceneManager.LoadScene(ScenesManager.HumanGameScene);
+                    SceneManager.LoadScene(SceneController.HumanGameScene);
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                 }
