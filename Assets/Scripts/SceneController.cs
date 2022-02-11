@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using Player;
 using Store;
 using TMPro;
@@ -8,9 +9,6 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
-    public static string HumanGameScene = "Game";
-    public static string GhostGameScene = "Ghost";
-    
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Toggle music;
     [SerializeField] private Toggle sfx;
@@ -55,7 +53,7 @@ public class SceneController : MonoBehaviour
     public void StartGame()
     {
         Reset();
-        LoadSelectedScene(HumanGameScene);
+        LoadSelectedScene(Scenes.Game.ToString());
 
         PowerUpManager.Instance.UseAllPowerUps();
         
@@ -100,7 +98,7 @@ public class SceneController : MonoBehaviour
     {
         if (PlayerStatus.isPaused) PlayerStatus.isPaused = false;
         
-        if(sceneName != GhostGameScene)
+        if (sceneName != Scenes.Ghost.ToString())
         {
             PlayerStatus.GhostMode = false;
         }

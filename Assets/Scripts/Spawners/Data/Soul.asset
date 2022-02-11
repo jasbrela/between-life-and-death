@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df77528c852a6fd43994fe358549cf0b, type: 3}
+  m_Name: Soul
+  m_EditorClassIdentifier: 
+  pos: {fileID: 11400000, guid: 8b70738e984fac9469e6aa369b5cb65b, type: 2}
+  prefab: {fileID: 9181699873743129914, guid: 418481a11152b5d4ca8e7d195d950bcb, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: ae126ef5c741ac94481572a436969b2e, type: 3}
+  firstSpawnDelay: 25
+  minRepeatDelay: 10
+  maxRepeatDelay: 15
+  isCloud: 0

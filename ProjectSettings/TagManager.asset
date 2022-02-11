@@ -8,6 +8,7 @@ TagManager:
   - Skin
   - Candy
   - Soul
+  - storeManager
   layers:
   - Default
   - TransparentFX

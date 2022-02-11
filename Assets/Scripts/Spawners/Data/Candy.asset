@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df77528c852a6fd43994fe358549cf0b, type: 3}
+  m_Name: Candy
+  m_EditorClassIdentifier: 
+  pos: {fileID: 11400000, guid: 9ee008157bcefaa4a8b3e92bda1c022c, type: 2}
+  prefab: {fileID: 9052816817632575100, guid: 4a4500d404d7dc54da1a6a5fd8fb4e9b, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 25b519a47649fdc49bd24efd6843e420, type: 3}
+  firstSpawnDelay: 5
+  minRepeatDelay: 7
+  maxRepeatDelay: 10
+  isCloud: 0

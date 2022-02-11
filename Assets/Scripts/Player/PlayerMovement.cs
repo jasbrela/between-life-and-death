@@ -4,7 +4,6 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        private const float ScenarioMoveDistance = 0.2f;
         [SerializeField] private float swipeThreshold = 80f;
         [SerializeField] private Position pos;
         [SerializeField] private GameObject scenario;
@@ -74,9 +73,6 @@ namespace Player
                 transform.position = Vector3.MoveTowards(transform.position,
                     _destination,
                     _moveSpeed * Time.deltaTime);
-            
-                scenario.transform.position = Vector3.MoveTowards(scenario.transform.position, _scenarioDestination,
-                    _moveSpeed * Time.deltaTime);
             }
             
             position = transform.position;
@@ -129,8 +125,7 @@ namespace Player
             {
                 _moved = 1;
                 _currentPos--;
-            
-                MoveScenario(ScenarioMoveDistance);
+
                 MovePlayer();
             }
         }
@@ -141,17 +136,9 @@ namespace Player
             {
                 _moved = 1;
                 _currentPos++;
-            
-                MoveScenario(-ScenarioMoveDistance);
+
                 MovePlayer();
             }
-        }
-
-        private void MoveScenario(float distance)
-        {
-            // sets scenario destination
-            _scenarioDestination = new Vector3(scenario.transform.position.x + distance,
-                scenario.transform.position.y, scenario.transform.position.z);
         }
 
         void MovePlayer()

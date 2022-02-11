@@ -14,7 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   humanSkins:
   - {fileID: 11400000, guid: 036f35406bbd2984ab74b1b09dcc1858, type: 2}
-  - {fileID: 11400000, guid: 6fac38f219f61fa4587ddfd8c502e241, type: 2}
-  - {fileID: 11400000, guid: 00505d6ddbd11414aa755da9b3484233, type: 2}
   ghostSkins:
   - {fileID: 11400000, guid: 73cf616bb493c184f8994d1a5c44195f, type: 2}

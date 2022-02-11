@@ -54,15 +54,14 @@ public class PauseScript : MonoBehaviour
             _timeScale = Time.timeScale;
             Time.timeScale = 0;
             pausePanel.SetActive(true);
-            PlayerStatus.isPaused = true;
         }
         else
         {
             pauseBtn.sprite = pauseSprite;
             Time.timeScale = _timeScale;
             pausePanel.SetActive(false);
-            PlayerStatus.isPaused = false;
         }
+        PlayerStatus.isPaused = !PlayerStatus.isPaused;
     }
 
     public void Menu()

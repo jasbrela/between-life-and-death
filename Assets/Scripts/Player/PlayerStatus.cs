@@ -1,4 +1,5 @@
 using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,8 +7,11 @@ namespace Player
 {
     public class PlayerStatus : MonoBehaviour
     {
-        private const float Velocity = 0.000005f;
+        [SerializeField] private AnimationCurve curve;
         [SerializeField] [Range(1f, 5f)] private float maxVelocity;
+        
+        private const float DebuffMultiplier = 1.2f;
+        private float _timer = 1;
         private const string SoulTag = "Soul";
         public static bool Revived { get; private set; }
     
@@ -31,23 +35,30 @@ namespace Player
             }
         }
 
+        private void Start()
+        {
+            StartCoroutine(Tick(0.1f));
+        }
+
+        private IEnumerator Tick(float interval)
+        {
+            while (true)
+            {
+                if (isPaused || GameOver) yield return null;
+                yield return new WaitForSecondsRealtime(interval);
+                
+                float multiplier = currentDebuffType == DebuffType.HigherVelocity ? DebuffMultiplier : 1f;
+                _timer += interval * Time.unscaledDeltaTime * multiplier * 0.1f;
+            }
+        }
+
         private void Update()
         {
             if (!isPaused)
             {
-                if (currentDebuffType != DebuffType.HigherVelocity)
+                if (Time.timeScale < maxVelocity)
                 {
-                    if (Time.timeScale < maxVelocity)
-                    {
-                        Time.timeScale += Velocity;
-                    }
-                }
-                else
-                {
-                    if (Time.timeScale < maxVelocity)
-                    {
-                        Time.timeScale += Velocity * 1.2f;
-                    }
+                    Time.timeScale = curve.Evaluate(_timer);
                 }
             }
 
@@ -67,6 +78,7 @@ namespace Player
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
+                    Revived = false;
                     GameOver = true;
                     UpdateHighScore();
                     AddMoneyBasedOnScore();
@@ -75,7 +87,7 @@ namespace Player
                 else if (!GhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
                 {
                     Time.timeScale = (Time.timeScale - 1)/3 + 1;
-                    SceneManager.LoadScene(SceneController.GhostGameScene);
+                    SceneManager.LoadScene(Scenes.Ghost.ToString());
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     GhostMode = true;
@@ -98,14 +110,14 @@ namespace Player
                 {
                     GhostMode = false;
                     Revived = true;
-                    SceneManager.LoadScene(SceneController.HumanGameScene);
+                    SceneManager.LoadScene(Scenes.Game.ToString());
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                 }
             }
         }
 
-        public void UpdateHighScore()
+        private void UpdateHighScore()
         {
             if (PlayerPrefs.GetInt(PlayerScore.ScoreKey) > PlayerPrefs.GetInt(PlayerScore.HighScoreKey))
             {

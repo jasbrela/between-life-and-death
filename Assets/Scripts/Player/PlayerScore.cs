@@ -1,4 +1,4 @@
-using System;
+using DefaultNamespace;
 using Store;
 using TMPro;
 using UnityEngine;
@@ -30,7 +30,7 @@ namespace Player
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.name == SceneController.HumanGameScene && !PlayerStatus.Revived)
+            if (scene.name == Scenes.Game.ToString() && !PlayerStatus.Revived)
             {
                 PlayerPrefs.SetInt(ScoreKey, 0);
             }
