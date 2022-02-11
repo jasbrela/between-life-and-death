@@ -20,14 +20,15 @@ namespace Spawners
                         _startPosIndex += Random.Range(1, 3); // entre 1 e 2
                         break;
                     case 1:
-                        _startPosIndex += Random.Range(0, 2); // entre 0 e 1
+                        var chance = Random.Range(0f, 1f);
+                        _startPosIndex += chance > 0.5f ? 1 : -1;
                         break;
                     case 2:
                         _startPosIndex -= Random.Range(1, 3); // entre 1 e 2
                         break;
                 }
             }
-        
+            
             RandomizeSprite();
         
             transform.position = new Vector3(pos.positions[_startPosIndex].position.x,

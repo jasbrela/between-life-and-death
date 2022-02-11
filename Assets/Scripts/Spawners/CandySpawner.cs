@@ -29,6 +29,7 @@ namespace Spawners
             if (!PlayerStatus.GameOver)
             {
                 Index = Random.Range(0, 3);
+
                 for (int c = 0; c < Quantity; c++)
                 {
                     Invoke(nameof(Spawn), c);
