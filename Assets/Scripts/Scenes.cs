@@ -1,8 +1,5 @@
-﻿namespace DefaultNamespace
+﻿public enum Scenes
 {
-    public enum Scenes
-    {
-        Game,
-        Ghost
-    }
+    Game,
+    Ghost
 }

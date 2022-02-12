@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using Store;
 using TMPro;
 using UnityEngine;

@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using Player;
 using Store;
 using TMPro;

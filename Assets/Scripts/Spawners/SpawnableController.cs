@@ -1,5 +1,4 @@
 ﻿using System;
-using DefaultNamespace;
 using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
