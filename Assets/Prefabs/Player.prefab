@@ -89,7 +89,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swipeThreshold: 70
   pos: {fileID: 11400000, guid: 432b5aece0ae1414abf24eab64c82a6f, type: 2}
-  scenario: {fileID: 0}
   audioSource: {fileID: 3169961317710918329}
   swipe: {fileID: 8300000, guid: 3059c7198bc2a80498bbaecb7e7d9c68, type: 3}
 --- !u!114 &11507064
@@ -104,7 +103,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a624b6331df8dd1449e6b50330ee8260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 0
+  allPowerUps: {fileID: 11400000, guid: 5491ab393ae891940bb92142e99a6cde, type: 2}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1.0004327
+      value: 0.99996674
+      inSlope: 3.5880673
+      outSlope: 3.5880673
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0911311
+      value: 1.3253986
+      inSlope: 3.35247
+      outSlope: 3.35247
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.28875393
+    - serializedVersion: 3
+      time: 1.3695433
+      value: 1.8341391
+      inSlope: 1.0122029
+      outSlope: 1.0122029
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.3778652
+      outWeight: 0.29350463
+    - serializedVersion: 3
+      time: 1.8897754
+      value: 2.0132732
+      inSlope: 0.08124026
+      outSlope: 0.08124026
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.12971355
+    - serializedVersion: 3
+      time: 2.4358745
+      value: 2.028112
+      inSlope: 0.027172169
+      outSlope: 0.027172169
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxVelocity: 2.5
   playerAudioSource: {fileID: 3169961317710918329}
   hit: {fileID: 8300000, guid: ae1cd8385c5810a46958fd11f22835ba, type: 3}
   bgAudioSource: {fileID: 0}
@@ -307,12 +358,12 @@ SpriteRenderer:
   m_SortingLayerID: 964676317
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6371b6bbe17ce7a4b96401ba30a615ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44d835ebf37fc27408374de7ae950f1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.24, y: 2.5666666}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

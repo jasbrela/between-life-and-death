@@ -5,7 +5,8 @@ using UnityEngine;
 [Serializable, CreateAssetMenu(fileName = "New PowerUp", menuName = "Store/Power Up")]
 public class PowerUp : ScriptableObject
 {
-    public PowerUpType powerUpType;
+    public PowerUpType type;
     [Tooltip("For store")] public Sprite sprite;
-    public int price;
+    public int[] prices;
+    public float[] durations;
 }

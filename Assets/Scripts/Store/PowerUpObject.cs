@@ -10,23 +10,33 @@ public class PowerUpObject : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI buyPrice;
     [SerializeField] private Image fill;
+    [SerializeField] private GameObject buyButton;
     
     public PowerUp GetPowerUpData => powerUpData;
 
     private void OnEnable()
     {
         UpdateUI();
-        
-        icon.sprite = powerUpData.sprite;
-        buyPrice.text = powerUpData.price.ToString();
     }
 
     private void UpdateUI()
     {
-        var level = PlayerPrefs.GetInt(powerUpData.powerUpType + "_level");
+        var level = PlayerPrefs.GetInt(powerUpData.type + "_level");
+        
+        icon.sprite = powerUpData.sprite;
+        
         fill.fillAmount = level > 0
-            ? PlayerPrefs.GetInt(powerUpData.powerUpType + "_level") / (float) MaxLevel
+            ? level / (float) MaxLevel
             : 0f;
+
+        if (level < MaxLevel)
+        {
+            buyPrice.text = powerUpData.prices[level].ToString();
+        }
+        else
+        {
+            buyButton.SetActive(false);
+        }
     }
 
     public void OnClickBuy()

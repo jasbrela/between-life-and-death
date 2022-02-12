@@ -4,6 +4,7 @@ using Store;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Image = UnityEngine.UIElements.Image;
 
 namespace Player
 {
@@ -13,12 +14,10 @@ namespace Player
         [SerializeField] TMP_Text moneyLabel;
         [SerializeField] private Animation feedbackAnim;
         [SerializeField] private Animation candiesAnim;
-        [SerializeField] private SpriteRenderer feedbackSprite;
 
         private void Start()
         {
             UpdateMoneyLabel();
-            feedbackSprite.size = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width * 1.5f, Screen.height * 1.5f));
         }
 
         private void UpdateMoneyLabel()
@@ -66,14 +65,16 @@ namespace Player
         {
             PowerUp powerUpData = button.transform.parent.parent.GetComponent<PowerUpObject>().GetPowerUpData;
 
-            if (PlayerPrefs.GetInt(Key) >= powerUpData.price)
+            var level = PlayerPrefs.GetInt(powerUpData.type + "_level");
+            if (PlayerPrefs.GetInt(Key) >= powerUpData.prices[level])
             {
-                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - powerUpData.price);
+                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - powerUpData.prices[level]);
                 UpdateMoneyLabel();
+                level++;
 
-                PlayerPrefs.SetInt(powerUpData.powerUpType + "_level", PlayerPrefs.GetInt(powerUpData.powerUpType + "_level") + 1);
+                PlayerPrefs.SetInt(powerUpData.type + "_level", level);
                 
-                if (PlayerPrefs.GetInt(powerUpData.powerUpType + "_level") == 5)
+                if (level == 5)
                 {
                     button.gameObject.SetActive(false);
                 }

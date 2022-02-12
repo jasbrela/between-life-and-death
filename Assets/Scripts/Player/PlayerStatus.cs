@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Enums;
 using Store;
@@ -8,6 +9,7 @@ namespace Player
 {
     public class PlayerStatus : MonoBehaviour
     {
+        [SerializeField] private AllPowerUpData allPowerUps;
         [SerializeField] private AnimationCurve curve;
         [SerializeField] [Range(1f, 5f)] private float maxVelocity;
         
@@ -115,15 +117,36 @@ namespace Player
                     playerAudioSource.Play();
                 }
             }
-            else if (other.CompareTag("PowerUp/" + PowerUpType.CandyMagnet))
+            else
             {
-                PowerUpManager.Instance.UsePowerUp(PowerUpType.CandyMagnet);
-                Destroy(other.gameObject);
+                CheckForPowerUps(other.gameObject);
             }
-            else if (other.CompareTag("PowerUp/" + PowerUpType.DoubleCandies))
+        }
+
+        private void CheckForPowerUps(GameObject toBeChecked)
+        {
+            string prefix = "PowerUp/";
+            PowerUpType? find = null;
+
+            foreach (PowerUpType powerUp in Enum.GetValues(typeof(PowerUpType)))
             {
-                PowerUpManager.Instance.UsePowerUp(PowerUpType.DoubleCandies);
-                Destroy(other.gameObject);
+                if (!toBeChecked.CompareTag(prefix + powerUp)) continue;
+                
+                Destroy(toBeChecked);
+                find = powerUp;
+                break;
+            }
+
+            if (find == null) return;
+            
+            switch (find)
+            {
+                case PowerUpType.CandyMagnet:
+                    PowerUpManager.Instance.UsePowerUp(allPowerUps.candyMagnetData);
+                    break;
+                case PowerUpType.DoubleCandies:
+                    PowerUpManager.Instance.UsePowerUp(allPowerUps.doubleCandiesData);
+                    break;
             }
         }
 

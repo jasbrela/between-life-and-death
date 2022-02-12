@@ -247,6 +247,7 @@ MonoBehaviour:
   icon: {fileID: 8256614383704642362}
   buyPrice: {fileID: 274355732023922709}
   fill: {fileID: 7544003260718685739}
+  buyButton: {fileID: 274355732267069654}
 --- !u!1 &274355731448792857
 GameObject:
   m_ObjectHideFlags: 0

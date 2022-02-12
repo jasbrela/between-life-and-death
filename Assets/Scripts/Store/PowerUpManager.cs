@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text;
 using Enums;
 using UnityEngine;
 
@@ -35,69 +36,37 @@ namespace Store
         }
         #endregion
 
-        private bool _isCandyMagnetActive;
+        public bool IsCandyMagnetActive { get; private set; }
+        public bool IsDoubleCandiesActive { get; private set; }
 
-        public bool GetIsCandyMagnetActive()
+        public void UsePowerUp(PowerUp powerUp)
         {
-            return _isCandyMagnetActive;
-        }
-    
-        private bool _isDoubleCandiesActive;
+            var type = powerUp.type;
+            var duration = powerUp.durations[PlayerPrefs.GetInt(powerUp + "_level")];
 
-        public bool GetIsDoubleCandiesActive()
-        {
-            return _isDoubleCandiesActive;
-        }
-    
-        private bool _isNoMoreObstaclesActive;
-
-        public bool GetIsNoMoreObstaclesActive()
-        {
-            return _isNoMoreObstaclesActive;
+            StartCoroutine(StartPowerUpTimer(duration, type));
         }
 
-        public void UsePowerUp(PowerUpType powerUpType)
+        private IEnumerator StartPowerUpTimer(float seconds, PowerUpType type)
         {
-            switch (powerUpType)
+            switch (type)
             {
                 case PowerUpType.CandyMagnet:
-                    _isCandyMagnetActive = true;
-                    StartCoroutine(StartPowerUpTimer(10, PowerUpType.CandyMagnet));
+                    Debug.Log("candyMagnet - " + IsCandyMagnetActive);
+                    IsCandyMagnetActive = true;
+                    yield return new WaitForSecondsRealtime(seconds);
+                    IsCandyMagnetActive = false;
                     break;
                 
                 case PowerUpType.DoubleCandies:
-                    _isDoubleCandiesActive = true;
-                    StartCoroutine(StartPowerUpTimer(10, PowerUpType.DoubleCandies));
+                    IsDoubleCandiesActive = true;
+                    yield return new WaitForSecondsRealtime(seconds);
+                    IsDoubleCandiesActive = false;
                     break;
-                
-                case PowerUpType.NoMoreObstacles:
-                    _isNoMoreObstaclesActive = true;
-                    StartCoroutine(StartPowerUpTimer(10, PowerUpType.NoMoreObstacles));
-                    break;
-                
-                default:
-                    throw new Exception("Tried to use an nonexistent type of Power Up: " + powerUpType);
-            }
-        }
 
-        private IEnumerator StartPowerUpTimer(int seconds, PowerUpType powerUpType)
-        {
-            yield return new WaitForSeconds(seconds);
-            switch (powerUpType)
-            {
-                case PowerUpType.CandyMagnet:
-                    _isCandyMagnetActive = false;
-                    break;
-                case PowerUpType.DoubleCandies:
-                    _isDoubleCandiesActive = false;
-                    break;
-                case PowerUpType.NoMoreObstacles:
-                    _isNoMoreObstaclesActive = false;
-                    break;
                 default:
-                    throw new Exception("Tried to start a timer of an nonexistent type of Power Up: " + powerUpType);
+                    throw new Exception("Tried to use an nonexistent type of Power Up: " + type);
             }
-            
         }
     }
 }

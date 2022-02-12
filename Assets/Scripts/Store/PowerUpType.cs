@@ -4,6 +4,5 @@ namespace Enums
     {
         DoubleCandies,
         CandyMagnet,
-        NoMoreObstacles
     }
 }

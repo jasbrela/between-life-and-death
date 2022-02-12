@@ -55,7 +55,7 @@ namespace Player
             {
                 playerAudioSource.clip = collectCandy;
                 playerAudioSource.Play();
-                int value = PowerUpManager.Instance.GetIsDoubleCandiesActive() ? 2 : 1;
+                int value = PowerUpManager.Instance.IsDoubleCandiesActive ? 2 : 1;
                 _score += value;
                 PlayerPrefs.SetInt(ScoreKey, _score);
                 Destroy(other.gameObject);

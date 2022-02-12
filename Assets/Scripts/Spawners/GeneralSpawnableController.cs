@@ -1,9 +1,6 @@
-﻿using System;
-using Enums;
-using Player;
+﻿using Player;
 using Store;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Spawners
 {
@@ -33,9 +30,19 @@ namespace Spawners
                     transform.localScale += Vector3.one * (Time.deltaTime * 0.08f);
                     break;
             }
+
+            if (isCandy)
+            {
+                Debug.Log((PowerUpManager.Instance.IsCandyMagnetActive
+                          && Vector3.Distance(transform.position, player.position) < 3
+                          && transform.position.y > player.position.y)
+                          + " --- " + PowerUpManager.Instance.IsCandyMagnetActive + " " +
+                          (Vector3.Distance(transform.position, player.position) < 3)
+                          + " " + (transform.position.y > player.position.y));
+            }
             
             if (isCandy
-                && PowerUpManager.Instance.GetIsCandyMagnetActive()
+                && PowerUpManager.Instance.IsCandyMagnetActive
                 && Vector3.Distance(transform.position, player.position) < 3
                 && transform.position.y > player.position.y)
             {
