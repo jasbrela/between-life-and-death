@@ -50,7 +50,7 @@ namespace Spawners
             if (spawner != info.candySpawner)
             {
                 SetIndex(spawner);
-                StartCoroutine(ResetIndexAfterInterval(spawner, 3f));
+                StartCoroutine(ResetIndexAfterInterval(spawner, 3));
             }
             
             spawner.Spawn(transform, ref player);
@@ -73,16 +73,15 @@ namespace Spawners
             
             info.candySpawner.Index = Random.Range(0, 3);
 
-            StartCoroutine(ResetIndexAfterInterval(info.candySpawner, candyQuantity + 2f));
+            StartCoroutine(ResetIndexAfterInterval(info.candySpawner, candyQuantity + 2));
+            
             for (int i = 0; i < candyQuantity; i++)
             {
                 if (PlayerStatus.isGameOver || PlayerStatus.isGhostMode) yield break;
                 yield return new WaitForSeconds(1);
                 info.candySpawner.Spawn(transform, ref player);
             }
-
-            info.candySpawner.Index = -1;
-
+            
             if (PlayerStatus.isGameOver || PlayerStatus.isGhostMode) yield break;
             
             StartCoroutine(SpawnCandy());
@@ -125,6 +124,8 @@ namespace Spawners
             
             CheckWith(spawner, info.candySpawner, avoid);
             CheckWith(spawner, info.obstacleSpawner, avoid);
+            CheckWith(spawner, info.powerUpSpawners[_lastPowerUp], avoid);
+
             if (PlayerStatus.isGhostMode) CheckWith(spawner, info.soulSpawner, avoid);
 
             GetAvailableIndex(spawner, avoid.ToArray());
@@ -136,9 +137,19 @@ namespace Spawners
             avoid.Add(spawnerToCheck.Index);
         }
 
-        private IEnumerator ResetIndexAfterInterval(Spawner spawner, float interval)
+        private IEnumerator ResetIndexAfterInterval(Spawner spawner, int seconds)
         {
-            yield return new WaitForSecondsRealtime(interval);
+            float count = 0f;
+            float interval = .1f;
+            
+            while (count <= seconds)
+            {
+                if (PlayerStatus.isPaused || PlayerStatus.isGameOver || !Application.isFocused) yield return null;
+                
+                yield return new WaitForSecondsRealtime(interval);
+                count += interval;
+            }
+            
             ResetIndex(spawner);
         }
         

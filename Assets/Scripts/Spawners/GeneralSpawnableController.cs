@@ -31,16 +31,6 @@ namespace Spawners
                     break;
             }
 
-            if (isCandy)
-            {
-                Debug.Log((PowerUpManager.Instance.IsCandyMagnetActive
-                          && Vector3.Distance(transform.position, player.position) < 3
-                          && transform.position.y > player.position.y)
-                          + " --- " + PowerUpManager.Instance.IsCandyMagnetActive + " " +
-                          (Vector3.Distance(transform.position, player.position) < 3)
-                          + " " + (transform.position.y > player.position.y));
-            }
-            
             if (isCandy
                 && PowerUpManager.Instance.IsCandyMagnetActive
                 && Vector3.Distance(transform.position, player.position) < 3

@@ -1,4 +1,3 @@
-using Enums;
 using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -49,7 +48,6 @@ namespace Spawners
                 return new Vector3(pos.positions[Index].position.x,
                     RandomizeYPos(), 0f);
             }
-            
             return new Vector3(pos.positions[Index].position.x,
                 pos.positions[Index].position.y, 0f);
         }

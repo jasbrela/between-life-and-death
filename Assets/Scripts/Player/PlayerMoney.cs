@@ -4,7 +4,6 @@ using Store;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Image = UnityEngine.UIElements.Image;
 
 namespace Player
 {

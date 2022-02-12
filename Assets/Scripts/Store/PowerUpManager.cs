@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using System.Text;
 using Enums;
+using Player;
 using UnityEngine;
 
 namespace Store
@@ -47,25 +47,38 @@ namespace Store
             StartCoroutine(StartPowerUpTimer(duration, type));
         }
 
-        private IEnumerator StartPowerUpTimer(float seconds, PowerUpType type)
+        private IEnumerator StartPowerUpTimer(float duration, PowerUpType type)
+        {
+            float count = 0f;
+            float interval = .1f;
+
+            ChangePowerUpStatus(type, true);
+                
+            while (count <= duration)
+            {
+                if (PlayerStatus.isPaused || PlayerStatus.isGameOver || !Application.isFocused) yield return null;
+                
+                yield return new WaitForSecondsRealtime(interval);
+                count += interval;
+            }
+            
+            ChangePowerUpStatus(type, false);
+        }
+
+        private void ChangePowerUpStatus(PowerUpType type, bool status)
         {
             switch (type)
             {
                 case PowerUpType.CandyMagnet:
-                    Debug.Log("candyMagnet - " + IsCandyMagnetActive);
-                    IsCandyMagnetActive = true;
-                    yield return new WaitForSecondsRealtime(seconds);
-                    IsCandyMagnetActive = false;
+                    IsCandyMagnetActive = status;
                     break;
                 
                 case PowerUpType.DoubleCandies:
-                    IsDoubleCandiesActive = true;
-                    yield return new WaitForSecondsRealtime(seconds);
-                    IsDoubleCandiesActive = false;
+                    IsDoubleCandiesActive = status;
                     break;
 
                 default:
-                    throw new Exception("Tried to use an nonexistent type of Power Up: " + type);
+                    throw new Exception("Tried to change the status of an nonexistent type of Power Up: " + type);
             }
         }
     }

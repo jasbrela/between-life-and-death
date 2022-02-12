@@ -1,5 +1,8 @@
 ﻿public enum Scenes
 {
+    Menu,
+    Store,
     Game,
-    Ghost
+    Ghost,
+    GameOver
 }

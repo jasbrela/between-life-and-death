@@ -44,31 +44,53 @@ public class PauseScript : MonoBehaviour
                 SfxToggleClick(sfx);
             }
         }
+
+        Application.focusChanged += Pause;
+    }
+
+    private void OnDisable()
+    {
+        Application.focusChanged -= Pause;
+    }
+
+    private void Pause(bool isFocused = false)
+    {
+        if (isFocused) return;
+        
+        pauseBtn.sprite = resumeSprite;
+        _timeScale = Time.timeScale;
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+        
+        PlayerStatus.isPaused = true;
+    }
+    
+    private void Resume()
+    {
+        pauseBtn.sprite = pauseSprite;
+        Time.timeScale = _timeScale;
+        pausePanel.SetActive(false);
+        
+        PlayerStatus.isPaused = false;
     }
 
     public void TogglePause()
     {
-        if (!PlayerStatus.isPaused)
+        if (PlayerStatus.isPaused)
         {
-            pauseBtn.sprite = resumeSprite;
-            _timeScale = Time.timeScale;
-            Time.timeScale = 0;
-            pausePanel.SetActive(true);
+            Resume();
         }
         else
         {
-            pauseBtn.sprite = pauseSprite;
-            Time.timeScale = _timeScale;
-            pausePanel.SetActive(false);
+            Pause();
         }
-        PlayerStatus.isPaused = !PlayerStatus.isPaused;
     }
 
     public void Menu()
     {
         Time.timeScale = 1;
         pausePanel.SetActive(false);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(Scenes.Menu.ToString());
     }
 
     public void MusicToggleClick(Toggle toggle)

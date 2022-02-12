@@ -46,7 +46,8 @@ namespace Player
         {
             while (true)
             {
-                if (isPaused || isGameOver) yield return null;
+                if (isPaused || isGameOver || !Application.isFocused) yield return null;
+                
                 yield return new WaitForSecondsRealtime(interval);
                 
                 float multiplier = currentDebuff == DebuffType.HigherVelocity ? DebuffMultiplier : 1f;
@@ -56,7 +57,7 @@ namespace Player
 
         private void Update()
         {
-            if (!isPaused)
+            if (!isPaused && Application.isFocused)
             {
                 if (Time.timeScale < maxVelocity)
                 {
@@ -167,7 +168,7 @@ namespace Player
         IEnumerator LoadGameOverScene()
         {
             yield return new WaitForSecondsRealtime(0.5f);
-            SceneManager.LoadScene("Game Over");
+            SceneManager.LoadScene(Scenes.GameOver.ToString());
         }
     }
 }

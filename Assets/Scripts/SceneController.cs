@@ -1,5 +1,4 @@
 using Player;
-using Store;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -60,7 +59,7 @@ public class SceneController : MonoBehaviour
 
     public void Store()
     {
-        SceneManager.LoadScene("Store");
+        SceneManager.LoadScene(Scenes.Store.ToString());
         audioSource.Play();
     }
 
