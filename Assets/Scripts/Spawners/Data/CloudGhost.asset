@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df77528c852a6fd43994fe358549cf0b, type: 3}
-  m_Name: GhostCloud
+  m_Name: CloudGhost
   m_EditorClassIdentifier: 
   pos: {fileID: 11400000, guid: 13484115546807b47a34c1b52e6c11b2, type: 2}
   prefab: {fileID: 5346582408426149665, guid: 7158b5e31640df440bcb1feae3d323ef, type: 3}

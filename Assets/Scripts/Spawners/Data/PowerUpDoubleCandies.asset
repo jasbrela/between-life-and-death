@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df77528c852a6fd43994fe358549cf0b, type: 3}
-  m_Name: HumanObstacle
+  m_Name: PowerUpDoubleCandies
   m_EditorClassIdentifier: 
-  pos: {fileID: 11400000, guid: 8b70738e984fac9469e6aa369b5cb65b, type: 2}
-  prefab: {fileID: 6141590196286568138, guid: e539030a477aee04c8d289ccce4f1db6, type: 3}
+  pos: {fileID: 11400000, guid: 9ee008157bcefaa4a8b3e92bda1c022c, type: 2}
+  prefab: {fileID: 6141590196286568138, guid: 778021c6925cf7f49b47e8c802ddcf8d, type: 3}
   sprites:
-  - {fileID: 21300000, guid: 62671edebf99ff64a96938cd3349262e, type: 3}
-  - {fileID: 21300000, guid: 233eb2b7c2cb1ef408f9d6b5cc8749a2, type: 3}
-  - {fileID: 21300000, guid: a51ed1151cfeca1418185b74ed24b69e, type: 3}
-  firstSpawnDelay: 3.5
+  - {fileID: 21300000, guid: f6978476a7cb0fb49a8adba1805cb26d, type: 3}
+  firstSpawnDelay: 2.5
   minRepeatDelay: 1.5
   maxRepeatDelay: 2
   isCloud: 0

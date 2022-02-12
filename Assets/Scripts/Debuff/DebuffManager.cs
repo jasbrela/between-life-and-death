@@ -13,7 +13,7 @@ public class DebuffManager : MonoBehaviour
     
     void Start()
     {
-        PlayerStatus.currentDebuffType = DebuffType.None;
+        PlayerStatus.currentDebuff = DebuffType.None;
         StartCoroutine(RollDice());
     }
 
@@ -30,7 +30,7 @@ public class DebuffManager : MonoBehaviour
         switch (_index)
         {
             case 1:
-                PlayerStatus.currentDebuffType = DebuffType.HigherVelocity;
+                PlayerStatus.currentDebuff = DebuffType.HigherVelocity;
                 if (notification != null && speedNotification != null && invertedNotification != null)
                 {
                     notification.SetActive(true);
@@ -40,7 +40,7 @@ public class DebuffManager : MonoBehaviour
 
                 break;
             case 2:
-                PlayerStatus.currentDebuffType = DebuffType.InvertedControllers;
+                PlayerStatus.currentDebuff = DebuffType.InvertedControllers;
                 if (notification != null && speedNotification != null && invertedNotification != null)
                 {
                     notification.SetActive(true);
@@ -50,7 +50,7 @@ public class DebuffManager : MonoBehaviour
                 break;
         }
         
-        if (PlayerStatus.currentDebuffType == DebuffType.None)
+        if (PlayerStatus.currentDebuff == DebuffType.None)
         {
             notification.SetActive(false);
         }

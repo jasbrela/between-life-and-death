@@ -1,3 +1,4 @@
+using Enums;
 using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,14 +15,12 @@ namespace Spawners
         public float minRepeatDelay;
         public float maxRepeatDelay;
         public bool isCloud;
-
-        private SpawnableController _lastSpawnedObj;
         
         public int Index { get; set; }
 
         public void Spawn(Transform parent, ref Transform player)
         {
-            if (PlayerStatus.GameOver) return;
+            if (PlayerStatus.isGameOver) return;
             
             GameObject obj = Instantiate(prefab, parent.position, parent.rotation);
             obj.GetComponent<SpawnableController>().Initialize(Index, ref player);

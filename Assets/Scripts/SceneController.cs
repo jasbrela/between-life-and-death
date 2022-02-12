@@ -53,8 +53,6 @@ public class SceneController : MonoBehaviour
     {
         Reset();
         LoadSelectedScene(Scenes.Game.ToString());
-
-        PowerUpManager.Instance.UseAllPowerUps();
         
         PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);
         audioSource.Play();
@@ -68,9 +66,9 @@ public class SceneController : MonoBehaviour
 
     private void Reset()
     {
-        PlayerStatus.currentDebuffType = DebuffType.None;
-        PlayerStatus.GhostMode = false;
-        PlayerStatus.GameOver = false;
+        PlayerStatus.currentDebuff = DebuffType.None;
+        PlayerStatus.isGhostMode = false;
+        PlayerStatus.isGameOver = false;
     }
 
     [Header("Painel dos creditos")] [SerializeField]
@@ -99,7 +97,7 @@ public class SceneController : MonoBehaviour
         
         if (sceneName != Scenes.Ghost.ToString())
         {
-            PlayerStatus.GhostMode = false;
+            PlayerStatus.isGhostMode = false;
         }
         SceneManager.LoadScene(sceneName);
         PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd43bfff30834d80b2c05bd55a3c53eb, type: 3}
+  m_Name: All Spawners Information - Ghost
+  m_EditorClassIdentifier: 
+  cloudSpawner: {fileID: 11400000, guid: c3de7b7b3e366a149906e508c22a2622, type: 2}
+  candySpawner: {fileID: 11400000, guid: 506b397f53d05d04d890ccb12c1cdc8d, type: 2}
+  obstacleSpawner: {fileID: 11400000, guid: 1f33b8a2cd7b4954ea842a81f5f3e391, type: 2}
+  soulSpawner: {fileID: 11400000, guid: ea63b50471600284a9bcf8300ce828c4, type: 2}
+  powerUpSpawners:
+  - {fileID: 11400000, guid: 0486f1dbc0de05945b7c107feabfc388, type: 2}
+  - {fileID: 11400000, guid: 5bcb3b74660a4cc47a423ed8c703d6e1, type: 2}

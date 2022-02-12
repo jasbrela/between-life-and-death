@@ -28,6 +28,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4cd0c6eff16492a4a824304949c0ed99, type: 3}
     - target: {fileID: 3108948625693757187, guid: fc227f074caaa6b42af492082ac85987, type: 3}
+      propertyPath: info
+      value: 
+      objectReference: {fileID: 11400000, guid: 103168ff1e7abcd4eb633e337c739027, type: 2}
+    - target: {fileID: 3108948625693757187, guid: fc227f074caaa6b42af492082ac85987, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108948625693757187, guid: fc227f074caaa6b42af492082ac85987, type: 3}
       propertyPath: cloudSpawner
       value: 
       objectReference: {fileID: 11400000, guid: c3de7b7b3e366a149906e508c22a2622, type: 2}

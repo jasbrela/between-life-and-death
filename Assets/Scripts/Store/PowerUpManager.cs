@@ -56,52 +56,25 @@ namespace Store
             return _isNoMoreObstaclesActive;
         }
 
-        public void UseAllPowerUps()
+        public void UsePowerUp(PowerUpType powerUpType)
         {
-            foreach (PowerUpType powerUpType in Enum.GetValues(typeof(PowerUpType)))
-            {
-                UsePowerUp(powerUpType);
-            }
-        }
-
-        private void UsePowerUp(PowerUpType powerUpType)
-        {
-            // Em que momento o jogador deve usar o power-up?
-            // Por enquanto, no início da partida.
-            
-            // O jogador poderá usar mais de um power-up ao mesmo tempo?
-            // Por enquanto, sim.
-            
-            // Quanto tempo cada power-up deve durar?
-            // Por enquanto, todos duram 10 segundos.
-            
             switch (powerUpType)
             {
                 case PowerUpType.CandyMagnet:
-                    if (PlayerPrefs.GetInt(powerUpType.ToString()) > 0)
-                    {
-                        PlayerPrefs.SetInt(powerUpType.ToString(), PlayerPrefs.GetInt(powerUpType.ToString()) - 1);
-                        _isCandyMagnetActive = true;
-                        StartCoroutine(StartPowerUpTimer(10, PowerUpType.CandyMagnet));
-                    }
-
+                    _isCandyMagnetActive = true;
+                    StartCoroutine(StartPowerUpTimer(10, PowerUpType.CandyMagnet));
                     break;
+                
                 case PowerUpType.DoubleCandies:
-                    if (PlayerPrefs.GetInt(powerUpType.ToString()) > 0)
-                    {
-                        PlayerPrefs.SetInt(powerUpType.ToString(), PlayerPrefs.GetInt(powerUpType.ToString()) - 1);
-                        _isDoubleCandiesActive = true;
-                        StartCoroutine(StartPowerUpTimer(10, PowerUpType.DoubleCandies));
-                    }
+                    _isDoubleCandiesActive = true;
+                    StartCoroutine(StartPowerUpTimer(10, PowerUpType.DoubleCandies));
                     break;
+                
                 case PowerUpType.NoMoreObstacles:
-                    if (PlayerPrefs.GetInt(powerUpType.ToString()) > 0)
-                    {
-                        PlayerPrefs.SetInt(powerUpType.ToString(), PlayerPrefs.GetInt(powerUpType.ToString()) - 1);
-                        _isNoMoreObstaclesActive = true;
-                        StartCoroutine(StartPowerUpTimer(10, PowerUpType.NoMoreObstacles));
-                    }
+                    _isNoMoreObstaclesActive = true;
+                    StartCoroutine(StartPowerUpTimer(10, PowerUpType.NoMoreObstacles));
                     break;
+                
                 default:
                     throw new Exception("Tried to use an nonexistent type of Power Up: " + powerUpType);
             }

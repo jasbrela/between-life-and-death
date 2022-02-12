@@ -1,4 +1,6 @@
 using System.Collections;
+using Enums;
+using Store;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,12 +13,11 @@ namespace Player
         
         private const float DebuffMultiplier = 1.2f;
         private float _timer = 1;
-        private const string SoulTag = "Soul";
         public static bool Revived { get; private set; }
     
-        public static DebuffType currentDebuffType;
-        public static bool GhostMode;
-        public static bool GameOver;
+        public static DebuffType currentDebuff;
+        public static bool isGhostMode;
+        public static bool isGameOver;
         public static bool isPaused;
     
         [Header("Audio")]
@@ -26,11 +27,11 @@ namespace Player
         
         private void Awake()
         {
-            if (!GhostMode)
+            if (!isGhostMode)
             {
                 Time.timeScale = 1;
-                currentDebuffType = DebuffType.None;
-                GameOver = false;
+                currentDebuff = DebuffType.None;
+                isGameOver = false;
             }
         }
 
@@ -43,10 +44,10 @@ namespace Player
         {
             while (true)
             {
-                if (isPaused || GameOver) yield return null;
+                if (isPaused || isGameOver) yield return null;
                 yield return new WaitForSecondsRealtime(interval);
                 
-                float multiplier = currentDebuffType == DebuffType.HigherVelocity ? DebuffMultiplier : 1f;
+                float multiplier = currentDebuff == DebuffType.HigherVelocity ? DebuffMultiplier : 1f;
                 _timer += interval * Time.unscaledDeltaTime * multiplier * 0.1f;
             }
         }
@@ -61,7 +62,7 @@ namespace Player
                 }
             }
 
-            if (GameOver)
+            if (isGameOver)
             {
                 isPaused = false;
                 Time.timeScale = 0;
@@ -70,26 +71,26 @@ namespace Player
     
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Obstacle"))
+            if (other.CompareTag("Obstacle"))
             {
-                if (GhostMode) // (2) DIED in GHOST MODE -> GAME OVER
+                if (isGhostMode) // (2) DIED in GHOST MODE -> GAME OVER
                 {
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
                     Revived = false;
-                    GameOver = true;
+                    isGameOver = true;
                     UpdateHighScore();
                     AddMoneyBasedOnScore();
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
-                else if (!GhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
+                else if (!isGhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
                 {
                     Time.timeScale = (Time.timeScale - 1)/3 + 1;
                     SceneManager.LoadScene(Scenes.Ghost.ToString());
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
-                    GhostMode = true;
+                    isGhostMode = true;
                 }
                 else // DIED in HUMAN MODE, after reviving -> GAME OVER
                 {
@@ -97,22 +98,32 @@ namespace Player
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
                     Revived = false;
-                    GameOver = true;
+                    isGameOver = true;
                     UpdateHighScore();
                     AddMoneyBasedOnScore();
                     StartCoroutine(nameof(LoadGameOverScene));
                 }
             }
-            else if (other.gameObject.CompareTag(SoulTag)) // COLLECT SOUL -> HUMAN MODE
+            else if (other.CompareTag("Soul")) // COLLECT SOUL -> HUMAN MODE
             {
-                if (GhostMode)
+                if (isGhostMode)
                 {
-                    GhostMode = false;
+                    isGhostMode = false;
                     Revived = true;
                     SceneManager.LoadScene(Scenes.Game.ToString());
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                 }
+            }
+            else if (other.CompareTag("PowerUp/" + PowerUpType.CandyMagnet))
+            {
+                PowerUpManager.Instance.UsePowerUp(PowerUpType.CandyMagnet);
+                Destroy(other.gameObject);
+            }
+            else if (other.CompareTag("PowerUp/" + PowerUpType.DoubleCandies))
+            {
+                PowerUpManager.Instance.UsePowerUp(PowerUpType.DoubleCandies);
+                Destroy(other.gameObject);
             }
         }
 

@@ -6,20 +6,18 @@ namespace Player
     {
         [SerializeField] private float swipeThreshold = 80f;
         [SerializeField] private Position pos;
-        [SerializeField] private GameObject scenario;
+        
         [Header("Audio")]
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip swipe;
+        
         private int _currentPos = 1;
-        private Vector3 _scenarioDestination;
         private Vector3 _destination;
         private Vector2 _fingerDown;
         private Vector2 _fingerUp;
         private int _moved;
         private float _moveSpeed = 5f;
-
-        public static Vector3 position;
-
+        
         private void Awake()
         {
             // reset destination
@@ -28,7 +26,7 @@ namespace Player
 
         void Update()
         {
-            if (!PlayerStatus.GameOver)
+            if (!PlayerStatus.isGameOver)
             {
                 if (Input.touchCount > 0)
                 {
@@ -49,7 +47,7 @@ namespace Player
 
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    if (PlayerStatus.currentDebuffType != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
                     {
                         OnSwipeLeft();
                     }
@@ -60,7 +58,7 @@ namespace Player
                 }
                 else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    if (PlayerStatus.currentDebuffType != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
                     {
                         OnSwipeRight();
                     }
@@ -74,8 +72,6 @@ namespace Player
                     _destination,
                     _moveSpeed * Time.deltaTime);
             }
-            
-            position = transform.position;
         }
 
         void CheckSwipe()
@@ -84,7 +80,7 @@ namespace Player
             {
                 if (_fingerDown.x - _fingerUp.x > 0)
                 {
-                    if (PlayerStatus.currentDebuffType != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
                     {
                         OnSwipeRight();
                     }
@@ -95,7 +91,7 @@ namespace Player
                 }
                 else if (_fingerDown.x - _fingerUp.x < 0)
                 {
-                    if (PlayerStatus.currentDebuffType != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
                     {
                         OnSwipeLeft();
                     }

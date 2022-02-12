@@ -11,13 +11,10 @@ namespace Spawners
     {
         [SerializeField] private Transform player;
         [SerializeField] private int candyQuantity;
+        [SerializeField] private SpawnerInformation info;
 
-        [Header("SpawnCloud Information - Please assign the references correctly")]
-        [SerializeField] private Spawner cloudSpawner;
-        [SerializeField] private Spawner candySpawner;
-        [SerializeField] private Spawner obstacleSpawner;
-        [SerializeField] private Spawner soulSpawner;
-
+        private int _lastPowerUp;
+        
         private void Start()
         {
             StartAllSpawns();
@@ -25,11 +22,14 @@ namespace Spawners
 
         private void StartAllSpawns()
         {
-            StartCoroutine(StartSpawn(cloudSpawner));
-            StartCoroutine(StartSpawn(obstacleSpawner));
-            StartCoroutine(StartSpawn(soulSpawner));
-            
-            ResetIndex(candySpawner);
+            StartCoroutine(StartSpawn(info.cloudSpawner));
+            StartCoroutine(StartSpawn(info.obstacleSpawner));
+            StartCoroutine(StartSpawn(info.soulSpawner));
+
+            _lastPowerUp = Random.Range(0, info.powerUpSpawners.Length);
+            StartCoroutine(StartSpawn(info.powerUpSpawners[_lastPowerUp]));
+
+            ResetIndex(info.candySpawner);
             StartCoroutine(SpawnCandy());
 
         }
@@ -43,48 +43,54 @@ namespace Spawners
 
         private IEnumerator Spawn(Spawner spawner)
         {
-            if (PlayerStatus.GameOver) yield break;
+            if (PlayerStatus.isGameOver) yield break;
 
-            while (!PlayerStatus.GhostMode && spawner == soulSpawner) yield return null;
+            while (!PlayerStatus.isGhostMode && spawner == info.soulSpawner) yield return null;
 
-            if (spawner != candySpawner)
+            if (spawner != info.candySpawner)
             {
                 SetIndex(spawner);
                 StartCoroutine(ResetIndexAfterInterval(spawner, 3f));
             }
             
             spawner.Spawn(transform, ref player);
-            
-            yield return new WaitForSeconds(Random.Range(spawner.minRepeatDelay, spawner.maxRepeatDelay));
-            
-            StartCoroutine(Spawn(spawner));
 
+            var temp = spawner;
+            
+            if (info.powerUpSpawners[_lastPowerUp] == spawner)
+            {
+                _lastPowerUp = Random.Range(0, info.powerUpSpawners.Length);
+                temp = info.powerUpSpawners[_lastPowerUp];
+            }
+
+            yield return new WaitForSeconds(Random.Range(temp.minRepeatDelay, temp.maxRepeatDelay));
+            StartCoroutine(Spawn(temp));
         }
 
         private IEnumerator SpawnCandy()
         {
-            yield return new WaitForSeconds(Random.Range(candySpawner.minRepeatDelay, candySpawner.maxRepeatDelay));
+            yield return new WaitForSeconds(Random.Range(info.candySpawner.minRepeatDelay, info.candySpawner.maxRepeatDelay));
             
-            candySpawner.Index = Random.Range(0, 3);
+            info.candySpawner.Index = Random.Range(0, 3);
 
-            StartCoroutine(ResetIndexAfterInterval(candySpawner, candyQuantity + 2f));
+            StartCoroutine(ResetIndexAfterInterval(info.candySpawner, candyQuantity + 2f));
             for (int i = 0; i < candyQuantity; i++)
             {
-                if (PlayerStatus.GameOver || PlayerStatus.GhostMode) yield break;
+                if (PlayerStatus.isGameOver || PlayerStatus.isGhostMode) yield break;
                 yield return new WaitForSeconds(1);
-                candySpawner.Spawn(transform, ref player);
+                info.candySpawner.Spawn(transform, ref player);
             }
 
-            candySpawner.Index = -1;
+            info.candySpawner.Index = -1;
 
-            if (PlayerStatus.GameOver || PlayerStatus.GhostMode) yield break;
+            if (PlayerStatus.isGameOver || PlayerStatus.isGhostMode) yield break;
             
             StartCoroutine(SpawnCandy());
         }
 
         private void GetAvailableIndex(Spawner spawner, int[] avoidedIndexes)
         {
-            if (PlayerStatus.GameOver) return;
+            if (PlayerStatus.isGameOver) return;
 
             spawner.Index = Random.Range(0, 3);
 
@@ -109,7 +115,7 @@ namespace Spawners
 
         private void SetIndex(Spawner spawner)
         {
-            if (spawner == cloudSpawner)
+            if (spawner == info.cloudSpawner)
             {
                 spawner.Index = Random.Range(0, 2);
                 return;
@@ -117,9 +123,9 @@ namespace Spawners
             
             List<int> avoid = new List<int>();
             
-            CheckWith(spawner, candySpawner, avoid);
-            CheckWith(spawner, obstacleSpawner, avoid);
-            if (PlayerStatus.GhostMode) CheckWith(spawner, soulSpawner, avoid);
+            CheckWith(spawner, info.candySpawner, avoid);
+            CheckWith(spawner, info.obstacleSpawner, avoid);
+            if (PlayerStatus.isGhostMode) CheckWith(spawner, info.soulSpawner, avoid);
 
             GetAvailableIndex(spawner, avoid.ToArray());
         }

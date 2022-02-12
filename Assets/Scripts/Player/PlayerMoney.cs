@@ -71,11 +71,15 @@ namespace Player
                 PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - powerUpData.price);
                 UpdateMoneyLabel();
 
-                PlayerPrefs.SetInt(powerUpData.powerUpType.ToString(), PlayerPrefs.GetInt(powerUpData.powerUpType.ToString()) + 1);
+                PlayerPrefs.SetInt(powerUpData.powerUpType + "_level", PlayerPrefs.GetInt(powerUpData.powerUpType + "_level") + 1);
+                
+                if (PlayerPrefs.GetInt(powerUpData.powerUpType + "_level") == 5)
+                {
+                    button.gameObject.SetActive(false);
+                }
             }
             else
             {
-                
                 PlayNotEnoughCandiesAnimation();
             }
         }

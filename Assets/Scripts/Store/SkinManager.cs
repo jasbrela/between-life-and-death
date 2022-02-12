@@ -68,7 +68,7 @@ namespace Store
         /// </summary>
         public void FindSelectedSkinData(GameObject player)
         {
-            SkinType skinType = PlayerStatus.GhostMode ? SkinType.Ghost : SkinType.Human;
+            SkinType skinType = PlayerStatus.isGhostMode ? SkinType.Ghost : SkinType.Human;
             
             string s = PlayerPrefs.GetString($"current_{skinType.ToString()}_skin")
                 .Replace("skin_", string.Empty);
@@ -90,7 +90,7 @@ namespace Store
         private void UpdateAnimator(GameObject player)
         {
             player.transform.GetComponent<Animator>().runtimeAnimatorController
-                = PlayerStatus.GhostMode
+                = PlayerStatus.isGhostMode
                     ? _lastSelectedGhostSkin.animator
                     : _lastSelectedHumanSkin.animator;
         }

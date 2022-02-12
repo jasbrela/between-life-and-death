@@ -1,17 +1,20 @@
-﻿using Player;
+﻿using System;
+using Enums;
+using Player;
 using Store;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Spawners
 {
     public class GeneralSpawnableController : SpawnableController
     {
         [SerializeField] private bool isCandy;
-
+        
         protected override void Move()
         {
-            if (PlayerStatus.GameOver) return;
-            if (PlayerStatus.GhostMode && !isFromGhostMode) return;
+            if (PlayerStatus.isGameOver) return;
+            if (PlayerStatus.isGhostMode && !isFromGhostMode) return;
             
             switch (index)
             {

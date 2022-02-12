@@ -1,4 +1,5 @@
 ﻿using System;
+using Enums;
 using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,9 +20,9 @@ namespace Spawners
         {
             if (Math.Abs(minSpeed - maxSpeed) > .1f) Random.Range(minSpeed, maxSpeed);
             
-            bool isGhostMode = PlayerStatus.GhostMode && SceneManager.GetActiveScene().name == Scenes.Ghost.ToString();
+            bool isGhostMode = PlayerStatus.isGhostMode && SceneManager.GetActiveScene().name == Scenes.Ghost.ToString();
             
-            if (isFromGhostMode && !isGhostMode || !isFromGhostMode && isGhostMode || PlayerStatus.GameOver)
+            if (isFromGhostMode && !isGhostMode || !isFromGhostMode && isGhostMode || PlayerStatus.isGameOver)
             {
                 gameObject.SetActive(false);
             }
