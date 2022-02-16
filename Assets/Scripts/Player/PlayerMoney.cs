@@ -1,4 +1,5 @@
 using System;
+using Enums;
 using ScriptableObjects;
 using Store;
 using TMPro;
@@ -27,14 +28,14 @@ namespace Player
         #region Skins Methods
         public void OnClickBuySkin(Button button)
         {
-            Skin skinData = button.transform.parent.parent.GetComponent<SkinObject>().GetSkinData;
+            Skin skinData = button.transform.parent.parent.GetComponent<SkinObject>().SkinData;
         
             if (PlayerPrefs.GetInt(Key) >= skinData.price)
             {
                 PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - skinData.price);
                 UpdateMoneyLabel();
 
-                PlayerPrefs.SetInt($"skin_{skinData.skinType.ToString()}_{skinData.id}", 1);
+                PlayerPrefs.SetInt($"skin_{skinData.character.ToString()}_{skinData.type}", 1);
 
                 button.gameObject.SetActive(false);
                 button.transform.parent.Find("btn-equip").gameObject.SetActive(true);
@@ -45,16 +46,17 @@ namespace Player
             }
         }
     
-        public void OnClickEquipSkin(Button button)
+        public void OnClickEquipSkin(SkinObject skin)
         {
-            Skin skinData = button.transform.parent.parent.GetComponent<SkinObject>().GetSkinData;
-
+            Skin data = skin.SkinData;
+            
             bool isUnlocked = PlayerPrefs.GetInt(
-                $"skin_{skinData.skinType.ToString()}_{skinData.id}") == 1;
-            if (isUnlocked)
+                $"skin_{data.character.ToString()}_{data.type}") == 1;
+                
+            if (isUnlocked || data.type == SkinType.Default)
             {
-                PlayerPrefs.SetString($"current_{skinData.skinType.ToString()}_skin",
-                    $"skin_{skinData.skinType.ToString()}_{skinData.id}");
+                PlayerPrefs.SetString($"current_{data.character.ToString()}_skin",
+                    $"skin_{data.character.ToString()}_{data.type}");
             }
         }
         #endregion

@@ -7,8 +7,8 @@ namespace ScriptableObjects
     [Serializable, CreateAssetMenu(fileName = "New Skin", menuName = "Store/Skin")]
     public class Skin : ScriptableObject
     {
-        public SkinID id;
-        public SkinType skinType;
+        public SkinType type;
+        public SkinCharacter character;
         public RuntimeAnimatorController animator;
         [Tooltip("For store")] public Sprite sprite;
         public int price;

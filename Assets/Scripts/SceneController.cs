@@ -7,12 +7,20 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
+    [Header("Any Scene")]
     [SerializeField] private AudioSource audioSource;
+
+    [Header("Game Over Scene ONLY")]
+    [SerializeField] private TMP_Text gameOverScore;
+
+    
+    [Header("Main Menu Scene ONLY")]
+    [SerializeField] private GameObject panelCredits;
+    [SerializeField] private GameObject panelMenu;
     [SerializeField] private Toggle music;
     [SerializeField] private Toggle sfx;
-
-    [SerializeField][Tooltip("Only for GAME OVER's scene")] private TMP_Text gameOverScore;
-
+    [SerializeField] private AudioMixer audioMixer;
+    
     private void Start()
     {
         if (music != null)
@@ -42,12 +50,12 @@ public class SceneController : MonoBehaviour
 
         if (gameOverScore != null)
         {
-            gameOverScore.text += PlayerPrefs.GetInt(PlayerScore.ScoreKey).ToString();
+            int score = PlayerPrefs.GetInt(PlayerScore.ScoreKey);
+            string plural = score == 1 ? "" : "s";
+            gameOverScore.text += score + " point" + plural;
         }
     }
-
-    [SerializeField] private AudioMixer audioMixer;
-
+    
     public void StartGame()
     {
         Reset();
@@ -69,12 +77,6 @@ public class SceneController : MonoBehaviour
         PlayerStatus.isGhostMode = false;
         PlayerStatus.isGameOver = false;
     }
-
-    [Header("Painel dos creditos")] [SerializeField]
-    private GameObject panelCredits;
-
-    [Header("Painel do Menu")] [SerializeField]
-    private GameObject panelMenu;
 
     public void ShowCreditsPanel()
     {

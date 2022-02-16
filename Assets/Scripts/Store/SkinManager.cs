@@ -54,10 +54,10 @@ namespace Store
         /// </summary>
         public void SetDefaultSkin(GameObject player)
         {
-            foreach (SkinType skinType in Enum.GetValues(typeof(SkinType)))
+            foreach (SkinCharacter skinType in Enum.GetValues(typeof(SkinCharacter)))
             {
                 PlayerPrefs.SetString($"current_{skinType.ToString()}_skin",
-                    $"skin_{skinType.ToString()}_{SkinID.Default.ToString()}");
+                    $"skin_{skinType.ToString()}_{SkinType.Default.ToString()}");
             }
 
             UpdateAnimator(player);
@@ -68,9 +68,9 @@ namespace Store
         /// </summary>
         public void FindSelectedSkinData(GameObject player)
         {
-            SkinType skinType = PlayerStatus.isGhostMode ? SkinType.Ghost : SkinType.Human;
+            SkinCharacter skinCharacter = PlayerStatus.isGhostMode ? SkinCharacter.Ghost : SkinCharacter.Human;
             
-            string s = PlayerPrefs.GetString($"current_{skinType.ToString()}_skin")
+            string s = PlayerPrefs.GetString($"current_{skinCharacter.ToString()}_skin")
                 .Replace("skin_", string.Empty);
             
             int underlineIndex = s.IndexOf("_");
@@ -78,8 +78,8 @@ namespace Store
             string cType = s.Substring(0, underlineIndex);
             string cId = s.Substring(underlineIndex + 1);
             
-            SetLastSelectedSkin((SkinType) Enum.Parse(typeof(SkinType), cType, true),
-                (SkinID) Enum.Parse(typeof(SkinID), cId, true));
+            SetLastSelectedSkin((SkinCharacter) Enum.Parse(typeof(SkinCharacter), cType, true),
+                (SkinType) Enum.Parse(typeof(SkinType), cId, true));
 
             UpdateAnimator(player);
         }
@@ -98,12 +98,12 @@ namespace Store
         /// <param name="skin">Full data of skin part</param>
         public void SetLastSelectedSkin(Skin skin)
         {
-            switch (skin.skinType)
+            switch (skin.character)
             {
-                case SkinType.Human:
+                case SkinCharacter.Human:
                     _lastSelectedHumanSkin = skin;
                     break;
-                case SkinType.Ghost:
+                case SkinCharacter.Ghost:
                     _lastSelectedGhostSkin = skin;
                     break;
                 default:
@@ -111,38 +111,38 @@ namespace Store
             }
         }
 
-        /// <param name="skinType">The type of the skin</param>
-        /// <param name="id">The id of the skin</param>
-        private void SetLastSelectedSkin(SkinType skinType, SkinID id)
+        /// <param name="skinCharacter">The type of the skin</param>
+        /// <param name="type">The type of the skin</param>
+        private void SetLastSelectedSkin(SkinCharacter skinCharacter, SkinType type)
         {
-            switch (skinType)
+            switch (skinCharacter)
             {
-                case SkinType.Human:
+                case SkinCharacter.Human:
                     try
                     {
-                        FindSkin(_allSkins.humanSkins, SkinType.Human, id);
+                        FindSkin(_allSkins.humanSkins, SkinCharacter.Human, type);
                     }
                     catch
                     {
                         throw new Exception(
-                            $"You probably forgot to add this skin ({SkinType.Human}_{id}) to AllSkins object.");
+                            $"You probably forgot to add this skin ({SkinCharacter.Human}_{type}) to AllSkins object.");
                     }
 
                     break;
-                case SkinType.Ghost:
+                case SkinCharacter.Ghost:
                     try
                     {
-                        FindSkin(_allSkins.ghostSkins, SkinType.Ghost, id);
+                        FindSkin(_allSkins.ghostSkins, SkinCharacter.Ghost, type);
                     }
                     catch
                     {
                         throw new Exception(
-                            $"You probably forgot to add this skin ({SkinType.Ghost}_{id}) to AllSkins object.");
+                            $"You probably forgot to add this skin ({SkinCharacter.Ghost}_{type}) to AllSkins object.");
                     }
 
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(skinType), skinType, null);
+                    throw new ArgumentOutOfRangeException(nameof(skinCharacter), skinCharacter, null);
             }
         }
 
@@ -150,21 +150,21 @@ namespace Store
         /// This will find the skin and then set it.
         /// </summary>
         /// <param name="skins">Skin[] from AllSkins equivalent to the type of the skin</param>
-        /// <param name="skinType">The type of the clothes</param>
-        /// <param name="id">The id of the skin</param>
-        private void FindSkin(Skin[] skins, SkinType skinType, SkinID id)
+        /// <param name="skinCharacter">The type of the clothes</param>
+        /// <param name="type">The type of the skin</param>
+        private void FindSkin(Skin[] skins, SkinCharacter skinCharacter, SkinType type)
         {
             if (skins == null) return;
             foreach (Skin skin in skins)
             {
-                if (skin.id == id)
+                if (skin.type == type)
                 {
-                    switch (skinType)
+                    switch (skinCharacter)
                     {
-                        case SkinType.Human:
+                        case SkinCharacter.Human:
                             _lastSelectedHumanSkin = skin;
                             break;
-                        case SkinType.Ghost:
+                        case SkinCharacter.Ghost:
                             _lastSelectedGhostSkin = skin;
                             break;
                     }

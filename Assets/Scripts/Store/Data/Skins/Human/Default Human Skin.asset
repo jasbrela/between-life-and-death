@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658bf08fee43ca741b04cc26caed8047, type: 3}
   m_Name: Default Human Skin
   m_EditorClassIdentifier: 
-  id: 0
-  skinType: 0
+  type: 0
+  character: 0
   animator: {fileID: 9100000, guid: 4c6d7eb6b1eafee4195facf0bed8412d, type: 2}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 3eb9b03be63ef82438946f2207924491, type: 3}
   price: 0

@@ -1,8 +1,8 @@
-﻿namespace Enums
+namespace Enums
 {
     public enum SkinType
     {
-        Human,
-        Ghost
+        Default,
+        Devil,
     }
 }

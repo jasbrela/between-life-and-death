@@ -1,27 +1,37 @@
+using Enums;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Store
 {
     public class SkinObject : MonoBehaviour
     {
         [SerializeField] private Skin skinData;
+        
+        [SerializeField] private TextMeshProUGUI price;
+        [SerializeField] private GameObject buyButton;
+        [SerializeField] private GameObject equipButton;
+        [SerializeField] private Image icon;
+
     
-        public Skin GetSkinData => skinData;
+        public Skin SkinData => skinData;
 
         private void OnEnable()
         {
+            if (skinData.sprite == null) gameObject.SetActive(false);
+            
             bool isUnlocked = PlayerPrefs.GetInt(
-                $"skin_{skinData.skinType.ToString()}_{skinData.id}") == 1;
+                $"skin_{skinData.character.ToString()}_{skinData.type}") == 1;
 
-            if (isUnlocked)
+            if (isUnlocked || skinData.type == SkinType.Default)
             {
-                transform.Find("btn").Find("btn-buy").gameObject.SetActive(false);
-                transform.Find("btn").Find("btn-equip").gameObject.SetActive(true);
+                buyButton.SetActive(false);
+                equipButton.SetActive(true);
             }
-            transform.Find("btn").Find("btn-buy").Find("btn-text").GetComponent<TextMeshProUGUI>().text = skinData.price.ToString();
-            transform.Find("icon").GetComponent<SpriteRenderer>().sprite = skinData.sprite;
+            price.text = skinData.price.ToString();
+            icon.sprite = skinData.sprite;
         }
     }
 }
