@@ -15,8 +15,8 @@ MonoBehaviour:
   pos: {fileID: 11400000, guid: 9ee008157bcefaa4a8b3e92bda1c022c, type: 2}
   prefab: {fileID: 6141590196286568138, guid: 778021c6925cf7f49b47e8c802ddcf8d, type: 3}
   sprites:
-  - {fileID: 21300000, guid: f6978476a7cb0fb49a8adba1805cb26d, type: 3}
-  firstSpawnDelay: 30
-  minRepeatDelay: 25
-  maxRepeatDelay: 40
+  - {fileID: 21300000, guid: c04adf7f35b890040aa66fa31e98fb4c, type: 3}
+  firstSpawnDelay: 3
+  minRepeatDelay: 2.5
+  maxRepeatDelay: 4
   isCloud: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CandyMagnet
   m_EditorClassIdentifier: 
   type: 1
-  sprite: {fileID: 21300000, guid: e453dc1f28912474a849554a0361cf3e, type: 3}
+  sprite: {fileID: 21300000, guid: fd3b2eea4c0e27f41b64b70b27f3938f, type: 3}
   prices: 0a000000140000001e0000002800000032000000
   durations:
   - 10
