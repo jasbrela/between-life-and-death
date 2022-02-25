@@ -46,7 +46,7 @@ namespace Player
         {
             while (true)
             {
-                if (isPaused || isGameOver || !Application.isFocused) yield return null;
+                while (isPaused || isGameOver || !Application.isFocused) yield return null;
                 
                 yield return new WaitForSecondsRealtime(interval);
                 
@@ -62,6 +62,7 @@ namespace Player
                 if (Time.timeScale < maxVelocity)
                 {
                     Time.timeScale = curve.Evaluate(_timer);
+                    Debug.Log(Time.timeScale);
                 }
             }
 
