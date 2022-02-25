@@ -48,6 +48,7 @@ namespace Spawners
             if (!(transform.position.y < player.position.y)) return;
             
             GetComponent<SpriteRenderer>().sortingLayerName = "SpawnableFront";
+            GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
             GetComponent<Collider2D>().enabled = false;
         }
 
