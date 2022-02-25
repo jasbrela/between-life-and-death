@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658bf08fee43ca741b04cc26caed8047, type: 3}
   m_Name: Default Ghost Skin
   m_EditorClassIdentifier: 
-  id: 0
-  skinType: 1
+  type: 0
+  character: 1
   animator: {fileID: 9100000, guid: 47c86d0487de73d4aaee998c515aa7b4, type: 2}
   sprite: {fileID: 0}
   price: 0
