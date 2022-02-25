@@ -62,7 +62,6 @@ namespace Player
                 if (Time.timeScale < maxVelocity)
                 {
                     Time.timeScale = curve.Evaluate(_timer);
-                    Debug.Log(Time.timeScale);
                 }
             }
 
