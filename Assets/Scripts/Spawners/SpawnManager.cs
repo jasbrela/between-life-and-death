@@ -13,6 +13,7 @@ namespace Spawners
         [SerializeField] private int candyQuantity;
         [SerializeField] private SpawnerInformation info;
 
+        private int delay = 3;
         private int _lastPowerUp;
         
         private void Start()
@@ -50,7 +51,7 @@ namespace Spawners
             if (spawner != info.candySpawner)
             {
                 SetIndex(spawner);
-                StartCoroutine(ResetIndexAfterInterval(spawner, 3));
+                StartCoroutine(ResetIndexAfterInterval(spawner, delay));
             }
             
             spawner.Spawn(transform, ref player);
@@ -73,7 +74,7 @@ namespace Spawners
             
             info.candySpawner.Index = Random.Range(0, 3);
 
-            StartCoroutine(ResetIndexAfterInterval(info.candySpawner, candyQuantity + 2));
+            StartCoroutine(ResetIndexAfterInterval(info.candySpawner, candyQuantity + delay));
             
             for (int i = 0; i < candyQuantity; i++)
             {
@@ -101,15 +102,20 @@ namespace Spawners
             {
                 case 0:
                     spawner.Index += Random.Range(1, 3);
+                    avoid = false;
                     break;
                 case 1:
                     float chance = Random.Range(0f, 1f);
                     spawner.Index += chance > 0.5f ? 1 : -1;
+                    avoid = false;
                     break;
                 case 2:
                     spawner.Index -= Random.Range(1, 3);
+                    avoid = false;
                     break;
             }
+
+            if (avoid) spawner.Index = -1;
         }
 
         private void SetIndex(Spawner spawner)

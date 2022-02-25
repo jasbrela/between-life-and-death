@@ -9,10 +9,10 @@ namespace Spawners
             switch (index)
             {
                 case 1:
-                    transform.Translate(Vector3.left * minSpeed * Time.deltaTime);
+                    transform.Translate(Vector3.left * (speed * Time.deltaTime));
                     break;
                 case 0:
-                    transform.Translate(Vector3.right * minSpeed * Time.deltaTime);
+                    transform.Translate(Vector3.right * (speed * Time.deltaTime));
                     break;
             }
         }

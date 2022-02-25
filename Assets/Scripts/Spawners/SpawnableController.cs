@@ -8,16 +8,19 @@ namespace Spawners
 {
     public abstract class SpawnableController : MonoBehaviour
     {
-        [SerializeField] private protected float minSpeed = 2;
-        [SerializeField] private protected float maxSpeed;
+        [SerializeField] private protected FloatVariable minSpeed;
+        [SerializeField] private protected FloatVariable maxSpeed;
 
         [SerializeField] private protected bool isFromGhostMode;
         private protected Transform player;
         private protected int index;
+        private protected float speed;
 
         private void Start()
         {
-            if (Math.Abs(minSpeed - maxSpeed) > .1f) Random.Range(minSpeed, maxSpeed);
+            speed = Math.Abs(minSpeed.value - maxSpeed.value) > .1f
+                ? Random.Range(minSpeed.value, maxSpeed.value)
+                : minSpeed.value;
             
             bool isGhostMode = PlayerStatus.isGhostMode && SceneManager.GetActiveScene().name == Scenes.Ghost.ToString();
             

@@ -19,7 +19,7 @@ namespace Spawners
 
         public void Spawn(Transform parent, ref Transform player)
         {
-            if (PlayerStatus.isGameOver) return;
+            if (PlayerStatus.isGameOver || Index == -1) return;
             
             GameObject obj = Instantiate(prefab, parent.position, parent.rotation);
             obj.GetComponent<SpawnableController>().Initialize(Index, ref player);

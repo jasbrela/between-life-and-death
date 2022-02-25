@@ -95,6 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b853bec21d1483baec14bc1a208d768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 2
-  maxSpeed: 1
+  minSpeed: {fileID: 11400000, guid: fea65cab2752be344b32572720296509, type: 2}
+  maxSpeed: {fileID: 11400000, guid: 8455df40127fab54dad1941ba5278b40, type: 2}
   isFromGhostMode: 0
