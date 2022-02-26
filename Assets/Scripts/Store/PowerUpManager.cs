@@ -44,7 +44,7 @@ namespace Store
             var type = powerUp.type;
             var duration = powerUp.durations[PlayerPrefs.GetInt(powerUp + "_level")];
 
-            StartCoroutine(StartPowerUpTimer(duration, type));
+            StartCoroutine(StartPowerUpTimer(duration.value, type));
         }
 
         private IEnumerator StartPowerUpTimer(float duration, PowerUpType type)
@@ -80,6 +80,13 @@ namespace Store
                 default:
                     throw new Exception("Tried to change the status of an nonexistent type of Power Up: " + type);
             }
+        }
+
+        public PowerUpType IsAnyPowerUpActive()
+        {
+            if (IsCandyMagnetActive) return PowerUpType.CandyMagnet;
+            if (IsDoubleCandiesActive) return PowerUpType.DoubleCandies;
+            return PowerUpType.None;
         }
     }
 }

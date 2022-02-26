@@ -15,5 +15,5 @@ MonoBehaviour:
   type: 1
   character: 0
   animator: {fileID: 9100000, guid: 7644b4289666cfb4e9632298c5c3c7ee, type: 2}
-  sprite: {fileID: 21300000, guid: 82a7c5366d8e1c4459f3e3c261e573bc, type: 3}
-  price: 25
+  sprite: {fileID: 21300000, guid: a2cd398860a47fe4fbbce60623d590f3, type: 3}
+  rarity: 2

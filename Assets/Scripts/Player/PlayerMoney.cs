@@ -11,10 +11,11 @@ namespace Player
     public class PlayerMoney : MonoBehaviour
     {
         public static readonly string Key = "player_money";
+        [SerializeField] private bool isDebugMode;
         [SerializeField] TMP_Text moneyLabel;
         [SerializeField] private Animation feedbackAnim;
         [SerializeField] private Animation candiesAnim;
-
+        
         private void Start()
         {
             UpdateMoneyLabel();
@@ -26,19 +27,21 @@ namespace Player
         }
 
         #region Skins Methods
-        public void OnClickBuySkin(Button button)
+        public void OnClickBuySkin(SkinObject skin)
         {
-            Skin skinData = button.transform.parent.parent.GetComponent<SkinObject>().SkinData;
-        
-            if (PlayerPrefs.GetInt(Key) >= skinData.price)
+            Skin data = skin.SkinData;
+
+            var price = isDebugMode ? 1 : data.Price;
+            
+            if (PlayerPrefs.GetInt(Key) >= price)
             {
-                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - skinData.price);
+                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - price);
                 UpdateMoneyLabel();
 
-                PlayerPrefs.SetInt($"skin_{skinData.character.ToString()}_{skinData.type}", 1);
+                PlayerPrefs.SetInt($"skin_{data.character.ToString()}_{data.type}", 1);
 
-                button.gameObject.SetActive(false);
-                button.transform.parent.Find("btn-equip").gameObject.SetActive(true);
+                skin.ChangeBuyButtonVisibility(false);
+                skin.ChangeEquipButtonVisibility(true);
             }
             else
             {
@@ -67,9 +70,11 @@ namespace Player
             PowerUp powerUpData = button.transform.parent.parent.GetComponent<PowerUpObject>().GetPowerUpData;
 
             var level = PlayerPrefs.GetInt(powerUpData.type + "_level");
-            if (PlayerPrefs.GetInt(Key) >= powerUpData.prices[level])
+            var price = isDebugMode ? 1 : powerUpData.prices[level].value;
+            
+            if (PlayerPrefs.GetInt(Key) >= price)
             {
-                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - powerUpData.prices[level]);
+                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - price);
                 UpdateMoneyLabel();
                 level++;
 

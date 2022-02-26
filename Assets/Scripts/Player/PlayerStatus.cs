@@ -131,6 +131,7 @@ namespace Player
 
             foreach (PowerUpType powerUp in Enum.GetValues(typeof(PowerUpType)))
             {
+                if (powerUp == PowerUpType.None) continue;
                 if (!toBeChecked.CompareTag(prefix + powerUp)) continue;
                 
                 Destroy(toBeChecked);

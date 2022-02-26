@@ -10,9 +10,9 @@ namespace Spawners
         public Position pos;
         public GameObject prefab;
         public Sprite[] sprites;
-        public float firstSpawnDelay = 5f;
-        public float minRepeatDelay;
-        public float maxRepeatDelay;
+        public FloatVariable firstSpawnDelay;
+        public FloatVariable minRepeatDelay;
+        public FloatVariable maxRepeatDelay;
         public bool isCloud;
         
         public int Index { get; set; }

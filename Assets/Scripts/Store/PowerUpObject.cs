@@ -30,7 +30,7 @@ public class PowerUpObject : MonoBehaviour
 
         if (level < MaxLevel)
         {
-            buyPrice.text = powerUpData.prices[level].ToString();
+            buyPrice.text = powerUpData.prices[level].value.ToString();
         }
         else
         {

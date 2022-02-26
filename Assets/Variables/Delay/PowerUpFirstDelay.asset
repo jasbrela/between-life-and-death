@@ -9,16 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6bd74a36103ec4eb7cfc691c4ffe1f, type: 3}
-  m_Name: CandyMagnet
+  m_Script: {fileID: 11500000, guid: 99d4e095846f49b42ace1c990fcd1810, type: 3}
+  m_Name: PowerUpFirstDelay
   m_EditorClassIdentifier: 
-  type: 1
-  sprite: {fileID: 21300000, guid: fd3b2eea4c0e27f41b64b70b27f3938f, type: 3}
-  prices: 0a000000140000001e0000002800000032000000
-  durations:
-  - 10
-  - 13
-  - 16
-  - 19
-  - 22
-  - 25
+  value: 29

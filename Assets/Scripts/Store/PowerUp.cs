@@ -7,6 +7,6 @@ public class PowerUp : ScriptableObject
 {
     public PowerUpType type;
     [Tooltip("For store")] public Sprite sprite;
-    public int[] prices;
-    public float[] durations;
+    public IntegerVariable[] prices;
+    public FloatVariable[] durations;
 }

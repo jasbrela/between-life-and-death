@@ -44,8 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  candyQuantity: 5
-  cloudSpawner: {fileID: 11400000, guid: 7542b37a8435f3e4a8e85a1d06bcba97, type: 2}
-  candySpawner: {fileID: 11400000, guid: 506b397f53d05d04d890ccb12c1cdc8d, type: 2}
-  obstacleSpawner: {fileID: 11400000, guid: 584319bd94ca72045a4db11879f22738, type: 2}
-  soulSpawner: {fileID: 11400000, guid: ea63b50471600284a9bcf8300ce828c4, type: 2}
+  candyQuantity: {fileID: 11400000, guid: e5cc4e7e5cda9f844bc8af1dac645f18, type: 2}
+  info: {fileID: 0}

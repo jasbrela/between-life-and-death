@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d55342e1ecd214e4083ca3a99df262a5, type: 3}
   - {fileID: 21300000, guid: ebd3903ba575b4b4390da50c1498fb13, type: 3}
   - {fileID: 21300000, guid: d7393d78fa7d37c498cd793a07444aa2, type: 3}
-  firstSpawnDelay: 3
-  minRepeatDelay: 2.5
-  maxRepeatDelay: 4
+  firstSpawnDelay: {fileID: 11400000, guid: 1afcf87403cbec5469dfbe5c64bcaf5f, type: 2}
+  minRepeatDelay: {fileID: 11400000, guid: c6e8c7a164c015d4baf770c7136dd7fa, type: 2}
+  maxRepeatDelay: {fileID: 11400000, guid: 5881c7fe17a93854d9534b0970d00891, type: 2}
   isCloud: 1

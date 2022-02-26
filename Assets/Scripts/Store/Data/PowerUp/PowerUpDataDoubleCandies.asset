@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6bd74a36103ec4eb7cfc691c4ffe1f, type: 3}
+  m_Name: PowerUpDataDoubleCandies
+  m_EditorClassIdentifier: 
+  type: 1
+  sprite: {fileID: 21300000, guid: c04adf7f35b890040aa66fa31e98fb4c, type: 3}
+  prices:
+  - {fileID: 11400000, guid: 532bfaeb915a7ee4084ff8f0de858bf1, type: 2}
+  - {fileID: 11400000, guid: 6f519c4ee6909154eaeb83acba8c95a3, type: 2}
+  - {fileID: 11400000, guid: 9ba7fbdd61f069f4db6dbaeb4524a0d4, type: 2}
+  - {fileID: 11400000, guid: b996d13647f265d4090b2fcc56a606bb, type: 2}
+  - {fileID: 11400000, guid: 0abd9040cc9b50f45840b728759b91cb, type: 2}
+  durations:
+  - {fileID: 11400000, guid: 723f3fd4bf38df14e98b972ce472f40d, type: 2}
+  - {fileID: 11400000, guid: 061a79d6a0183af49a4b5ed4126ca819, type: 2}
+  - {fileID: 11400000, guid: bba4395ca1d79b24eb0697fb422298bf, type: 2}
+  - {fileID: 11400000, guid: e1492caa60583e14297e3999d053b905, type: 2}
+  - {fileID: 11400000, guid: b2f7696eaac3a14459e4dea4c0d47e03, type: 2}
+  - {fileID: 11400000, guid: ed48c6a31cbcc3e49a6ce1898350d93c, type: 2}

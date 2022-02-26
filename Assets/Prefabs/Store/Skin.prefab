@@ -783,6 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd96c0b553b823248818f205c300e051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugMode: 1
   skinData: {fileID: 11400000, guid: 036f35406bbd2984ab74b1b09dcc1858, type: 2}
   price: {fileID: 7201395904000764863}
   buyButton: {fileID: 221671434905241959}
@@ -916,7 +917,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 3.3283768, w: 0}
+  m_margin: {x: 47.79, y: 0, z: 3.3283768, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

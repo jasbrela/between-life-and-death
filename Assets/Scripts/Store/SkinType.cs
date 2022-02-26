@@ -4,5 +4,6 @@ namespace Enums
     {
         Default,
         Devil,
+        Killer,
     }
 }

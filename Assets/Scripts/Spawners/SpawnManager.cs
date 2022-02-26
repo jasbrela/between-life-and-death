@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Enums;
 using Player;
+using Store;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,11 +12,13 @@ namespace Spawners
     public class SpawnManager : MonoBehaviour
     {
         [SerializeField] private Transform player;
-        [SerializeField] private int candyQuantity;
+        [SerializeField] private IntegerVariable candyQuantity;
         [SerializeField] private SpawnerInformation info;
 
         private int delay = 3;
-        private int _lastPowerUp;
+        private int _currentPowerUp;
+        private int _nextPowerUp;
+
         
         private void Start()
         {
@@ -27,8 +31,8 @@ namespace Spawners
             StartCoroutine(StartSpawn(info.obstacleSpawner));
             StartCoroutine(StartSpawn(info.soulSpawner));
 
-            _lastPowerUp = Random.Range(0, info.powerUpSpawners.Length);
-            StartCoroutine(StartSpawn(info.powerUpSpawners[_lastPowerUp]));
+            _nextPowerUp = _currentPowerUp = Random.Range(0, info.powerUpSpawners.Length);
+            StartCoroutine(StartSpawn(info.powerUpSpawners[_currentPowerUp]));
 
             ResetIndex(info.candySpawner);
             StartCoroutine(SpawnCandy());
@@ -38,7 +42,7 @@ namespace Spawners
         private IEnumerator StartSpawn(Spawner spawner)
         {
             ResetIndex(spawner);
-            yield return new WaitForSeconds(spawner.firstSpawnDelay);
+            yield return new WaitForSeconds(spawner.firstSpawnDelay.value);
             StartCoroutine(Spawn(spawner));
         }
 
@@ -54,29 +58,54 @@ namespace Spawners
                 StartCoroutine(ResetIndexAfterInterval(spawner, delay));
             }
             
-            spawner.Spawn(transform, ref player);
+            Spawner temp = spawner;
+            float minDelay = spawner.minRepeatDelay.value;
+            float maxDelay = spawner.maxRepeatDelay.value;
 
-            var temp = spawner;
-            
-            if (info.powerUpSpawners[_lastPowerUp] == spawner)
+            var isSpawningPowerUp = info.powerUpSpawners.Contains(spawner);
+
+            if (PowerUpManager.Instance.IsAnyPowerUpActive() != PowerUpType.None)
             {
-                _lastPowerUp = Random.Range(0, info.powerUpSpawners.Length);
-                temp = info.powerUpSpawners[_lastPowerUp];
+                if (!isSpawningPowerUp)
+                {
+                    spawner.Spawn(transform, ref player);
+                }
+                else
+                {
+                    minDelay = 5f;
+                    maxDelay = 5f;
+                }
+            }
+            else
+            {
+                spawner.Spawn(transform, ref player);
+                
+                if (isSpawningPowerUp)
+                {
+                    _currentPowerUp = _nextPowerUp;
+                    
+                    _nextPowerUp = _currentPowerUp + 1;
+                    if (_nextPowerUp == info.powerUpSpawners.Length) _nextPowerUp = 0;
+                
+                    temp = info.powerUpSpawners[_nextPowerUp];
+                    minDelay = temp.minRepeatDelay.value;
+                    maxDelay = temp.maxRepeatDelay.value;
+                }
             }
 
-            yield return new WaitForSeconds(Random.Range(temp.minRepeatDelay, temp.maxRepeatDelay));
+            yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
             StartCoroutine(Spawn(temp));
         }
 
         private IEnumerator SpawnCandy()
         {
-            yield return new WaitForSeconds(Random.Range(info.candySpawner.minRepeatDelay, info.candySpawner.maxRepeatDelay));
+            yield return new WaitForSeconds(Random.Range(info.candySpawner.minRepeatDelay.value, info.candySpawner.maxRepeatDelay.value));
             
             info.candySpawner.Index = Random.Range(0, 3);
 
-            StartCoroutine(ResetIndexAfterInterval(info.candySpawner, candyQuantity + delay));
+            StartCoroutine(ResetIndexAfterInterval(info.candySpawner, candyQuantity.value + delay));
             
-            for (int i = 0; i < candyQuantity; i++)
+            for (int i = 0; i < candyQuantity.value; i++)
             {
                 if (PlayerStatus.isGameOver || PlayerStatus.isGhostMode) yield break;
                 yield return new WaitForSeconds(1);
@@ -130,7 +159,7 @@ namespace Spawners
             
             CheckWith(spawner, info.candySpawner, avoid);
             CheckWith(spawner, info.obstacleSpawner, avoid);
-            CheckWith(spawner, info.powerUpSpawners[_lastPowerUp], avoid);
+            CheckWith(spawner, info.powerUpSpawners[_currentPowerUp], avoid);
 
             if (PlayerStatus.isGhostMode) CheckWith(spawner, info.soulSpawner, avoid);
 
@@ -152,7 +181,7 @@ namespace Spawners
             {
                 if (PlayerStatus.isPaused || PlayerStatus.isGameOver || !Application.isFocused) yield return null;
                 
-                yield return new WaitForSecondsRealtime(interval);
+                yield return new WaitForSeconds(interval);
                 count += interval;
             }
             
