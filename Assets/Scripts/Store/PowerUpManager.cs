@@ -38,31 +38,75 @@ namespace Store
 
         public bool IsCandyMagnetActive { get; private set; }
         public bool IsDoubleCandiesActive { get; private set; }
+        public bool CanCount { get; private set; }
+        
+        private PowerUp _currentPowerUp;
 
+        public delegate void OnTimerEnds();
+        private OnTimerEnds _onTimerEnds;
+        
+        public delegate void OnUsePowerUp(PowerUpType type);
+        private OnUsePowerUp _onUsePowerUp;
+        
+        public delegate void OnTimerStarts();
+        private OnTimerStarts _onTimerStarts;
+
+        private float count;
+        
         public void UsePowerUp(PowerUp powerUp)
         {
-            var type = powerUp.type;
-            var duration = powerUp.durations[PlayerPrefs.GetInt(powerUp + "_level")];
+            CanCount = true;
+            _currentPowerUp = powerUp;
+            ChangePowerUpStatus(powerUp.type, true);
+            _onUsePowerUp?.Invoke(powerUp.type);
+        }
 
+        public void StartTimer()
+        {
+            if (_currentPowerUp == null || !CanCount) return;
+            var type = _currentPowerUp.type;
+            var duration = _currentPowerUp.durations[PlayerPrefs.GetInt(type + "_level")];
+            
             StartCoroutine(StartPowerUpTimer(duration.value, type));
+        }
+
+        public void SubscribeToPowerUpTimer(OnUsePowerUp onUsePowerUp, OnTimerStarts onTimerStarts, OnTimerEnds onTimerEnds)
+        {
+            _onUsePowerUp += onUsePowerUp;
+            _onTimerStarts += onTimerStarts;
+            _onTimerEnds += onTimerEnds;
+        }
+        
+        public void UnsubscribeToPowerUpTimer(OnUsePowerUp onUsePowerUp, OnTimerStarts onTimerStarts, OnTimerEnds onTimerEnds)
+        {
+            _onTimerEnds -= onTimerEnds;
+            _onTimerStarts -= onTimerStarts;
+            _onUsePowerUp -= onUsePowerUp;
         }
 
         private IEnumerator StartPowerUpTimer(float duration, PowerUpType type)
         {
-            float count = 0f;
+            CanCount = false;
+            count = duration;
             float interval = .1f;
-
-            ChangePowerUpStatus(type, true);
-                
-            while (count <= duration)
+            
+            _onTimerStarts?.Invoke();
+            while (count > 0)
             {
                 if (PlayerStatus.isPaused || PlayerStatus.isGameOver || !Application.isFocused) yield return null;
                 
                 yield return new WaitForSecondsRealtime(interval);
-                count += interval;
+                count -= interval;
             }
             
+            _onTimerEnds?.Invoke();
+            _currentPowerUp = null;
             ChangePowerUpStatus(type, false);
+        }
+
+        public float GetCount()
+        {
+            return count;
         }
 
         private void ChangePowerUpStatus(PowerUpType type, bool status)

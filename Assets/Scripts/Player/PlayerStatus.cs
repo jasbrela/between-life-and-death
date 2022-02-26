@@ -12,6 +12,7 @@ namespace Player
         [SerializeField] private AllPowerUpData allPowerUps;
         [SerializeField] private AnimationCurve curve;
         [SerializeField] [Range(1f, 5f)] private float maxVelocity;
+        [SerializeField] private PowerUpBar bar;
         
         private const float DebuffMultiplier = 1.2f;
         private float _timer = 1;
@@ -139,7 +140,10 @@ namespace Player
                 break;
             }
 
-            if (find == null) return;
+            if (find == null)
+            {
+                return;
+            }
             
             switch (find)
             {

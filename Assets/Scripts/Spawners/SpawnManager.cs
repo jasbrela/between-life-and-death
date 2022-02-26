@@ -19,7 +19,6 @@ namespace Spawners
         private int _currentPowerUp;
         private int _nextPowerUp;
 
-        
         private void Start()
         {
             StartAllSpawns();
@@ -107,6 +106,7 @@ namespace Spawners
             
             for (int i = 0; i < candyQuantity.value; i++)
             {
+                if (i == 0 && PowerUpManager.Instance.CanCount) PowerUpManager.Instance.StartTimer();
                 if (PlayerStatus.isGameOver || PlayerStatus.isGhostMode) yield break;
                 yield return new WaitForSeconds(1);
                 info.candySpawner.Spawn(transform, ref player);

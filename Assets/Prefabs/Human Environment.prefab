@@ -376,10 +376,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -520, y: 800}
-      - {x: 520, y: 800}
-      - {x: 520, y: -800}
-      - {x: -520, y: -800}
+    - - {x: -515, y: 800}
+      - {x: 515, y: 800}
+      - {x: 515, y: -800}
+      - {x: -515, y: -800}
 --- !u!1 &3108948626690161598
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 330aabff5f705794694e5a84f15a44a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 870b7b7df678b844bbb47a09e6ef914d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 0.69547874
+  m_AspectRatio: 0.6435547
 --- !u!1 &3759754769755496062
 GameObject:
   m_ObjectHideFlags: 0

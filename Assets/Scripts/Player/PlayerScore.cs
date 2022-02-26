@@ -53,6 +53,7 @@ namespace Player
         {
             if (other.CompareTag("Candy"))
             {
+                if (PowerUpManager.Instance.CanCount) PowerUpManager.Instance.StartTimer();
                 playerAudioSource.clip = collectCandy;
                 playerAudioSource.Play();
                 int value = PowerUpManager.Instance.IsDoubleCandiesActive ? 2 : 1;

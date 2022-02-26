@@ -432,6 +432,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1008994669, guid: 2e431cab0e83ff047a3c33a93268528e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885452463, guid: 2e431cab0e83ff047a3c33a93268528e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885452463, guid: 2e431cab0e83ff047a3c33a93268528e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885452463, guid: 2e431cab0e83ff047a3c33a93268528e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 9.833641
+      objectReference: {fileID: 0}
     - target: {fileID: 1074887492427999673, guid: 2e431cab0e83ff047a3c33a93268528e, type: 3}
       propertyPath: m_Name
       value: Canvas - UI
@@ -737,6 +753,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3108948627295210221, guid: fc227f074caaa6b42af492082ac85987, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108948627295210221, guid: fc227f074caaa6b42af492082ac85987, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6249593478306728618, guid: fc227f074caaa6b42af492082ac85987, type: 3}
