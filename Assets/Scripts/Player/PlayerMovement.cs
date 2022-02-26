@@ -47,7 +47,7 @@ namespace Player
 
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
                     {
                         OnSwipeLeft();
                     }
@@ -58,7 +58,7 @@ namespace Player
                 }
                 else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
                     {
                         OnSwipeRight();
                     }
@@ -80,7 +80,7 @@ namespace Player
             {
                 if (_fingerDown.x - _fingerUp.x > 0)
                 {
-                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
                     {
                         OnSwipeRight();
                     }
@@ -91,7 +91,7 @@ namespace Player
                 }
                 else if (_fingerDown.x - _fingerUp.x < 0)
                 {
-                    if (PlayerStatus.currentDebuff != DebuffType.InvertedControllers)
+                    if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
                     {
                         OnSwipeLeft();
                     }

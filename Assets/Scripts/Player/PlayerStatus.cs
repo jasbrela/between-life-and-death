@@ -51,7 +51,7 @@ namespace Player
                 
                 yield return new WaitForSecondsRealtime(interval);
                 
-                float multiplier = currentDebuff == DebuffType.HigherVelocity ? DebuffMultiplier : 1f;
+                float multiplier = currentDebuff == DebuffType.IncreasedSpeed ? DebuffMultiplier : 1f;
                 _timer += interval * Time.unscaledDeltaTime * multiplier * 0.1f;
             }
         }
