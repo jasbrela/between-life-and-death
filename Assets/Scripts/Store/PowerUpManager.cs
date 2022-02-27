@@ -93,7 +93,7 @@ namespace Store
             _onTimerStarts?.Invoke();
             while (count > 0)
             {
-                if (PlayerStatus.isPaused || PlayerStatus.isGameOver || !Application.isFocused) yield return null;
+                while (PlayerStatus.isPaused || PlayerStatus.isGameOver || !Application.isFocused) yield return null;
                 
                 yield return new WaitForSecondsRealtime(interval);
                 count -= interval;
@@ -104,7 +104,7 @@ namespace Store
             ChangePowerUpStatus(type, false);
         }
 
-        public float GetCount()
+        public float GetRemainingDuration()
         {
             return count;
         }

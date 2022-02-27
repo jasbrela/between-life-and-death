@@ -26,56 +26,57 @@ namespace Player
 
         void Update()
         {
-            if (!PlayerStatus.isGameOver)
+            if (PlayerStatus.isGameOver || PlayerStatus.isPaused) return;
+
+            if (Input.touchCount > 0)
             {
-                if (Input.touchCount > 0)
+                Touch touch = Input.touches[0];
+
+                if (touch.phase == TouchPhase.Began)
                 {
-                    Touch touch = Input.touches[0];
-
-                    if (touch.phase == TouchPhase.Began)
-                    {
-                        _fingerUp = touch.position;
-                        _fingerDown = touch.position;
-                    }
-
-                    if (touch.phase == TouchPhase.Moved)
-                    {
-                        _fingerDown = touch.position;
-                        CheckSwipe();
-                    }
+                    _fingerUp = touch.position;
+                    _fingerDown = touch.position;
                 }
 
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                if (touch.phase == TouchPhase.Moved)
                 {
-                    if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
-                    {
-                        OnSwipeLeft();
-                    }
-                    else
-                    {
-                        OnSwipeRight();
-                    }
+                    _fingerDown = touch.position;
+                    CheckSwipe();
                 }
-                else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
-                    {
-                        OnSwipeRight();
-                    }
-                    else
-                    {
-                        OnSwipeLeft();
-                    }
-                }
-            
-                transform.position = Vector3.MoveTowards(transform.position,
-                    _destination,
-                    _moveSpeed * Time.deltaTime);
             }
+
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
+                {
+                    OnSwipeLeft();
+                }
+                else
+                {
+                    OnSwipeRight();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (PlayerStatus.currentDebuff != DebuffType.ReversedControls)
+                {
+                    OnSwipeRight();
+                }
+                else
+                {
+                    OnSwipeLeft();
+                }
+            }
+            
+            transform.position = Vector3.MoveTowards(transform.position,
+                _destination,
+                _moveSpeed * Time.deltaTime);
         }
 
         void CheckSwipe()
         {
+            if (PlayerStatus.isGameOver || PlayerStatus.isPaused) return;
+
             if (HorizontalValMove() > swipeThreshold && HorizontalValMove() > VerticalMove())
             {
                 if (_fingerDown.x - _fingerUp.x > 0)

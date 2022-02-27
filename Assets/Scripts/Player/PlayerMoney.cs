@@ -13,9 +13,11 @@ namespace Player
         public static readonly string Key = "player_money";
         [SerializeField] private bool isDebugMode;
         [SerializeField] TMP_Text moneyLabel;
-        [SerializeField] private Animation feedbackAnim;
-        [SerializeField] private Animation candiesAnim;
+        [SerializeField] private Animator borderAnimator;
+        [SerializeField] private Animator candyAnimator;
         
+        private static readonly int NotEnoughCandy = Animator.StringToHash("NotEnoughCandy");
+
         private void Start()
         {
             UpdateMoneyLabel();
@@ -35,6 +37,7 @@ namespace Player
             
             if (PlayerPrefs.GetInt(Key) >= price)
             {
+                Debug.Log("entra aqui");
                 PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - price);
                 UpdateMoneyLabel();
 
@@ -65,12 +68,12 @@ namespace Player
         #endregion
 
         #region PowerUp Methods
-        public void OnClickBuyPowerUp(Button button)
+        public void OnClickBuyPowerUp(PowerUpObject obj)
         {
-            PowerUp powerUpData = button.transform.parent.parent.GetComponent<PowerUpObject>().GetPowerUpData;
+            PowerUp data = obj.GetPowerUpData;
 
-            var level = PlayerPrefs.GetInt(powerUpData.type + "_level");
-            var price = isDebugMode ? 1 : powerUpData.prices[level].value;
+            var level = PlayerPrefs.GetInt(data.type + "_level");
+            var price = isDebugMode ? 1 : data.prices[level].value;
             
             if (PlayerPrefs.GetInt(Key) >= price)
             {
@@ -78,23 +81,18 @@ namespace Player
                 UpdateMoneyLabel();
                 level++;
 
-                PlayerPrefs.SetInt(powerUpData.type + "_level", level);
-                
-                if (level == 5)
-                {
-                    button.gameObject.SetActive(false);
-                }
+                PlayerPrefs.SetInt(data.type + "_level", level);
             }
             else
-            {
+            { 
                 PlayNotEnoughCandiesAnimation();
             }
         }
 
         private void PlayNotEnoughCandiesAnimation()
         {
-            if (feedbackAnim != null) feedbackAnim.Play();
-            if (candiesAnim != null) candiesAnim.Play();
+            borderAnimator.SetTrigger(NotEnoughCandy);
+            candyAnimator.SetTrigger(NotEnoughCandy);
         }
         
         public void OnClickWatchAdPowerUp(Button button)

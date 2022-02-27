@@ -230,8 +230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDebugMode: 0
   moneyLabel: {fileID: 664297004}
-  feedbackAnim: {fileID: 2010084397}
-  candiesAnim: {fileID: 469164483}
+  borderAnimator: {fileID: 2010084397}
+  candyAnimator: {fileID: 469164483}
 --- !u!4 &47286457
 Transform:
   m_ObjectHideFlags: 0
@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 274355731293097878, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 274355731386561944, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: powerUpData
       value: 
@@ -821,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Store.PlayerMoney, Assembly-CSharp
+      value: Player.PlayerMoney, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -834,14 +838,14 @@ PrefabInstance:
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1799583587}
+      objectReference: {fileID: 1700996563}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.UI.Button, UnityEngine.UI
+      value: PowerUpObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1577,22 +1581,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469164479}
   m_CullTransparentMesh: 1
---- !u!111 &469164483
-Animation:
+--- !u!95 &469164483
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469164479}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: a1a842a6f3642f94a8c0edbbe2023178, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: a1a842a6f3642f94a8c0edbbe2023178, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b48e176cfb424d478720ee1b30bdee9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &621784705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +1985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Store.PlayerMoney, Assembly-CSharp
+      value: Player.PlayerMoney, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -1991,14 +1998,14 @@ PrefabInstance:
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1044161697}
+      objectReference: {fileID: 1820160024}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.UI.Button, UnityEngine.UI
+      value: PowerUpObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2102,17 +2109,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4424255757605587670, guid: 39421246202490645ab6af06f3938d78, type: 3}
   m_PrefabInstance: {fileID: 51717203}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1044161697 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
-  m_PrefabInstance: {fileID: 847903306}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1077207861
 GameObject:
   m_ObjectHideFlags: 0
@@ -3259,17 +3255,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771578772}
   m_CullTransparentMesh: 1
---- !u!114 &1799583587 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 274355732267069652, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
-  m_PrefabInstance: {fileID: 223849982}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1800149783 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 274355731386561945, guid: c95154a2de0c91c43833b87ffc0ffd97, type: 3}
@@ -3430,8 +3415,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2010084399}
   - component: {fileID: 2010084400}
-  - component: {fileID: 2010084397}
   - component: {fileID: 2010084398}
+  - component: {fileID: 2010084397}
   m_Layer: 0
   m_Name: Feedback Border
   m_TagString: Untagged
@@ -3439,22 +3424,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!111 &2010084397
-Animation:
+--- !u!95 &2010084397
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010084396}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3f9a4e34900ef14418de392a82dd14d4, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 3f9a4e34900ef14418de392a82dd14d4, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2be7195a20bd14d488f805ded5c7f14c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!222 &2010084398
 CanvasRenderer:
   m_ObjectHideFlags: 0

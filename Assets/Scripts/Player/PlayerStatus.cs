@@ -12,7 +12,6 @@ namespace Player
         [SerializeField] private AllPowerUpData allPowerUps;
         [SerializeField] private AnimationCurve curve;
         [SerializeField] [Range(1f, 5f)] private float maxVelocity;
-        [SerializeField] private PowerUpBar bar;
         
         private const float DebuffMultiplier = 1.2f;
         private float _timer = 1;
@@ -31,6 +30,12 @@ namespace Player
         
         private void Awake()
         {
+            if (SceneManager.GetActiveScene().name == Scenes.Ghost.ToString())
+            {
+                isGhostMode = true;
+                PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);
+            }
+                
             if (!isGhostMode)
             {
                 Time.timeScale = 1;
@@ -87,15 +92,15 @@ namespace Player
                     isGameOver = true;
                     UpdateHighScore();
                     AddMoneyBasedOnScore();
-                    StartCoroutine(nameof(LoadGameOverScene));
+                    StartCoroutine(LoadSceneAfterInterval(Scenes.GameOver));
                 }
                 else if (!isGhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
                 {
                     Time.timeScale = (Time.timeScale - 1)/3 + 1;
-                    SceneManager.LoadScene(Scenes.Ghost.ToString());
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     isGhostMode = true;
+                    StartCoroutine(LoadSceneAfterInterval(Scenes.Ghost));
                 }
                 else // DIED in HUMAN MODE, after reviving -> GAME OVER
                 {
@@ -106,18 +111,19 @@ namespace Player
                     isGameOver = true;
                     UpdateHighScore();
                     AddMoneyBasedOnScore();
-                    StartCoroutine(nameof(LoadGameOverScene));
+                    StartCoroutine(LoadSceneAfterInterval(Scenes.GameOver));
                 }
             }
             else if (other.CompareTag("Soul")) // COLLECT SOUL -> HUMAN MODE
             {
                 if (isGhostMode)
                 {
-                    isGhostMode = false;
-                    Revived = true;
-                    SceneManager.LoadScene(Scenes.Game.ToString());
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
+                    
+                    isGhostMode = false;
+                    Revived = true;
+                    StartCoroutine(LoadSceneAfterInterval(Scenes.Game));
                 }
             }
             else
@@ -175,10 +181,10 @@ namespace Player
                                                 PlayerPrefs.GetInt(PlayerScore.ScoreKey));
         }
     
-        IEnumerator LoadGameOverScene()
+        IEnumerator LoadSceneAfterInterval(Scenes scene)
         {
             yield return new WaitForSecondsRealtime(0.5f);
-            SceneManager.LoadScene(Scenes.GameOver.ToString());
+            SceneManager.LoadScene(scene.ToString());
         }
     }
 }

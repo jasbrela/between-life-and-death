@@ -13,7 +13,6 @@ public class SceneController : MonoBehaviour
     [Header("Game Over Scene ONLY")]
     [SerializeField] private TMP_Text gameOverScore;
 
-    
     [Header("Main Menu Scene ONLY")]
     [SerializeField] private GameObject panelCredits;
     [SerializeField] private GameObject panelMenu;
@@ -96,10 +95,10 @@ public class SceneController : MonoBehaviour
     {
         if (PlayerStatus.isPaused) PlayerStatus.isPaused = false;
         
-        if (sceneName != Scenes.Ghost.ToString())
-        {
-            PlayerStatus.isGhostMode = false;
-        }
+        PlayerStatus.isGhostMode = sceneName == Scenes.Ghost.ToString();
+
+        if (sceneName == Scenes.Menu.ToString()) Time.timeScale = 1;
+        
         SceneManager.LoadScene(sceneName);
         PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);
     }

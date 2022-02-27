@@ -51,7 +51,7 @@ public class PowerUpBar : MonoBehaviour
     {
         if (!(_duration > 0) || !_canDecreaseBar) return;
         
-        var percentage = PowerUpManager.Instance.GetCount() / _duration;
+        var percentage = PowerUpManager.Instance.GetRemainingDuration() / _duration;
         if (percentage > 1) percentage = 1;
         filling.fillAmount = percentage;
     }
