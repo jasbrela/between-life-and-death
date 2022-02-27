@@ -10,6 +10,8 @@ TagManager:
   - Soul
   - PowerUp/CandyMagnet
   - PowerUp/DoubleCandies
+  - docesTotais
+  - MenuSong
   layers:
   - Default
   - TransparentFX
