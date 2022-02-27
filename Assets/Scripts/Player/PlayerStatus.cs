@@ -27,6 +27,7 @@ namespace Player
         [SerializeField] private AudioSource playerAudioSource;
         [SerializeField] private AudioClip hit;
         [SerializeField] private AudioSource bgAudioSource;
+        [SerializeField] private AudioClip powerUp;
         
         private void Awake()
         {
@@ -149,9 +150,13 @@ namespace Player
             {
                 case PowerUpType.CandyMagnet:
                     PowerUpManager.Instance.UsePowerUp(allPowerUps.candyMagnetData);
+                    playerAudioSource.clip = powerUp;
+                    playerAudioSource.Play();
                     break;
                 case PowerUpType.DoubleCandies:
                     PowerUpManager.Instance.UsePowerUp(allPowerUps.doubleCandiesData);
+                    playerAudioSource.clip = powerUp;
+                    playerAudioSource.Play();
                     break;
             }
         }
