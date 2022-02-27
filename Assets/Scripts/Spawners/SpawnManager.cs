@@ -108,7 +108,7 @@ namespace Spawners
             {
                 if (i == 0 && PowerUpManager.Instance.CanCount) PowerUpManager.Instance.StartTimer();
                 if (PlayerStatus.isGameOver || PlayerStatus.isGhostMode) yield break;
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0.5f);
                 info.candySpawner.Spawn(transform, ref player);
             }
             
