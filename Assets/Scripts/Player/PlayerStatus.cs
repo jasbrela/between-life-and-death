@@ -117,7 +117,7 @@ namespace Player
             {
                 if (isGhostMode)
                 {
-                    playerAudioSource.clip = hit;
+                    playerAudioSource.clip = powerUp;
                     playerAudioSource.Play();
                     
                     isGhostMode = false;
