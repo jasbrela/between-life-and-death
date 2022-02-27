@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e5930397e07314faa2f4100cddd566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugMode: 1
+  isDebugMode: 0
   moneyLabel: {fileID: 664297004}
   feedbackAnim: {fileID: 2010084397}
   candiesAnim: {fileID: 469164483}
