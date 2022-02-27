@@ -33,7 +33,6 @@ namespace Player
             if (SceneManager.GetActiveScene().name == Scenes.Ghost.ToString())
             {
                 isGhostMode = true;
-                PlayerPrefs.SetInt(PlayerScore.ScoreKey, 0);
             }
                 
             if (!isGhostMode)
@@ -43,7 +42,7 @@ namespace Player
                 isGameOver = false;
             }
         }
-
+        
         private void Start()
         {
             StartCoroutine(Tick(0.1f));
