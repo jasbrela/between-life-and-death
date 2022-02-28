@@ -90,6 +90,9 @@ public class PauseScript : MonoBehaviour
     {
         Time.timeScale = 1;
         pausePanel.SetActive(false);
+        
+        PlayerStatus.ResetValues();
+        
         SceneManager.LoadScene(Scenes.Menu.ToString());
     }
 

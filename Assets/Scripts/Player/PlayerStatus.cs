@@ -15,12 +15,12 @@ namespace Player
         
         private const float DebuffMultiplier = 1.2f;
         private float _timer = 1;
-        public static bool Revived { get; private set; }
     
         public static DebuffType currentDebuff;
         public static bool isGhostMode;
         public static bool isGameOver;
         public static bool isPaused;
+        public static bool hasRevived;
     
         [Header("Audio")]
         [SerializeField] private AudioSource playerAudioSource;
@@ -87,13 +87,13 @@ namespace Player
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
-                    Revived = false;
+                    hasRevived = false;
                     isGameOver = true;
                     UpdateHighScore();
                     AddMoneyBasedOnScore();
                     StartCoroutine(LoadSceneAfterInterval(Scenes.GameOver));
                 }
-                else if (!isGhostMode && !Revived) // (1) DIED in HUMAN MODE. -> GHOST MODE
+                else if (!isGhostMode && !hasRevived) // (1) DIED in HUMAN MODE. -> GHOST MODE
                 {
                     Time.timeScale = (Time.timeScale - 1)/3 + 1;
                     playerAudioSource.clip = hit;
@@ -106,7 +106,7 @@ namespace Player
                     playerAudioSource.clip = hit;
                     playerAudioSource.Play();
                     bgAudioSource.Stop();
-                    Revived = false;
+                    hasRevived = false;
                     isGameOver = true;
                     UpdateHighScore();
                     AddMoneyBasedOnScore();
@@ -121,7 +121,7 @@ namespace Player
                     playerAudioSource.Play();
                     
                     isGhostMode = false;
-                    Revived = true;
+                    hasRevived = true;
                     StartCoroutine(LoadSceneAfterInterval(Scenes.Game));
                 }
             }
@@ -180,10 +180,18 @@ namespace Player
                                                 PlayerPrefs.GetInt(PlayerScore.ScoreKey));
         }
     
-        IEnumerator LoadSceneAfterInterval(Scenes scene)
+        private IEnumerator LoadSceneAfterInterval(Scenes scene)
         {
             yield return new WaitForSecondsRealtime(0.5f);
             SceneManager.LoadScene(scene.ToString());
+        }
+
+        public static void ResetValues()
+        {
+            isPaused = false;
+            isGhostMode = false;
+            isGameOver = false;
+            hasRevived = false;
         }
     }
 }

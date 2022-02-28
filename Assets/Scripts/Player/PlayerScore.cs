@@ -29,7 +29,7 @@ namespace Player
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.name == Scenes.Game.ToString() && !PlayerStatus.Revived)
+            if (scene.name == Scenes.Game.ToString() && !PlayerStatus.hasRevived)
             {
                 PlayerPrefs.SetInt(ScoreKey, 0);
             }
